@@ -1,0 +1,45 @@
+spring:
+  datasource:
+    username: root
+    password: gdutelc2021sql
+    url: jdbc:mysql://104.160.18.224:3306/db_sign_up?characterEncoding=utf-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 15
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: DatebookHikariCP
+      max-lifetime: 120000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+
+  redis:
+    database: 0
+    host: 104.160.18.224
+    port: 6379
+    password: gdutelc2021redis
+    connect-timeout: 1000
+    jedis:
+      pool:
+        max-active: 10
+        max-idle: 8
+        min-idle: 0
+        max-wait: -1
+
+
+  cache:
+    type: redis
+    redis:
+      #是否缓存空值，防止缓存穿透
+      cache-null-values: true
+      #缓存过期时间（ms）
+      time-to-live: 100000
+
+mybatis:
+  mapper-locations: classpath:com/gdutelc/snp/dao/*.xml:com.gdutelc.snp.entity
+  type-aliases-package: com.gdutelc.snp.entity
+
+
+server:
+  port: 10080
