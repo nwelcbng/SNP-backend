@@ -15,4 +15,6 @@ public class User {
     private Integer check;
     private String  result;
     private String  que;
+
+
 }

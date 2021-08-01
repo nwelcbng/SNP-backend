@@ -9,10 +9,10 @@ CREATE TABLE `t_user`
     `uid`       int primary key auto_increment,
     `openid`    varchar(30) unique key NOT NULL,
     `phone`     varchar(11) unique key NOT NULL,
-    `enroll`    int                    NOT NULL,
-    `check`     int                    NOT NULL,
-    `result`    varchar(600)                    NOT NULL,
-    `que`       varchar(600)                    NOT NULL
+    `enroll`    int                    NOT NULL DEFAULT 0,
+    `check`     int                    NOT NULL DEFAULT 0,
+    `result`    varchar(600)           DEFAULT NULL,
+    `que`       varchar(600)           DEFAULT NULL
 )ENGINE = InnoDB
  DEFAULT CHARSET =utf8mb4;
 

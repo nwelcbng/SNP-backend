@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdutelc.snp.dao.IUserDao">
+
+    <resultMap id="userMap" type="com.gdutelc.snp.entity.User">
+        <id property="uid" column="uid"/>
+        <result property="openid" column="openid"/>
+        <result property="phone" column="phone"/>
+        <result property="enroll" column="enroll"/>
+        <result property="check" column="check"/>
+        <result property="result" column="result"/>
+        <result property="que" column="que"/>
+    </resultMap>
+    <insert id="insertOidPhone" parameterType="String">
+        INSERT INTO db_sign_up.t_user (openid,phone) VALUES(#{openid}, #{phone})
+    </insert>
+    <select id="getOpenidByUid" resultType="java.lang.String">
+            SELECT openid
+            FROM   db_sign_up.t_user
+            WHERE  uid = #{uid}
+            LIMIT 1
+    </select>
+    <select id="getUserByUid" resultMap="userMap">
+        SELECT uid, openid, phone, enroll, `check`, `result`, que
+        FROM   db_sign_up.t_user
+        WHERE  uid = #{uid}
+            LIMIT 1
+    </select>
+    <select id="getPhoneByUid" resultType="java.lang.String">
+        SELECT phone
+        FROM   db_sign_up.t_user
+        WHERE  uid = #{uid}
+            LIMIT 1
+    </select>
+    <update id="updatePhoneByOpenid">
+        UPDATE db_sign_up.t_user
+        SET phone = #{phone}
+        WHERE openid = #{openid}
+    </update>
+    <update id="updateEnrollCheckByOid">
+        UPDATE db_sign_up.t_user
+        SET enroll = #{enroll},
+            `check` = #{check}
+        WHERE openid = #{openid}
+    </update>
+    <update id="updateResultQueByOid">
+        UPDATE db_sign_up.t_user
+        SET `result` = #{result},
+            que = #{que}
+        WHERE openid = #{openid}
+    </update>
+
+
+</mapper>

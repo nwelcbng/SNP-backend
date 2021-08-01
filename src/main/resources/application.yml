@@ -36,6 +36,7 @@ spring:
       #缓存过期时间（ms）
       time-to-live: 100000
 
+
 mybatis:
   mapper-locations: classpath:com/gdutelc/snp/dao/*.xml:com.gdutelc.snp.entity
   type-aliases-package: com.gdutelc.snp.entity
@@ -43,3 +44,11 @@ mybatis:
 
 server:
   port: 10080
+logging:
+  level:
+    org:
+      springframework:
+        boot:
+          autoconfigure:
+            logging: info
+
