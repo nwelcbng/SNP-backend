@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdutelc.snp.dao.IAdminDao">
+
+    <resultMap id="AdminMap" type="com.gdutelc.snp.entity.Admin">
+        <id property="aid" column="uid"/>
+        <result property="openid" column="openid"/>
+        <result property="username" column="username"/>
+        <result property="adno" column="adno"/>
+        <result property="position" column="position"/>
+        <result property="password" column="password"/>
+        <result property="phone" column="phone"/>
+    </resultMap>
+    <insert id="insertInform">
+        INSERT INTO db_sign_up.t_admin (openid, username, adno, `position`, password, phone)
+        VALUES (#{openid}, #{username}, #{adno}, #{position}, #{password}, #{phone})
+    </insert>
+    <insert id="insertInformByAdmin" parameterType="com.gdutelc.snp.entity.Admin">
+        INSERT INTO db_sign_up.t_admin (openid, username, adno, `position`, password, phone)
+        VALUES (#{openid}, #{username}, #{adno}, #{position}, #{password}, #{phone})
+    </insert>
+    <select id="getOpenIdByAid" resultType="java.lang.String">
+        SELECT openid
+        FROM   db_sign_up.t_admin
+        WHERE aid = #{aid}
+        LIMIT 1
+    </select>
+    <select id="getAdminByAid" resultMap="AdminMap">
+        SELECT aid, openid,username,adno, `position`, password, phone
+        FROM   db_sign_up.t_admin
+        WHERE  aid = #{aid}
+        LIMIT 1
+    </select>
+    <select id="getPassWordByAid" resultType="java.lang.String">
+        SELECT password
+        FROM   db_sign_up.t_admin
+        WHERE  aid = #{aid}
+        LIMIT 1
+    </select>
+    <update id="updatePasswordByOpenid">
+        UPDATE db_sign_up.t_admin
+        SET password =#{password}
+        WHERE openid =#{openid}
+    </update>
+    <update id="updatePhoneByOpenid">
+        UPDATE db_sign_up.t_admin
+        SET phone = #{phone}
+        WHERE openid = #{openid}
+    </update>
+    <update id="updatePositionByOpenid">
+        UPDATE db_sign_up.t_admin
+        SET `position` = #{position}
+        WHERE openid =#{openid}
+    </update>
+    <update id="updateAdnoByOpenid">
+        UPDATE db_sign_up.t_admin
+        SET adno = #{adno}
+        WHERE openid =#{openid}
+    </update>
+
+
+</mapper>

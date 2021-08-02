@@ -1,25 +1,20 @@
-package com.gdutelc.snp.entity;
+package com.gdutelc.snp.dto;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
-/**
- * @author kid
- */
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class Sign {
-    private Integer sid;
-    private Integer uid;
+@NoArgsConstructor
+public class Dsign {
     private String name;
     private Integer grade;
     private Integer college;
     private String major;
     private String userclass;
-    private String description;
+    private String dsp;
     private Integer dno;
     private Integer secdno;
     private Boolean gender;
@@ -28,6 +23,7 @@ public class Sign {
     private String domitory;
     private String know;
     private String party;
+
 
 
 }

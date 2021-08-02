@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
  * @author kid
  */
 @Component
-@Mapper
 public interface IUserDao {
     /**
      * 插入openid和phone

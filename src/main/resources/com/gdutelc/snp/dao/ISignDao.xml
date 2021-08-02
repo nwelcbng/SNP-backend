@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdutelc.snp.dao.ISignDao">
+
+    <resultMap id="SignMap" type="com.gdutelc.snp.entity.Sign">
+        <id property="sid" column="sid"/>
+        <result property="uid" column="uid"/>
+        <result property="name" column="name"/>
+        <result property="grade" column="grade"/>
+        <result property="college" column="college"/>
+        <result property="major" column="major"/>
+        <result property="userclass" column="class"/>
+        <result property="description" column="dsp"/>
+        <result property="dno" column="dno"/>
+        <result property="secdno" column="secdno"/>
+        <result property="gender" column="gender"/>
+        <result property="sno" column="sno"/>
+        <result property="qq" column="qq"/>
+        <result property="domitory" column="domitory"/>
+        <result property="know" column="know"/>
+        <result property="party" column="party"/>
+    </resultMap>
+    <resultMap id="DSignMap" type="com.gdutelc.snp.dto.Dsign">
+        <result property="name" column="name"/>
+        <result property="grade" column="grade"/>
+        <result property="college" column="college"/>
+        <result property="major" column="major"/>
+        <result property="userclass" column="class"/>
+        <result property="dsp" column="dsp"/>
+        <result property="dno" column="dno"/>
+        <result property="secdno" column="secdno"/>
+        <result property="gender" column="gender"/>
+        <result property="sno" column="sno"/>
+        <result property="qq" column="qq"/>
+        <result property="domitory" column="domitory"/>
+        <result property="know" column="know"/>
+        <result property="party" column="party"/>
+    </resultMap>
+    <insert id="insertSign" parameterType="com.gdutelc.snp.entity.Sign">
+        INSERT INTO db_sign_up.t_sign (uid, `name`, grade, college, major, class, dsp, dno,secdno, gender, sno, qq, domitory, know, party)
+        values (#{uid}, #{name}, #{grade}, #{college}, #{major}, #{userclass}, #{description}, #{dno}, #{secdno}, #{gender}, #{sno}, #{qq}, #{domitory}, #{know}, #{party})
+    </insert>
+    <select id="getSignByUid" resultMap="SignMap" parameterType="java.lang.Integer">
+        SELECT sid, uid, `name`, grade, college, major, class, dsp, dno,secdno, gender, sno, qq, domitory, know, party
+        FROM db_sign_up.t_sign
+        WHERE uid = #{uid}
+        LIMIT 1
+    </select>
+    <select id="getDsignByUid" resultMap="DSignMap" parameterType="java.lang.Integer">
+        SELECT `name`, grade, college, major, class, dsp, dno,secdno, gender, sno, qq, domitory, know, party
+        FROM db_sign_up.t_sign
+        WHERE uid = #{uid}
+        LIMIT 1
+    </select>
+    <select id="getDsignByGender" resultMap="DSignMap" parameterType="java.lang.Boolean">
+        SELECT `name`, grade, college, major, class, dsp, dno,secdno, gender, sno, qq, domitory, know, party
+        FROM db_sign_up.t_sign
+        WHERE gender = #{gender}
+    </select>
+    <select id="getDsignByDno" resultMap="DSignMap" parameterType="java.lang.Integer">
+        SELECT `name`, grade, college, major, class, dsp, dno,secdno, gender, sno, qq, domitory, know, party
+        FROM db_sign_up.t_sign
+        WHERE dno = #{dno}
+    </select>
+    <update id="updateDsignInformByUid" >
+        UPDATE db_sign_up.t_sign
+        SET `name` = #{dsign.name},
+            grade = #{dsign.grade},
+            college = #{dsign.college},
+            major = #{dsign.major},
+            class = #{dsign.userclass},
+            dsp = #{dsign.dsp},
+            dno = #{dsign.dno},
+            secdno = #{dsign.secdno},
+            gender = #{dsign.gender},
+            sno = #{dsign.sno},
+            qq = #{dsign.qq},
+            domitory = #{dsign.domitory},
+            know = #{dsign.know},
+            party = #{dsign.party}
+        WHERE uid = #{uid}
+    </update>
+
+
+
+
+
+</mapper>
