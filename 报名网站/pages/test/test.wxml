@@ -1,0 +1,2 @@
+<process currentIndex="{{currentStatus}}" bind:sureGoTo="sureGo" sureGo="{{sureGo}}"></process>
+<message status="{{currentStatus}}" sureGo="{{sureGo}}"></message>

@@ -1,0 +1,26 @@
+.message-view{
+  width: 500rpx;
+  border: 8rpx #6388e3 solid;
+  border-top: 80rpx #6388e3 solid;
+  border-radius: 20rpx;
+  line-height: 80rpx;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+}
+.message-title{
+  position: absolute;
+  top:-80rpx;
+  height: 80rpx;
+  color: white;
+  width: 100%;
+  text-align: center;
+}
+.message-input{
+  border: 2rpx solid black;
+  border-radius:10rpx ;
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom:20rpx;
+  text-align: left;
+}

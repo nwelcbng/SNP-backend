@@ -1,0 +1,28 @@
+<view class="options">
+  <navigator url="/pages/test/test">
+    <view class="options-item" >
+      <image src="/assets/img/jindutiao.png" class="icon"></image>
+      <text>查看考核进度</text> 
+      <image src="/assets/img/jiantou.png" class="icon-right"></image>
+    </view>
+  </navigator>
+    <view class="options-item">
+      <button class="feedback-btn-left" open-type="feedback"></button>
+      <button class="feedback-btn-right" open-type="feedback"></button>
+      <image src="/assets/img/yijianfankui.png" class="icon"></image>
+      <text>意见反馈</text>
+      <image src="/assets/img/jiantou.png" class="icon-right"></image>
+    </view>
+    <view class="options-item" >
+      <button class="share-btn-left" open-type="share" ></button>
+      <button class="share-btn-right" open-type="share" ></button>
+      <image src="/assets/img/ziyuan.png" class="icon"></image>
+      <text>分享给朋友</text>
+      <image src="/assets/img/jiantou.png" class="icon-right"></image>
+    </view> 
+    <view class="options-item">
+      <image src="/assets/img/dengpao.png" class="icon"></image>
+      <text>如何使用小程序</text>
+      <image src="/assets/img/jiantou.png" class="icon-right"></image>
+    </view> 
+</view>

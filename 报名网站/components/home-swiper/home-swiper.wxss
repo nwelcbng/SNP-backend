@@ -1,0 +1,15 @@
+.home-swiper{
+  height: 400rpx;
+}
+.home-introduce-title{
+  margin: 60rpx auto;
+  width: 200rpx;
+  height: 150rpx;
+  background-color: #6388e3;
+  color: white;
+  line-height: 150rpx;
+}
+.swiper-img{
+  width: 100%;
+  height: 100%;
+}

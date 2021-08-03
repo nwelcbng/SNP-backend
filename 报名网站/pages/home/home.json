@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "home-swiper":"/components/home-swiper/home-swiper",
+    "dep-item":"/components/dep-item/dep-item",
+    "navBar":"/components/home-navbar/navbar",
+    "mp-dialog": "weui-miniprogram/dialog/dialog"
+  },
+  "navigationBarTitleText":"首页"
+}

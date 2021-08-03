@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "process":"/components/process/process",
+    "options":"/components/options/options"
+  },
+  "navigationBarTitleText":"个人信息"
+}

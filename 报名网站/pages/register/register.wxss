@@ -1,0 +1,35 @@
+/* pages/register/register.wxss */
+.register-title{
+  width: 100%;
+  height: 200rpx;
+  background-color: wheat;
+  text-align: center;
+  font-size: 60rpx;
+  line-height: 200rpx;
+}
+
+.register-input{
+  border-bottom: 1px solid black;
+  margin: 20rpx 10rpx;
+}
+.register-textarea{
+  width: calc(100% - 20rpx);
+  margin:20rpx auto;
+
+}
+
+.register-item{
+  padding: 0rpx 25rpx;
+}
+.register-label{
+  padding: 10rpx;
+  color:#656dda;
+}
+.button{
+  background-color: #656dda;
+  color: white;
+}
+.checkbox{
+  margin:20rpx auto;
+  color:#656dda;
+}

@@ -1,0 +1,178 @@
+
+@keyframes move_wave {
+0% {
+  transform: translateX(0) translateZ(0) scaleY(1)
+}
+50% {
+  transform: translateX(-25%) translateZ(0) scaleY(0.55)
+}
+100% {
+  transform: translateX(-50%) translateZ(0) scaleY(1)
+}
+}
+
+@keyframes image_wave {
+  0% {
+    transform:  translateY(0) 
+  }
+  /* 25% {
+    transform:  translateY(-25%) 
+  }
+  50% {
+    transform:  translateY(0) 
+  } */
+  50% {
+    transform:  translateY(25%) 
+  }
+  100% {
+    transform:  translateY(0) 
+  }
+  }
+
+page{
+  background-color:#f1f1f1;
+}
+.waveWrapper {
+  height: 50vh;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+.waveWrapperInner {
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  height: 100%;
+  bottom: -1px;
+  background-image: linear-gradient(to top, #6388e3 20%, #6388e3 80%);
+}
+.bgTop {
+  z-index: 15;
+  opacity: 0.5;
+}
+.bgMiddle {
+  z-index: 10;
+  opacity: 0.75;
+}
+.bgBottom {
+  z-index: 5;
+}
+.wave {
+  position: absolute;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background-repeat: repeat no-repeat;
+  background-position: 0 bottom;
+  transform-origin: center bottom;
+}
+.waveTop {
+  background-size: 50% 100px;
+}
+.waveAnimation .waveTop {
+animation: move-wave 3s;
+ -webkit-animation: move-wave 3s;
+ /* -webkit-animation-delay: 1s;
+ animation-delay: 1s; */
+}
+.waveMiddle {
+  background-size: 50% 120px;
+}
+.waveAnimation .waveMiddle {
+  animation: move_wave 10s linear infinite;
+}
+.waveBottom {
+  background-size: 50% 100px;
+}
+.waveAnimation .waveBottom {
+  animation: move_wave 8s linear infinite;
+}
+
+.userinfo{
+  animation: image_wave 3s linear infinite;
+}
+/* .images{
+  position: absolute;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+} */
+
+
+.index-z-low{
+  z-index: -1;
+}
+
+.userinfo-container{
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #aaa;
+}
+
+.userinfo-avatar {
+  overflow: hidden;
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+.nickname{
+  color:white;
+}
+.options{
+  margin: 40rpx 80rpx;
+  overflow: hidden;
+  background-color: white;
+}
+.options-item{
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100rpx;
+  line-height: 80rpx;
+  background-color: white;
+  text-align: left;
+  font-size: 30rpx;
+}
+.share-btn-left,.feedback-btn-left{
+  position: absolute;
+  background-color:rgba(0,0,0,0);
+  height: 100%;
+  z-index: 10;
+}
+.share-btn-right,.feedback-btn-right{
+  position: absolute;
+  right: 0;
+  background-color:rgba(0,0,0,0);
+  height: 100%;
+  z-index: 10;
+}
+.item-icon{
+  margin-left: 20rpx;
+}
+.icon,.icon-right{
+  margin: 0 15rpx;
+  width: 50rpx;
+  height: 50rpx;
+}
+.icon-right{
+  position: absolute;
+  right: 0;
+}

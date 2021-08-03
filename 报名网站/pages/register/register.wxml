@@ -1,0 +1,67 @@
+<!-- <view class="register-title">elc欢迎你!</view> -->
+
+<view class="register-form">
+  <form action="">
+    <view class="register-item">
+      <view class="register-label">学号</view>
+      <input class="register-input" id="Sno" name="Sno" placeholder="手机号码"/>
+    </view>
+
+    <view class="register-item">
+      <view  class="register-label">姓名</view>
+      <input class="register-input" placeholder="姓名"/>
+    </view>
+
+    <view class="register-item">
+      <view  class="register-label">qq</view>
+      <input class="register-input" placeholder="qq号码"/>
+    </view>
+
+    <view class="register-item">
+      <view  class="register-label">手机</view>
+      <input class="register-input" placeholder="手机号码" />
+    </view>
+
+    <!-- <view class="register-item">
+      <label for="name" class="register-label">学院和专业</label>
+      <input class="register-input" id="name"/>
+    </view> -->
+    <view class="register-item">
+      <view class="register-label">意向部门</view>
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{depList}}">
+        <input class="register-input"  value="{{depList[depIndex]}}" disabled="true"/>
+      </picker>
+    </view>
+
+    <view class="register-item">
+      <view for="secDep" class="register-label">第二部门</view>
+      <picker bindchange="bindPickerChangeSec" value="{{index}}" range="{{secDepList}}">
+        <input class="register-input" id="secDep" value="{{secDepList[secIndex]}}"
+        disabled="true" />
+      </picker>
+    </view>
+    <view class="register-item">
+      <text class="register-label">你的性别</text>
+        <radio class="checkbox"  checked="{{sex}}" color="#656dda" bindtap="sexChange"/>男
+        <radio class="checkbox"  checked="{{!sex}}" color="#656dda" 
+        bindtap="sexChange"/>女
+    </view>
+
+    <view class="register-item">
+      <view  class="register-label">自我介绍</view>
+      <textarea class="register-textarea" name="intro"  placeholder="介绍一下自己的学习经验,方向进度,兴趣,学习成绩等"></textarea>
+    </view>
+
+    <view class="register-item">
+      <view  class="register-label">如何了解社团</view>
+      <textarea class="register-textarea" name="know"  placeholder="如何了解社团的"></textarea>
+    </view>
+
+    <button class="button">提交</button>
+  </form>
+</view>
+
+
+
+
+  

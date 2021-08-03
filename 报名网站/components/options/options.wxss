@@ -1,0 +1,40 @@
+.options{
+  margin: 40rpx 80rpx;
+  overflow: hidden;
+  background-color: white;
+}
+.options-item{
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100rpx;
+  line-height: 80rpx;
+  background-color: white;
+  text-align: left;
+  font-size: 30rpx;
+}
+.share-btn-left,.feedback-btn-left{
+  position: absolute;
+  background-color:rgba(0,0,0,0);
+  height: 100%;
+  z-index: 10;
+}
+.share-btn-right,.feedback-btn-right{
+  position: absolute;
+  right: 0;
+  background-color:rgba(0,0,0,0);
+  height: 100%;
+  z-index: 10;
+}
+.item-icon{
+  margin-left: 20rpx;
+}
+.icon,.icon-right{
+  margin: 0 15rpx;
+  width: 50rpx;
+  height: 50rpx;
+}
+.icon-right{
+  position: absolute;
+  right: 0;
+}

@@ -1,0 +1,16 @@
+<view class="navBar"> 
+  <view class="navBar-item">
+    <view class="item-text first">协会介绍</view> 
+  </view>
+  <view class="navBar-item" bindtap="scrollToDep">
+    <view class="item-text">部门介绍</view> 
+  </view>
+  <view class="navBar-item">
+    <view class="item-text">协会荣誉和活动</view> 
+    <!-- <text class="line"></text> -->
+  </view>
+  <view class="navBar-item" bindtap="joinDialog">
+    <view class="item-text last">加入我们</view>
+    <!-- <text class="line"></text>  -->
+  </view>
+</view>

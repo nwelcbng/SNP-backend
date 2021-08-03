@@ -1,0 +1,46 @@
+
+<view class="waveWrapper waveAnimation index-z-low " >
+            <view class="waveWrapperInner bgTop index-z-low" >
+                <view class="wave waveTop index-z-low" style="background-image:url(/assets/img/wave-top.png)">
+                  <!-- <image class="images" src="/assets/img/wave-top.png"></image> -->
+                </view>
+            </view>
+            <view class="waveWrapperInner bgMiddle index-z-low">
+                <view class="wave waveMiddle index-z-low" style="background-image:url(/assets/img/wave-mid.png)">
+                  <!-- <image class="images" src="/assets/img/wave-mid.png"></image> -->
+                </view>
+            </view>
+            <view class="waveWrapperInner bgBottom index-z-low">
+                <view class="wave waveBottom index-z-low" style="background-image:url(/assets/img/wave-bot.png)">
+                  <!-- <image class="images" src="/assets/img/wave-bot.png"></image> -->
+                </view>
+            </view>
+</view>
+
+<view class="userinfo-container">
+  <view class="userinfo">
+    <block wx:if="{{canIUseOpenData}}">
+      <view class="userinfo-avatar" bindtap="bindViewTap">
+        <open-data type="userAvatarUrl" ></open-data>
+      </view>
+      <open-data type="userNickName" class="nickname"></open-data>
+    </block>
+    <block wx:elif="{{!hasUserInfo}}">
+      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
+      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
+    </block>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+</view>
+
+<!-- <view style="background-image: url('/assets/img/wave-bot.png')" class="abc">
+  测试
+</view> -->
+
+<options></options>
+<!-- <process></process> -->
+

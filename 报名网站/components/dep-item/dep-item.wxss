@@ -1,0 +1,32 @@
+/* components/department-item/department-item.wxss */
+.dep-item{
+  box-shadow: 20rpx 20rpx #6388e3;
+  width: 560rpx;
+  display: flex;
+  flex-wrap: wrap;
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-all;
+  margin: 30rpx auto;
+  text-align: center;
+
+  border-radius: 20rpx;
+  border: solid 1px black;
+}
+.dep-item-title{
+  width: 100%;
+  padding: 20rpx 0;
+}
+.title-text{
+  width: max-content;
+  padding: 0 20rpx;
+  margin: 0 auto;
+  line-height: 80rpx;
+  border-radius: 20rpx ;
+  background-color: #6388e3;
+  color: white;
+}
+.dep-item-introduce{
+  line-height: 60rpx;
+  font-size: 26rpx;
+}

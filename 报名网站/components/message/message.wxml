@@ -1,0 +1,10 @@
+<view class="mesasge">
+  <view class="message-view">
+  <view class="message-title">状态信息</view>
+  <view>当前阶段:{{process[status]}}</view>
+  <view>当前状态:{{processStatus[sureGo?0:1]}}</view>
+  <view  wx:if="{{!sureGo}}">请输入请假理由：</view>
+  <textarea name="" id="" cols="30" rows="10" class="message-input" wx:if="{{!sureGo}}"></textarea>
+  <button wx:if="{{!sureGo}}">确认信息</button>
+  </view>
+</view>

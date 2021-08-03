@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "process":"/components/process/process",
+    "message":"/components/message/message"
+  },
+  "navigationBarTitleText":"考核情况"
+}

@@ -1,0 +1,76 @@
+<view class="progress-bar">
+  <view class="loading-title">
+    <view>面试</view>
+    <view>一轮考核</view>
+    <view>二轮考核</view>
+    <view>笔试</view>
+  </view>
+  <view class="loading-bar">
+    <view class="bar-pot"  >
+      <image src="/assets/img/dui-active.png" class="img"></image>
+      <view class="option-items" wx:if="{{currentIndex == 0}}">
+        <view class="option-item">
+          <view class="item-text" bindtap="sureGo">前往</view>
+          <image class="sure-right" src="/assets/img/dui.png" wx:if="{{sureGo}}"></image>
+        </view>
+        <view class="option-item">
+          <view class="item-text" bindtap="absent">请假</view>
+          <image class="sure-right" src="/assets/img/dui.png" wx:if="{{!sureGo}}"></image>
+        </view>
+        <!-- <view class="option-item">
+          <view class="item-text">确定前往</view>
+        </view> -->
+      </view>
+    </view>
+    <view class="bar-pot" >
+      <image src="/assets/img/dui-active.png" class="img"></image>
+      <view class="option-items" wx:if="{{currentIndex == 1}}">
+        <view class="option-item">
+          <view class="item-text" bindtap="sureGo">前往</view>
+          <image class="sure-right" src="/assets/img/dui.png" wx:if="{{sureGo}}"></image>
+        </view>
+        <view class="option-item">
+          <view class="item-text" bindtap="absent">请假</view>
+          <image class="sure-right" src="/assets/img/dui.png" wx:if="{{!sureGo}}"></image>
+        </view>
+        <!-- <view class="option-item">
+          <view class="item-text">确定前往</view>
+        </view> -->
+      </view>
+    </view>
+    <view class="bar-pot" >
+      <image src="/assets/img/dui-active.png" class="img"></image>
+      <view class="option-items" wx:if="{{currentIndex == 2}}">
+        <view class="option-item">
+          <view class="item-text" bindtap="sureGo">前往</view>
+          <image class="sure-right" src="/assets/img/dui.png" wx:if="{{sureGo}}"></image>
+        </view>
+        <view class="option-item">
+          <view class="item-text" bindtap="absent">请假</view>
+          <image class="sure-right" src="/assets/img/dui.png" wx:if="{{!sureGo}}"></image>
+        </view>
+        <!-- <view class="option-item">
+          <view class="item-text">确定前往</view>
+        </view> -->
+      </view>
+    </view>
+    <view class="bar-pot" >
+      <!-- <image src="/assets/img/dui-active.png" class="img" ></image> -->
+      <image src="/assets/img/wenhao.png" class="img"></image>
+      <view class="option-items" wx:if="{{currentIndex == 3}}">
+        <view class="option-item">
+          <view class="item-text" bindtap="sureGo">前往</view>
+          <image class="sure-right" src="/assets/img/dui.png" wx:if="{{sureGo}}"></image>
+        </view>
+        <view class="option-item">
+          <view class="item-text" bindtap="absent">请假</view>
+          <image class="sure-right" src="/assets/img/dui.png" wx:if="{{!sureGo}}"></image>
+        </view>
+        <!-- <view class="option-item">
+          <view class="item-text">确定前往</view>
+        </view> -->
+      </view>
+    </view>
+  </view>
+</view>
+

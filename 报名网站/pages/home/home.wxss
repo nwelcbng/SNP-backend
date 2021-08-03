@@ -1,0 +1,24 @@
+/* pages/home/home.wxss */
+/* .home-swiper{
+  
+} */
+.home-introduce{
+  text-align: center;
+  overflow: hidden;
+}
+.home-swiper{
+  height: 400rpx;
+}
+.home-introduce-title{
+  margin: 60rpx auto;
+  width: 200rpx;
+  height: 130rpx;
+  background-color: #6388e3;
+  color: white;
+  line-height: 130rpx;
+  border-radius: 20rpx;
+}
+.dialog-img{
+  width: 400rpx;
+  height: 400rpx;
+}
