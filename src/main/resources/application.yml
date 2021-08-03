@@ -41,6 +41,18 @@ mybatis:
   mapper-locations: classpath:com/gdutelc/snp/dao/*.xml:com.gdutelc.snp.entity
   type-aliases-package: com.gdutelc.snp.entity
 
+config:
+  jwt:
+    user:
+      salt: gdutelc2021user
+      expire: 36000
+      header: jwt
+    admin:
+      salt: gdutelc2021admin
+      expire: 36000
+      header: jwt
+
+
 
 server:
   port: 10080
