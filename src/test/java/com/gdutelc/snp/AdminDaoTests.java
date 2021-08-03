@@ -25,8 +25,8 @@ public class AdminDaoTests {
     @DisplayName("通过admin插入")
     void insertInformByAdminTest(){
         Admin admin = new Admin();
-        admin.setOpenid("asdfghjjkkl");
-        admin.setUsername("archwiki");
+        admin.setOpenid("a123123123");
+        admin.setUsername("qqqqqqqqqq");
         admin.setAdno(4);
         admin.setPassword("qwert");
         admin.setPosition(5);
