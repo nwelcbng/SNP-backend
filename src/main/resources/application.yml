@@ -42,6 +42,9 @@ mybatis:
   type-aliases-package: com.gdutelc.snp.entity
 
 config:
+  register:
+    appid: heihei
+    secret: oo
   jwt:
     user:
       salt: gdutelc2021user

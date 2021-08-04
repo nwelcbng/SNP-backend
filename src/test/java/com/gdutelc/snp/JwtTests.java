@@ -51,6 +51,5 @@ public class JwtTests {
         Map<String, String> payload = jwtConfig.getPayload(jwt);
         payload.forEach((k,v)-> System.out.println(k+"---->"+v));
 
-
     }
 }

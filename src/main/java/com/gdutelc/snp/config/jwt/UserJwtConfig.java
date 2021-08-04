@@ -11,9 +11,4 @@ import java.util.Map;
 @Component
 @ConfigurationProperties(prefix = "config.jwt.user")
 public class UserJwtConfig extends BaseJwtConfig{
-
-    @Override
-    public String createJwt(Map<String, Object> claims, String openid) {
-        return super.createJwt(claims, openid);
-    }
 }
