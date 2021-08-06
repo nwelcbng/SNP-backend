@@ -31,6 +31,13 @@ public interface IUserDao {
      * @return 查到的用户
      */
     User getUserByUid(Integer uid);
+    /**
+     * 获取user
+     *
+     * @param openid openid
+     * @return 查到的用户
+     */
+    User getUserByOpenid(String openid);
 
     /**
      * 通过uid获取手机号

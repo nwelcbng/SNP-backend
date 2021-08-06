@@ -26,6 +26,12 @@
         WHERE  uid = #{uid}
             LIMIT 1
     </select>
+    <select id="getUserByOpenid" resultMap="userMap">
+        SELECT uid, openid, phone, enroll, `check`, `result`, que
+        FROM   db_sign_up.t_user
+        WHERE  openid = #{openid}
+            LIMIT 1
+    </select>
     <select id="getPhoneByUid" resultType="java.lang.String">
         SELECT phone
         FROM   db_sign_up.t_user
