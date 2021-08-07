@@ -29,8 +29,6 @@ public class JwtTests {
     @Test
     @DisplayName("测试basejwt")
     void checkJwtTest(){
-        jwtConfig.setExpire(36000);
-        jwtConfig.setHeader("jwt");
         HashMap<String,Object> claims = new HashMap<>();
         claims.put("username","kid");
         String jwt = jwtConfig.createJwt(claims, "qwer1234");

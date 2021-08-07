@@ -40,10 +40,11 @@ public class BaseJwtConfig {
         Algorithm algorithm = Algorithm.HMAC256(salt+openid);
         //创建jwt
         JWTCreator.Builder jwt = JWT.create();
-        //增加发送时间和到期时间
-        jwt.withIssuedAt(date).withExpiresAt(expireDate);
+
         //增加payload
         claims.forEach((k,v)->jwt.withClaim(k,v.toString()));
+        //增加发送时间和到期时间
+        jwt.withIssuedAt(date).withExpiresAt(expireDate);
         //签名
         String sign = jwt.sign(algorithm);
         return sign;
@@ -69,6 +70,7 @@ public class BaseJwtConfig {
     public Map<String,String> getPayload(@NonNull String jwt){
         Map<String, Claim> map = JWT.decode(jwt).getClaims();
         Map<String,String> payload = new HashMap<>(4);
+        map.forEach((k,v)-> System.out.println(k+"-----"+v));
         map.forEach((k,v)->payload.put(k,v.asString()));
         return payload;
     }

@@ -43,8 +43,8 @@ mybatis:
 
 config:
   register:
-    appid: heihei
-    secret: oo
+    appid: wx5b6dd7febf70b30b
+    secret: d3047c9926e405cf2992893fd9452b4e
   jwt:
     user:
       salt: gdutelc2021user

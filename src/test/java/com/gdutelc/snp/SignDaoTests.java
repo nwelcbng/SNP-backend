@@ -35,8 +35,8 @@ public class SignDaoTests {
     @DisplayName("查询Dsign")
     void getDsignTest(){
 //        Sign sign = new Sign(null,1,"kid",2,3,"电子科学与技术","四班", "hh", 3,4,true,"3119007324","123445556","东十四","heitai","no");
-        Dsign sign = signDao.getDsignByUid(1);
-        System.out.println(sign.getDomitory());
+        Dsign sign = signDao.getDsignByUid(10);
+        System.out.println(sign);
     }
     @Test
     @DisplayName("通过性别查询Dsign")
