@@ -19,6 +19,7 @@ public class UserApiController {
 
     @CrossOrigin
     @PostMapping("/user/register")
+
     public Result<Object> getCode(@RequestBody String code){
         String jwt = userApiService.registerService(code);
         if (jwt.isEmpty()){
@@ -43,12 +44,24 @@ public class UserApiController {
     @UserJwt
     @CrossOrigin
     @GetMapping("/user/getform")
-    public Result<Object> getform(@RequestHeader("Cookie") String cookie){
+    public Result<Object> getForm(@RequestHeader("Cookie") String cookie){
         String data = userApiService.getFormService(cookie);
         if (data == null){
             return Return.error(Status.GETFORMERROR);
         }
         return Return.success(data);
+    }
+
+
+    @UserJwt
+    @CrossOrigin
+    @PutMapping("/user/setstatus")
+    public Result<Object> setStatus(@RequestHeader("Cookie") String cookie, @RequestBody String request){
+        boolean judge = userApiService.setStatusService(cookie, request);
+        if(!judge){
+            return Return.error(Status.SETSTATUSERROR);
+        }
+        return Return.success();
     }
 
 }

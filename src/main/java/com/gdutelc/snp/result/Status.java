@@ -14,6 +14,7 @@ public enum Status {
     JWTCREATEERROR(-505,"jwt生成错误"),
     GETOPENIDERROR(-501,"获取openid错误"),
     GETFORMERROR(-502,"获取报名表单错误"),
+    SETSTATUSERROR(-503,"设置状态失败"),
     SUCCESS(1,"成功");
     private int code;
     private String msg;

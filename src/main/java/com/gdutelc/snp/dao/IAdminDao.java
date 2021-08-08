@@ -39,6 +39,14 @@ public interface IAdminDao {
      */
     String getOpenIdByAid(Integer aid);
 
+    /**
+     * 通过username获取password
+     *
+     * @param username username
+     * @return  获取密码
+     */
+    String getPassowrdByUsername(String username);
+
 
     /**
      * 通过aid获取管理员信息

@@ -45,7 +45,7 @@ CREATE TABLE `t_admin`
 (
     `aid`       int primary key auto_increment,
     `openid`    varchar(30) unique key NOT NULL,
-    `username`  varchar(120)           NOT NULL COMMENT '用户名',
+    `username`  varchar(120) unique key NOT NULL COMMENT '用户名',
     `adno`      int                    NOT NULL COMMENT '部门',
     `position`  int                    NOT NULL COMMENT '摊位',
     `password`  varchar(120)           NOT NULL COMMENT '密码',

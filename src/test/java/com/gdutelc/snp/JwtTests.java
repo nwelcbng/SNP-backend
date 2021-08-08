@@ -21,8 +21,8 @@ public class JwtTests {
         jwtConfig.setExpire(36000);
         jwtConfig.setHeader("jwt");
         HashMap<String,Object> claims = new HashMap<>();
-        claims.put("username","kid");
-        String jwt = jwtConfig.createJwt(claims, "qwer1234");
+        claims.put("uid",1);
+        String jwt = jwtConfig.createJwt(claims, "oPndU5eWqEkM2101oOOf_rWSM3Fk");
         System.out.println(jwt);
 
     }
@@ -43,10 +43,12 @@ public class JwtTests {
         jwtConfig.setExpire(36000);
         jwtConfig.setHeader("jwt");
         HashMap<String,Object> claims = new HashMap<>();
-        claims.put("username","kid");
+        claims.put("uid",4);
         String jwt = jwtConfig.createJwt(claims, "qwer1234");
         System.out.println(jwt);
         Map<String, String> payload = jwtConfig.getPayload(jwt);
+        String uid = payload.get("uid");
+        System.out.println("uid"+uid);
         payload.forEach((k,v)-> System.out.println(k+"---->"+v));
 
     }

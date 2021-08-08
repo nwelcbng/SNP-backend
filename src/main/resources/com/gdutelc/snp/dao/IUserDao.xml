@@ -14,6 +14,7 @@
     <insert id="insertOidPhone" parameterType="String">
         INSERT INTO db_sign_up.t_user (openid,phone) VALUES(#{openid}, #{phone})
     </insert>
+
     <select id="getOpenidByUid" resultType="java.lang.String">
             SELECT openid
             FROM   db_sign_up.t_user
@@ -43,15 +44,15 @@
         SET phone = #{phone}
         WHERE openid = #{openid}
     </update>
-    <update id="updateEnrollCheckByOid">
+    <update id="updateEnrollResultByOid">
         UPDATE db_sign_up.t_user
         SET enroll = #{enroll},
-            `check` = #{check}
+            `result` = #{result}
         WHERE openid = #{openid}
     </update>
-    <update id="updateResultQueByOid">
+    <update id="updateCheckQueByOid">
         UPDATE db_sign_up.t_user
-        SET `result` = #{result},
+        SET `check` = #{check},
             que = #{que}
         WHERE openid = #{openid}
     </update>

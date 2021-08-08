@@ -16,8 +16,8 @@ public class UserDaoTests {
     @DisplayName("用户dao插入测试")
     void insertTest(){
         User user = new User();
-        user.setOpenid("1rrrrrrrr");
-        user.setPhone("1241561787");
+        user.setOpenid("oPndU5eWqEkM2101oOOf_rWSM3Fk");
+        user.setPhone("12344567888");
         iUserDao.insertOidPhone(user.getOpenid(),user.getPhone());
     }
 
@@ -51,14 +51,10 @@ public class UserDaoTests {
     @Test
     @DisplayName("通过openid更改enroll和check")
     void updateEnrollCheckTest(){
-        Integer judge = iUserDao.updateEnrollCheckByOid(2,2,"1rrrrrrrr");
-        System.out.println(judge);
     }
     @Test
     @DisplayName("通过openid更改result和que")
     void updateResultQueTest(){
-        Integer judge = iUserDao.updateResultQueByOid("good","stomache","1rrrrrrrr");
-        System.out.println(judge);
     }
 
 }

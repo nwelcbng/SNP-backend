@@ -20,7 +20,7 @@ public class SignDaoTests {
     @Test
     @DisplayName("报名信息插入")
     void insertSignTest(){
-        Sign sign = new Sign(null,2,"wwwww",23,3,"电子科学与技术","四班", "hh", 3,4,true,"3119007324","123445556","东十三","heitai","no");
+        Sign sign = new Sign(null,2,"kid",23,3,"电子科学与技术","四班", "hh", 3,4,true,"3119007324","123445556","东十三","heitai","no");
         Integer integer = signDao.insertSign(sign);
         System.out.println(integer);
     }

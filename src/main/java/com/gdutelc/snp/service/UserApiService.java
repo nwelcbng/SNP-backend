@@ -1,6 +1,5 @@
 package com.gdutelc.snp.service;
 
-import org.springframework.stereotype.Component;
 
 /**
  * @author kid
@@ -10,25 +9,35 @@ import org.springframework.stereotype.Component;
 public interface UserApiService {
 
     /**
-     * 获取code返回userjwt
+     * 获取code返回jwt
      * @param   code  前端发送的code
-     * @return  生成的userjwt
+     * @return  生成的jwt
      */
-    public String registerService(String code);
+    String registerService(String code);
 
 
     /**
-     * 获取用户手机号
+     * 后台获取用户手机号
      * @param   jwt  前端发送的jwt
      * @param   request 前端发来的json
      * @return  是否获取成功
      */
-    public boolean getPhoneService(String jwt,String request);
+    boolean getPhoneService(String jwt,String request);
     /**
-     * 获取用户表单
+     * 前端获取用户表单
      * @param   jwt  前端发送的jwt
-     * @return  获取是否成功
+     * @return  返回表单json数据
      */
-    public String getFormService(String jwt);
+    String getFormService(String jwt);
+
+
+    /**
+     * 后台存入用户状态
+     * @param   jwt  前端发送的jwt
+     * @param  request 前端发的json数据
+     * @return  返回表单json数据
+     */
+    boolean setStatusService(String jwt,String request);
+
 
 }

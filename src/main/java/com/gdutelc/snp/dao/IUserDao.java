@@ -17,6 +17,9 @@ public interface IUserDao {
      */
     Integer insertOidPhone(String openid,String phone);
 
+
+
+
     /**
      * 获取openid
      *
@@ -61,22 +64,22 @@ public interface IUserDao {
     /**
      * 更新录取状态和个人检查收到
      * @param enroll 录取状态
-     * @param check  个人检查收到状态
+     * @param result 部长评价
      * @param openid openid
      * @return 升级条数
      */
-    Integer updateEnrollCheckByOid(Integer enroll, Integer check,String openid);
+    Integer updateEnrollResultByOid(Integer enroll, String result,String openid);
 
 
     /**
      * 更新部长评价和个人缺勤原因
-     * @param result 部长评价
+     * @param check 个人确认是否参加
      * @param que  个人缺勤原因
      * @param openid openid
      * @return 升级条数
      */
 
-    Integer updateResultQueByOid(String result, String que,String openid);
+    Integer updateCheckQueByOid(Integer check, String que,String openid);
 
 
 

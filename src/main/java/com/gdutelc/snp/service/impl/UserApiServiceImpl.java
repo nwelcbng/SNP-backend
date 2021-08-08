@@ -15,7 +15,6 @@ import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
@@ -135,10 +134,24 @@ public class UserApiServiceImpl implements UserApiService {
         //从数据库查找用户信息
         String uid = userJwtConfig.getPayload(jwt).get("uid");
         Sign userinfo = iSignDao.getSignByUid(Integer.parseInt(uid));
-        if (userinfo.equals(null)){
+        if (userinfo == null){
             throw new GetFormErrorException("获取表单信息失败");
         }
-        String data = FormUtil.tranMapFromSign(userinfo);
-        return data;
+        return FormUtil.tranMapFromSign(userinfo);
     }
+
+    @Override
+    public boolean setStatusService(String jwt, String request) {
+        //解析json获取参数
+        JSONObject jsonObject = JSON.parseObject(request);
+        Integer check = jsonObject.getInteger("check");
+        String reason = jsonObject.getString("reason");
+
+        String uid = userJwtConfig.getPayload(jwt).get("uid");
+       String openid = userDao.getUserByUid(Integer.parseInt(uid)).getOpenid();
+        Integer integer = userDao.updateCheckQueByOid(check, reason, openid);
+        return openid != null && integer.equals(1);
+    }
+
+
 }
