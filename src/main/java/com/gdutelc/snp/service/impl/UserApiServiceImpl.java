@@ -10,7 +10,6 @@ import com.gdutelc.snp.exception.GetFormErrorException;
 import com.gdutelc.snp.exception.QrCodeErrorException;
 import com.gdutelc.snp.exception.RegisterErrorException;
 import com.gdutelc.snp.service.UserApiService;
-import com.gdutelc.snp.util.FormUtil;
 import com.gdutelc.snp.util.QrCodeUtil;
 import com.gdutelc.snp.util.RedisUtil;
 import com.github.kevinsawicki.http.HttpRequest;
@@ -153,7 +152,7 @@ public class UserApiServiceImpl implements UserApiService {
         if (userinfo == null){
             throw new GetFormErrorException("获取表单信息失败");
         }
-        return FormUtil.tranMapFromSign(userinfo);
+        return JSON.toJSONString(userinfo);
     }
 
     @Override
@@ -163,7 +162,7 @@ public class UserApiServiceImpl implements UserApiService {
         if (userinfo == null){
             throw new GetFormErrorException("获取表单信息失败");
         }
-        return FormUtil.tranMapFromSign(userinfo);
+        return JSON.toJSONString(userinfo);
 
     }
 
