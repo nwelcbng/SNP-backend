@@ -29,6 +29,12 @@ public interface UserApiService {
      * @return  返回表单json数据
      */
     String getFormService(String jwt);
+    /**
+     * 前端通过网页获取用户表单
+     * @param   jwt  前端发送的jwt
+     * @return  返回表单json数据
+     */
+    String getWebFormService(String jwt);
 
 
     /**
@@ -38,6 +44,23 @@ public interface UserApiService {
      * @return  返回表单json数据
      */
     boolean setStatusService(String jwt,String request);
+
+    /**
+     * 后台发送二维码
+     * @return  返回字符串
+     */
+    String getQrcodeService();
+
+
+    /**
+     * 后台获取用户信息并返回网页jwt
+     * @param jwt jwt
+     * @param uuid uuid
+     * @return  确认是否成功
+     */
+    boolean loginByCodeService(String jwt,String uuid);
+
+
 
 
 }

@@ -42,6 +42,9 @@ mybatis:
   type-aliases-package: com.gdutelc.snp.entity
 
 config:
+  aes:
+    key: gdutelc2021aes
+
   register:
     appid: wx5b6dd7febf70b30b
     secret: d3047c9926e405cf2992893fd9452b4e
@@ -50,10 +53,16 @@ config:
       salt: gdutelc2021user
       expire: 36000
       header: jwt
+
+    userweb:
+      salt: gdutelc2021userweb
+      expire: 36000
+      header: jwt
     admin:
       salt: gdutelc2021admin
       expire: 36000
       header: jwt
+
 
 
 

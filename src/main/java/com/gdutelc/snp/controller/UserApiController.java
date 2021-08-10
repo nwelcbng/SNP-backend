@@ -51,6 +51,16 @@ public class UserApiController {
         }
         return Return.success(data);
     }
+    @UserJwt
+    @CrossOrigin
+    @GetMapping("/user//user/getWebForm")
+    public Result<Object> getWebForm(@RequestHeader("Cookie") String cookie){
+        String data = userApiService.getFormService(cookie);
+        if (data == null){
+            return Return.error(Status.GETFORMERROR);
+        }
+        return Return.success(data);
+    }
 
 
     @UserJwt
@@ -63,5 +73,26 @@ public class UserApiController {
         }
         return Return.success();
     }
+    @CrossOrigin
+    @GetMapping("/user/getQRCode")
+    public  Result<Object> getQrCode(){
+        String data = userApiService.getQrcodeService();
+        if(data == null){
+            return Return.error(Status.GETQRCODEERROR);
+        }
+        return Return.success(data);
+    }
+    @CrossOrigin
+    @PostMapping("/user/loginByCode")
+    public Result<Object> loginByCode(@RequestHeader("Cookie") String jwt, @RequestBody String uuid){
+        boolean judge = userApiService.loginByCodeService(jwt, uuid);
+        if (!judge){
+            return Return.error(Status.CHECKQRCODEERROR);
+        }
+        return Return.success();
+
+    }
+
+
 
 }

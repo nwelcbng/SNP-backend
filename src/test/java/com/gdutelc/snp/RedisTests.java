@@ -13,8 +13,11 @@ public class RedisTests {
     private RedisUtil redisUtil;
     @Test
     void RedisTest(){
-        boolean judge = redisUtil.set("kid", "1");
-        System.out.println(judge);
+        boolean judge = redisUtil.set("kid", "1",60);
+        System.out.println(redisUtil.get("kid"));
+        boolean flag = redisUtil.set("kid", "0");
+        System.out.println(redisUtil.get("kid"));
+
 
     }
 }
