@@ -1,10 +1,12 @@
 package com.gdutelc.snp.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.gdutelc.snp.config.jwt.AdminJwtConfig;
 import com.gdutelc.snp.dao.IAdminDao;
 import com.gdutelc.snp.dao.ISignDao;
 import com.gdutelc.snp.dto.Dsign;
 import com.gdutelc.snp.exception.AdminErrorException;
+import com.gdutelc.snp.exception.GetFormErrorException;
 import com.gdutelc.snp.service.AdminApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,17 +44,29 @@ public class AdminApiServiceImpl implements AdminApiService {
     }
 
     @Override
-    public List<Dsign> getDsignByGender(Boolean gender) {
-        return signDao.getDsignByGender(gender);
+    public String getDsignByGender(Boolean gender) {
+        List<Dsign> dsigns = signDao.getDsignByGender(gender);
+        if (dsigns == null){
+            throw new GetFormErrorException("获取表单信息失败");
+        }
+        return JSON.toJSONString(dsigns);
     }
 
     @Override
-    public List<Dsign> getDsignByCollege(Integer college) {
-        return signDao.getDsignByCollege(college);
+    public String getDsignByCollege(Integer college) {
+        List<Dsign> dsigns = signDao.getDsignByCollege(college);
+        if (dsigns == null){
+            throw new GetFormErrorException("获取表单信息失败");
+        }
+        return JSON.toJSONString(dsigns);
     }
 
     @Override
-    public List<Dsign> getDsignByDno(Integer dno) {
-        return signDao.getDsignByDno(dno);
+    public String getDsignByDno(Integer dno) {
+        List<Dsign> dsigns = signDao.getDsignByDno(dno);
+        if (dsigns == null){
+            throw new GetFormErrorException("获取表单信息失败");
+        }
+        return JSON.toJSONString(dsigns);
     }
 }
