@@ -57,6 +57,11 @@
         FROM db_sign_up.t_sign
         WHERE gender = #{gender}
     </select>
+    <select id="getDsignByCollege" resultMap="DSignMap" parameterType="java.lang.Integer">
+        SELECT `name`, grade, college, major, class, dsp, dno,secdno, gender, sno, qq, domitory, know, party
+        FROM db_sign_up.t_sign
+        WHERE college = #{college}
+    </select>
     <select id="getDsignByDno" resultMap="DSignMap" parameterType="java.lang.Integer">
         SELECT `name`, grade, college, major, class, dsp, dno,secdno, gender, sno, qq, domitory, know, party
         FROM db_sign_up.t_sign

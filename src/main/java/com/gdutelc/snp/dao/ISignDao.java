@@ -46,6 +46,13 @@ public interface ISignDao {
     List<Dsign> getDsignByGender(Boolean gender);
 
     /**
+     * 通过学院获取用户信息
+     * @param college 学院
+     * @return 用户报名信息
+     */
+    List<Dsign> getDsignByCollege(Integer college);
+    
+    /**
      * 通过意向部门获取用户信息
      * @param   dno  意向部门
      * @return  用户报名信息
