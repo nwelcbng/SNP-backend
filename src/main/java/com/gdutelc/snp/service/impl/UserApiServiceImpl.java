@@ -2,13 +2,15 @@ package com.gdutelc.snp.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.gdutelc.snp.config.jwt.UserJwtConfig;
+import com.gdutelc.snp.config.jwt.UserWebJwtConfig;
 import com.gdutelc.snp.dao.ISignDao;
 import com.gdutelc.snp.dao.IUserDao;
 import com.gdutelc.snp.entity.Sign;
 import com.gdutelc.snp.exception.GetFormErrorException;
+import com.gdutelc.snp.exception.QrCodeErrorException;
 import com.gdutelc.snp.exception.RegisterErrorException;
 import com.gdutelc.snp.service.UserApiService;
-import com.gdutelc.snp.util.FormUtil;
+import com.gdutelc.snp.util.QrCodeUtil;
 import com.gdutelc.snp.util.RedisUtil;
 import com.github.kevinsawicki.http.HttpRequest;
 import org.apache.tomcat.util.codec.binary.Base64;
@@ -43,6 +45,8 @@ public class UserApiServiceImpl implements UserApiService {
     @Autowired
     private UserJwtConfig userJwtConfig;
 
+
+
     @Autowired
     private IUserDao userDao;
 
@@ -51,6 +55,14 @@ public class UserApiServiceImpl implements UserApiService {
 
     @Autowired
     private RedisUtil redisUtil;
+
+    @Autowired
+    private QrCodeUtil qrCodeUtil;
+
+    @Autowired
+    private UserWebJwtConfig userWebJwtConfig;
+
+
 
     @Override
     public String registerService(String code) {
@@ -83,7 +95,7 @@ public class UserApiServiceImpl implements UserApiService {
             redisUtil.set(openid,session,0);
 
         }else{
-            System.out.println("222222");
+            throw new RegisterErrorException("该用户的session已过期");
         }
 
         //信息存入数据库
@@ -91,6 +103,7 @@ public class UserApiServiceImpl implements UserApiService {
         if (!judge.equals(1)){
             throw new RegisterErrorException("无法往数据库存入user信息");
         }
+
         Integer uid = userDao.getUserByOpenid(openid).getUid();
         Map<String,Object> claims = new HashMap<>(4);
         claims.put("uid",uid);
@@ -103,9 +116,11 @@ public class UserApiServiceImpl implements UserApiService {
         //获取需要的openid session_key
         JSONObject jsonObject = JSON.parseObject(request);
         String iv = jsonObject.getString("iv");
+
         String encryptedData = jsonObject.getString("encryptedData");
         Map<String, String> payload = userJwtConfig.getPayload(jwt);
         String uid = payload.get("uid");
+
         String openid = userDao.getOpenidByUid(Integer.parseInt(uid));
         String session = redisUtil.get(openid);
         //解密获取电话号码
@@ -137,7 +152,18 @@ public class UserApiServiceImpl implements UserApiService {
         if (userinfo == null){
             throw new GetFormErrorException("获取表单信息失败");
         }
-        return FormUtil.tranMapFromSign(userinfo);
+        return JSON.toJSONString(userinfo);
+    }
+
+    @Override
+    public String getWebFormService(String jwt) {
+        String uid = userWebJwtConfig.getPayload(jwt).get("uid");
+        Sign userinfo = iSignDao.getSignByUid(Integer.parseInt(uid));
+        if (userinfo == null){
+            throw new GetFormErrorException("获取表单信息失败");
+        }
+        return JSON.toJSONString(userinfo);
+
     }
 
     @Override
@@ -151,6 +177,29 @@ public class UserApiServiceImpl implements UserApiService {
        String openid = userDao.getUserByUid(Integer.parseInt(uid)).getOpenid();
         Integer integer = userDao.updateCheckQueByOid(check, reason, openid);
         return openid != null && integer.equals(1);
+    }
+
+    @Override
+    public String getQrcodeService() {
+        return qrCodeUtil.gengerateCode();
+
+    }
+
+    @Override
+    public boolean loginByCodeService(String jwt,String uuid) {
+        try{
+            String uid = userJwtConfig.getPayload(jwt).get("uid");
+            String openid = userDao.getOpenidByUid(Integer.parseInt(uid));
+            Map<String,Object> claims = new HashMap<>(4);
+            claims.put("uid",uid);
+            String newjwt = userWebJwtConfig.createJwt(claims, openid);
+            String newdata = qrCodeUtil.checkCode(uuid, jwt);
+            redisUtil.set(newdata,newjwt,180);
+            return true;
+        }catch(Exception e){
+            throw new QrCodeErrorException("二维码检验失败");
+        }
+
     }
 
 

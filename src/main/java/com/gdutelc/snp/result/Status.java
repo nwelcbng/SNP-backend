@@ -15,6 +15,8 @@ public enum Status {
     GETOPENIDERROR(-501,"获取openid错误"),
     GETFORMERROR(-502,"获取报名表单错误"),
     SETSTATUSERROR(-503,"设置状态失败"),
+    GETQRCODEERROR(-401,"获取二维码失败"),
+    CHECKQRCODEERROR(-505,"扫描二维码登录失败"),
     SUCCESS(1,"成功");
     private int code;
     private String msg;
