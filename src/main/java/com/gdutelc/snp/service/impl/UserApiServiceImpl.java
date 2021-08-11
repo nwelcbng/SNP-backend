@@ -1,11 +1,13 @@
 package com.gdutelc.snp.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.gdutelc.snp.cache.UserCache;
 import com.gdutelc.snp.config.jwt.UserJwtConfig;
 import com.gdutelc.snp.config.jwt.UserWebJwtConfig;
 import com.gdutelc.snp.dao.ISignDao;
 import com.gdutelc.snp.dao.IUserDao;
 import com.gdutelc.snp.entity.Sign;
+import com.gdutelc.snp.entity.User;
 import com.gdutelc.snp.exception.GetFormErrorException;
 import com.gdutelc.snp.exception.QrCodeErrorException;
 import com.gdutelc.snp.exception.RegisterErrorException;
@@ -62,6 +64,9 @@ public class UserApiServiceImpl implements UserApiService {
     @Autowired
     private UserWebJwtConfig userWebJwtConfig;
 
+    @Autowired
+    private UserCache userCache;
+
 
 
     @Override
@@ -85,26 +90,35 @@ public class UserApiServiceImpl implements UserApiService {
         //获取openid
         String openid = object.getString("openid");
         String session = object.getString("session_key");
-        System.out.println("response: "+response);
-        System.out.println("openid: "+openid);
+
         if (openid==null||session== null){
             return response;
         }
         //将openid和session_key存入redis
         if(!redisUtil.hasKey(session)){
-            redisUtil.set(openid,session,0);
+            //存入session一周
+            redisUtil.set(openid,session,3600*24*7);
 
         }else{
             throw new RegisterErrorException("该用户的session已过期");
         }
 
         //信息存入数据库
+        User user = userCache.getUserByOpenid(openid);
+        //如果数据库存在用户信息，则重新发送jwt
+        if (user != null){
+            Integer uid = user.getUid();
+            Map<String,Object> claims = new HashMap<>(4);
+            claims.put("uid",uid);
+            return userJwtConfig.createJwt(claims,openid);
+        }
+        //如果不存在，则新建用户，重新插入数据
         Integer judge = userDao.insertOidPhone(openid, "0");
         if (!judge.equals(1)){
             throw new RegisterErrorException("无法往数据库存入user信息");
         }
 
-        Integer uid = userDao.getUserByOpenid(openid).getUid();
+        Integer uid = userCache.getUserByOpenid(openid).getUid();
         Map<String,Object> claims = new HashMap<>(4);
         claims.put("uid",uid);
         return userJwtConfig.createJwt(claims, openid);
@@ -121,7 +135,7 @@ public class UserApiServiceImpl implements UserApiService {
         Map<String, String> payload = userJwtConfig.getPayload(jwt);
         String uid = payload.get("uid");
 
-        String openid = userDao.getOpenidByUid(Integer.parseInt(uid));
+        String openid = userCache.getOpenidByUid(Integer.parseInt(uid));
         String session = redisUtil.get(openid);
         //解密获取电话号码
         byte[] data = Base64.decodeBase64(encryptedData);
@@ -174,8 +188,8 @@ public class UserApiServiceImpl implements UserApiService {
         String reason = jsonObject.getString("reason");
 
         String uid = userJwtConfig.getPayload(jwt).get("uid");
-       String openid = userDao.getUserByUid(Integer.parseInt(uid)).getOpenid();
-        Integer integer = userDao.updateCheckQueByOid(check, reason, openid);
+       String openid = userCache.getUserByUid(Integer.parseInt(uid)).getOpenid();
+        Integer integer =userCache.updateCheckQueByOid(check, reason, openid);
         return openid != null && integer.equals(1);
     }
 
@@ -188,8 +202,9 @@ public class UserApiServiceImpl implements UserApiService {
     @Override
     public boolean loginByCodeService(String jwt,String uuid) {
         try{
+            //检验二维码
             String uid = userJwtConfig.getPayload(jwt).get("uid");
-            String openid = userDao.getOpenidByUid(Integer.parseInt(uid));
+            String openid = userCache.getOpenidByUid(Integer.parseInt(uid));
             Map<String,Object> claims = new HashMap<>(4);
             claims.put("uid",uid);
             String newjwt = userWebJwtConfig.createJwt(claims, openid);

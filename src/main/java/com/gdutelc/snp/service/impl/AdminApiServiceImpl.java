@@ -1,9 +1,8 @@
 package com.gdutelc.snp.service.impl;
-
 import com.alibaba.fastjson.JSON;
+import com.gdutelc.snp.cache.AdminCache;
+import com.gdutelc.snp.cache.SignCache;
 import com.gdutelc.snp.config.jwt.AdminJwtConfig;
-import com.gdutelc.snp.dao.IAdminDao;
-import com.gdutelc.snp.dao.ISignDao;
 import com.gdutelc.snp.dto.Dsign;
 import com.gdutelc.snp.exception.AdminErrorException;
 import com.gdutelc.snp.exception.GetFormErrorException;
@@ -21,16 +20,18 @@ import java.util.Map;
 @Service
 public class AdminApiServiceImpl implements AdminApiService {
     @Autowired
-    private IAdminDao adminDao;
-    @Autowired
-    private ISignDao signDao;
-    @Autowired
     AdminJwtConfig adminJwtConfig;
+
+    @Autowired
+    private AdminCache adminCache;
+
+    @Autowired
+    private SignCache signCache;
 
 
     @Override
     public String adminLogin(String username, String password) {
-        String passowrdByUsername = adminDao.getPassowrdByUsername(username);
+        String passowrdByUsername = adminCache.getPassowrdByUsername(username);
 
         if (passowrdByUsername == null){
             throw new AdminErrorException("数据库获取密码失败");
@@ -45,7 +46,7 @@ public class AdminApiServiceImpl implements AdminApiService {
 
     @Override
     public String getDsignByGender(Boolean gender) {
-        List<Dsign> dsigns = signDao.getDsignByGender(gender);
+        List<Dsign> dsigns = signCache.getDsignByGender(gender);
         if (dsigns == null){
             throw new GetFormErrorException("获取表单信息失败");
         }
@@ -54,7 +55,7 @@ public class AdminApiServiceImpl implements AdminApiService {
 
     @Override
     public String getDsignByCollege(Integer college) {
-        List<Dsign> dsigns = signDao.getDsignByCollege(college);
+        List<Dsign> dsigns = signCache.getDsignByCollege(college);
         if (dsigns == null){
             throw new GetFormErrorException("获取表单信息失败");
         }
@@ -63,7 +64,7 @@ public class AdminApiServiceImpl implements AdminApiService {
 
     @Override
     public String getDsignByDno(Integer dno) {
-        List<Dsign> dsigns = signDao.getDsignByDno(dno);
+        List<Dsign> dsigns = signCache.getDsignByDno(dno);
         if (dsigns == null){
             throw new GetFormErrorException("获取表单信息失败");
         }
