@@ -4,7 +4,9 @@ import com.gdutelc.snp.dao.ISignDao;
 import com.gdutelc.snp.dto.Dsign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -31,5 +33,17 @@ public class SignCache implements IsignCache{
     @Override
     public List<Dsign> getDsignByDno(Integer dno) {
         return signDao.getDsignByDno(dno);
+    }
+
+    @Caching(
+            evict = {
+                    @CacheEvict(value = {"signs"},key = "'getDsignByGender'"),
+                    @CacheEvict(value = {"signs"},key = "'getDsignByCollege'"),
+                    @CacheEvict(value = {"signs"},key = "'getDsignByDno'")
+            }
+    )
+    @Override
+    public Integer updateDsignInformByUid(Dsign dsign, Integer uid) {
+        return updateDsignInformByUid(dsign, uid);
     }
 }

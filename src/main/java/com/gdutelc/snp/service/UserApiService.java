@@ -1,6 +1,9 @@
 package com.gdutelc.snp.service;
 
 
+import com.gdutelc.snp.dto.Dsign;
+import com.gdutelc.snp.entity.Sign;
+
 /**
  * @author kid
  */
@@ -15,14 +18,6 @@ public interface UserApiService {
      */
     String registerService(String code);
 
-
-    /**
-     * 后台获取用户手机号
-     * @param   jwt  前端发送的jwt
-     * @param   request 前端发来的json
-     * @return  是否获取成功
-     */
-    boolean getPhoneService(String jwt,String request);
     /**
      * 前端获取用户表单
      * @param   jwt  前端发送的jwt
@@ -53,12 +48,35 @@ public interface UserApiService {
 
 
     /**
-     * 后台获取用户信息并返回网页jwt
+     * 后台获取用户信息确认登录
      * @param jwt jwt
      * @param uuid uuid
      * @return  确认是否成功
      */
     boolean loginByCodeService(String jwt,String uuid);
+
+    /**
+     * web前端轮询获取网页jwt
+     * @return  确认是否成功
+     */
+    String webLogin();
+
+    /**
+     * 小程序前端每次登录获取更新的jwt
+     * @param jwt
+     * @return  确认是否成功
+     */
+    String appLogin(String jwt);
+
+    /**
+     * 小程序端报名
+     * @param jwt
+     * @param dsign
+     * @param app
+     * @return  确认是否成功
+     */
+    boolean sign(String jwt, Dsign dsign,boolean app);
+
 
 
 

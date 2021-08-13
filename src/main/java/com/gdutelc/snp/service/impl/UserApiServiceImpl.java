@@ -1,36 +1,26 @@
 package com.gdutelc.snp.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.gdutelc.snp.cache.SignCache;
 import com.gdutelc.snp.cache.UserCache;
 import com.gdutelc.snp.config.jwt.UserJwtConfig;
 import com.gdutelc.snp.config.jwt.UserWebJwtConfig;
 import com.gdutelc.snp.dao.ISignDao;
 import com.gdutelc.snp.dao.IUserDao;
+import com.gdutelc.snp.dto.Dsign;
+import com.gdutelc.snp.entity.Qrcode;
 import com.gdutelc.snp.entity.Sign;
 import com.gdutelc.snp.entity.User;
-import com.gdutelc.snp.exception.GetFormErrorException;
-import com.gdutelc.snp.exception.QrCodeErrorException;
-import com.gdutelc.snp.exception.RegisterErrorException;
+import com.gdutelc.snp.exception.*;
 import com.gdutelc.snp.service.UserApiService;
 import com.gdutelc.snp.util.QrCodeUtil;
 import com.gdutelc.snp.util.RedisUtil;
 import com.github.kevinsawicki.http.HttpRequest;
-import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
-import java.nio.charset.StandardCharsets;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.AlgorithmParameterSpec;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -66,6 +56,9 @@ public class UserApiServiceImpl implements UserApiService {
 
     @Autowired
     private UserCache userCache;
+
+    @Autowired
+    private SignCache signCache;
 
 
 
@@ -125,37 +118,6 @@ public class UserApiServiceImpl implements UserApiService {
 
     }
 
-    @Override
-    public boolean getPhoneService(String jwt, String request){
-        //获取需要的openid session_key
-        JSONObject jsonObject = JSON.parseObject(request);
-        String iv = jsonObject.getString("iv");
-
-        String encryptedData = jsonObject.getString("encryptedData");
-        Map<String, String> payload = userJwtConfig.getPayload(jwt);
-        String uid = payload.get("uid");
-
-        String openid = userCache.getOpenidByUid(Integer.parseInt(uid));
-        String session = redisUtil.get(openid);
-        //解密获取电话号码
-        byte[] data = Base64.decodeBase64(encryptedData);
-        byte[] key = Base64.decodeBase64(session);
-        byte[] vector = Base64.decodeBase64(iv);
-        try {
-            AlgorithmParameterSpec ivSpec = new IvParameterSpec(vector);
-            Cipher instance = Cipher.getInstance("AES/CBC/PKCS5Padding");
-            SecretKeySpec keySpec = new SecretKeySpec(key, "AES");
-            instance.init(Cipher.DECRYPT_MODE, keySpec, ivSpec);
-            String info = new String(instance.doFinal(data), StandardCharsets.UTF_8);
-
-        } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException
-                | InvalidAlgorithmParameterException | IllegalBlockSizeException
-                | BadPaddingException e) {
-            e.printStackTrace();
-        }
-        //TODO 未知获取手机号是否成功hhh
-        return false;
-    }
 
 
     @Override
@@ -204,18 +166,89 @@ public class UserApiServiceImpl implements UserApiService {
         try{
             //检验二维码
             String uid = userJwtConfig.getPayload(jwt).get("uid");
-            String openid = userCache.getOpenidByUid(Integer.parseInt(uid));
-            Map<String,Object> claims = new HashMap<>(4);
-            claims.put("uid",uid);
-            String newjwt = userWebJwtConfig.createJwt(claims, openid);
-            String newdata = qrCodeUtil.checkCode(uuid, jwt);
-            redisUtil.set(newdata,newjwt,180);
+            qrCodeUtil.checkCode(uuid, uid);
             return true;
         }catch(Exception e){
             throw new QrCodeErrorException("二维码检验失败");
         }
 
     }
+
+    @Override
+    public String webLogin() {
+        try {
+            List<String> uuidList = (List<String>)redisUtil.get("uuid");
+            if(uuidList.isEmpty()){
+                return null;
+            }
+            int size = uuidList.size();
+            int flag = 0;
+            for(int i = 0; i<size; i++){
+                String uuid = uuidList.get(i);
+                Qrcode qrcode = (Qrcode) redisUtil.get(uuid);
+                int code = qrcode.getCode();
+                if(code == 1){
+                    flag = i;
+                    break;
+                }
+
+
+            }
+            String find = uuidList.get(flag);
+            Qrcode code = (Qrcode) redisUtil.get(find);
+            Integer uid = code.getUid();
+            String openid = userCache.getOpenidByUid(uid);
+            Map<String,Object> claims = new HashMap<>(4);
+            claims.put("uid",uid);
+            uuidList.remove(find);
+            redisUtil.set("uuid",uuidList,180);
+            redisUtil.del(find);
+            return userWebJwtConfig.createJwt(claims, openid);
+        }catch (Exception e){
+            throw new QrCodeErrorException("扫码登录失败");
+        }
+    }
+
+    @Override
+    public String appLogin(String jwt) {
+        try{
+            String uid = userJwtConfig.getPayload(jwt).get("uid");
+            String openid = userCache.getOpenidByUid(Integer.parseInt(uid));
+            Map<String,Object> claims = new HashMap<>(4);
+            claims.put("uid",uid);
+            return userJwtConfig.createJwt(claims,openid);
+        }catch (Exception e){
+            throw new JwtErrorException("JWT更新失败");
+        }
+    }
+
+
+
+    @Override
+    public boolean sign(String jwt, Dsign dsign,boolean app) {
+        try{
+            String uid;
+            if (app){
+                 uid = userJwtConfig.getPayload(jwt).get("uid");
+            }else{
+                 uid = userWebJwtConfig.getPayload(jwt).get("uid");
+            }
+            if (iSignDao.getSignByUid(Integer.parseInt(uid)) == null){
+                Sign sign = new Sign(null,Integer.parseInt(uid),dsign.getName(),dsign.getGrade(),dsign.getCollege(),dsign.getMajor(),
+                        dsign.getUserclass(),dsign.getDsp(),dsign.getDno(),dsign.getSecdno(),
+                        dsign.getGender(),dsign.getSno(),dsign.getQq(),
+                        dsign.getDomitory(),dsign.getKnow(),dsign.getParty());
+                iSignDao.insertSign(sign);
+
+            }else{
+                signCache.updateDsignInformByUid(dsign,Integer.parseInt(uid));
+            }
+            return true;
+        }catch (Exception e){
+            throw new SignPushErrorException("小程序端传入信息失败");
+        }
+    }
+
 
 
 }

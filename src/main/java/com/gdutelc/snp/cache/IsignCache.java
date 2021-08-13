@@ -28,4 +28,6 @@ public interface IsignCache {
      */
     List<Dsign> getDsignByDno(Integer dno);
 
+    Integer updateDsignInformByUid(Dsign dsign,Integer uid);
+
 }
