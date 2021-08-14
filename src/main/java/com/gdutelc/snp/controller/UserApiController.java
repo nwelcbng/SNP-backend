@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
  * @author kid
  */
 @RestController
-public class UserApiController {
+public class UserApiController  extends BaseController{
     @Autowired
     private UserApiService userApiService;
 

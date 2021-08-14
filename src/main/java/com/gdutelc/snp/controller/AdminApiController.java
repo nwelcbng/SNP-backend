@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
  * @author kid
  */
 @RestController
-public class AdminApiController {
+public class AdminApiController extends BaseController{
     @Autowired
     private  AdminApiServiceImpl adminApiService;
 
