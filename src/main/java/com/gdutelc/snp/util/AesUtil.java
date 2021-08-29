@@ -87,7 +87,4 @@ public class AesUtil {
 
     }
 
-    public String getKey() {
-        return key;
-    }
 }

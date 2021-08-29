@@ -34,6 +34,14 @@ public interface IuserCache {
     User getUserByUid(Integer uid);
 
     /**
+     * 获取手机号
+     *
+     * @param uid uid
+     * @return 查到的手机号
+     */
+    String getPhoneByUid(Integer uid);
+
+    /**
      * 更新部长评价和个人缺勤原因
      * @param check 个人确认是否参加
      * @param que  个人缺勤原因

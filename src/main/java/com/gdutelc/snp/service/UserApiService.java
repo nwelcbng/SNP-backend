@@ -2,7 +2,8 @@ package com.gdutelc.snp.service;
 
 
 import com.gdutelc.snp.dto.Dsign;
-import com.gdutelc.snp.entity.Sign;
+
+import java.util.Map;
 
 /**
  * @author kid
@@ -59,7 +60,7 @@ public interface UserApiService {
      * web前端轮询获取网页jwt
      * @return  确认是否成功
      */
-    String webLogin();
+    Map<Integer,String> webLogin();
 
     /**
      * 小程序前端每次登录获取更新的jwt
@@ -73,9 +74,18 @@ public interface UserApiService {
      * @param jwt
      * @param dsign
      * @param app
-     * @return  确认是否成功
+     * @return  返回jwt
      */
-    boolean sign(String jwt, Dsign dsign,boolean app);
+    String sign(String jwt, Dsign dsign,boolean app,String phone);
+
+    /**
+     * 验证码校验
+     * @param cookie
+     * @param code
+     * @param app
+     * @return  返回jwt
+     */
+    String checkPhone(String cookie,String code, boolean app);
 
 
 

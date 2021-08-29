@@ -35,6 +35,14 @@ public class UserCache implements IuserCache{
     public User getUserByUid(Integer uid) {
         return userDao.getUserByUid(uid);
     }
+
+
+    @Cacheable(key = "getMethodName()")
+    @Override
+    public String getPhoneByUid(Integer uid) {
+        return userDao.getPhoneByUid(uid);
+    }
+
     @CacheEvict(key = "#openid")
     @Override
     public Integer updateCheckQueByOid(Integer check, String que, String openid) {

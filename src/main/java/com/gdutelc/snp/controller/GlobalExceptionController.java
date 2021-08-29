@@ -20,47 +20,29 @@ public class GlobalExceptionController extends BaseController{
         log.error(e.getMessage(), e);
         return Return.error(Status.PARAMETERERROREXCEPTION);
     }
-    @ExceptionHandler(AdminErrorException.class)
-    public Result<Status> getAdminErrorException(AdminErrorException e) {
-        log.error(e.getMessage(), e);
-        return Return.error(Status.PASSWORDERROR);
+    @ExceptionHandler(AdminServiceException.class)
+    public Result<Status> adminServiceException(AdminServiceException e){
+        log.error(e.getStatus().getMsg());
+        return Return.error(e.getStatus());
     }
+
     @ExceptionHandler(JwtErrorException.class)
-    public Result<Status> getJwtErrorException(JwtErrorException e) {
-        log.error(e.getMessage(), e);
-        return Return.error(Status.JWTERROR);
+    public Result<Status> jwtErrorException(JwtErrorException e){
+        log.error(e.getStatus().getMsg());
+        return Return.error(e.getStatus());
     }
-    @ExceptionHandler(GetFormErrorException.class)
-    public Result<Status> getFormErrorException(GetFormErrorException e) {
-        log.error(e.getMessage(), e);
-        return Return.error(Status.GETFORMERROR);
-    }
-    @ExceptionHandler(QrCodeErrorException.class)
-    public Result<Status> qrCodeErrorException(QrCodeErrorException e) {
-        log.error(e.getMessage(), e);
-        return Return.error(Status.CHECKQRCODEERROR);
+    @ExceptionHandler(UserServiceException.class)
+    public Result<Status> userServiceException(UserServiceException e){
+        log.error(e.getStatus().getMsg());
+        return Return.error(e.getStatus());
     }
 
-    @ExceptionHandler(RegisterErrorException.class)
-    public Result<Status> registerErrorException(RegisterErrorException e) {
-        log.error(e.getMessage(), e);
-        return Return.error(Status.GETOPENIDERROR);
-    }
-
-    @ExceptionHandler(SetStatusErrorException.class)
-    public Result<Status> setStatusErrorException(SetStatusErrorException e) {
-        log.error(e.getMessage(), e);
-        return Return.error(Status.SETSTATUSERROR);
-    }
-    @ExceptionHandler(SignPushErrorException.class)
-    public Result<Status> signPushErrorException(SignPushErrorException e) {
-        log.error(e.getMessage(), e);
-        return Return.error(Status.POSTSIGNERROR);
-    }
     @ExceptionHandler({HttpRequestMethodNotSupportedException.class})
     public Result<Status> handleException(HttpRequestMethodNotSupportedException e) {
         log.error(e.getMessage(), e);
         return Return.error(Status.REQUESTERROREXCEPTION);
     }
+//    @ExceptionHandler()
+
 
 }

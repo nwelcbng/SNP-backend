@@ -35,6 +35,19 @@ spring:
       cache-null-values: true
       #缓存过期时间（ms）
       time-to-live: 100000
+  kafka:
+    bootstrap-servers: 104.160.18.224:9092
+    producer:
+      retries: 0
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      bootstrap-servers: 104.160.18.224:9092
+      group-id: phone
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+    template:
+      default-topic: phone
 
 
 mybatis:
@@ -47,7 +60,7 @@ config:
 
   register:
     appid: wx5b6dd7febf70b30b
-    secret: d3047c9926e405cf2992893fd9452b4e
+    secret: 6667dcbaecf63bd4787463b8303abdf7
   jwt:
     user:
       salt: gdutelc2021user

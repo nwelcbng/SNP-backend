@@ -1,9 +1,9 @@
 package com.gdutelc.snp.util;
 import com.gdutelc.snp.entity.Qrcode;
-import com.gdutelc.snp.exception.QrCodeErrorException;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.gdutelc.snp.exception.UserServiceException;
+import com.gdutelc.snp.result.Status;
 import org.springframework.stereotype.Component;
-
+import javax.annotation.Resource;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
@@ -12,12 +12,13 @@ import java.util.UUID;
  * @author kid
  */
 @Component
+@SuppressWarnings("unchecked")
 public class QrCodeUtil {
 
-    @Autowired
+    @Resource
     private  RedisUtil redisUtil;
 
-    @Autowired
+    @Resource
     private AesUtil aesUtil;
     public String gengerateCode(){
         try{
@@ -48,8 +49,7 @@ public class QrCodeUtil {
             redisUtil.set(uuid,qrcode,180);
             return true;
         }else{
-            throw new QrCodeErrorException("二维码确认失败");
+            throw new UserServiceException(Status.CHECKQRCODEERROR);
         }
-
     }
 }

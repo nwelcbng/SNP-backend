@@ -5,12 +5,12 @@ import com.gdutelc.snp.result.Status;
 /**
  * @author kid
  */
-public class JwtErrorException extends RuntimeException{
+public class UserServiceException extends RuntimeException{
     private final Status status;
 
 
-    public JwtErrorException(Status status){
-        super((status.getMsg()));
+    public UserServiceException(Status status){
+        super(status.getMsg());
         this.status = status;
     }
 

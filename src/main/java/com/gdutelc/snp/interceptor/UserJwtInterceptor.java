@@ -3,10 +3,12 @@ import com.gdutelc.snp.annotation.UserJwt;
 import com.gdutelc.snp.config.jwt.UserJwtConfig;
 import com.gdutelc.snp.dao.IUserDao;
 import com.gdutelc.snp.exception.JwtErrorException;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.gdutelc.snp.result.Status;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
@@ -16,12 +18,13 @@ import java.lang.reflect.Method;
  */
 @Component
 public class UserJwtInterceptor implements HandlerInterceptor {
-    @Autowired
+    @Resource
     private UserJwtConfig userJwtConfig;
-    @Autowired
+    @Resource
     private IUserDao userDao;
+
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(@NotNull HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull Object handler) {
         if(!(handler instanceof HandlerMethod)){
             //如果handler不是方法则放行
             return true;
@@ -29,7 +32,7 @@ public class UserJwtInterceptor implements HandlerInterceptor {
         Method method = ((HandlerMethod) handler).getMethod();
         boolean isAnnotate = method.isAnnotationPresent(UserJwt.class);
         //如果方法上没有注解则放行
-        if(!isAnnotate){
+        if(!isAnnotate ){
             return true;
         }
         UserJwt annotation = method.getAnnotation(UserJwt.class);
@@ -39,7 +42,7 @@ public class UserJwtInterceptor implements HandlerInterceptor {
         }
         String cookie = request.getHeader("Cookie");
         if(cookie == null || cookie.isBlank()){
-            throw new JwtErrorException("jwt为空");
+            throw new JwtErrorException(Status.JWTMISSERROR);
         }
         String uid = userJwtConfig.getPayload(cookie).get("uid");
 
@@ -47,7 +50,7 @@ public class UserJwtInterceptor implements HandlerInterceptor {
         System.out.println(openid);
         boolean judge = userJwtConfig.checkJwt(cookie, openid);
         if(!judge){
-            throw new JwtErrorException("用户jwt不为空但openid已修改或者jwt超过过期时间");
+            throw new JwtErrorException(Status.JWTCHANGE);
         }
         return true;
     }

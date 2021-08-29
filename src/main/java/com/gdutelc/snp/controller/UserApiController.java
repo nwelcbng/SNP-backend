@@ -1,26 +1,28 @@
 package com.gdutelc.snp.controller;
+import com.alibaba.fastjson.JSON;
 import com.gdutelc.snp.annotation.UserJwt;
+import com.gdutelc.snp.annotation.UserWebJwt;
 import com.gdutelc.snp.dto.Dsign;
 import com.gdutelc.snp.result.Result;
 import com.gdutelc.snp.result.Return;
 import com.gdutelc.snp.result.Status;
 import com.gdutelc.snp.service.UserApiService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
+import javax.annotation.Resource;
+import java.util.Map;
 
 /**
  * @author kid
  */
 @RestController
+@CrossOrigin
 public class UserApiController  extends BaseController{
-    @Autowired
+    @Resource
     private UserApiService userApiService;
 
 
-
-    @CrossOrigin
     @PostMapping("/user/register")
-
     public Result<Object> getCode(@RequestBody String code){
         String jwt = userApiService.registerService(code);
         if (jwt.isEmpty()){
@@ -35,7 +37,6 @@ public class UserApiController  extends BaseController{
     }
 
     @UserJwt
-    @CrossOrigin
     @GetMapping("/user/getform")
     public Result<Object> getForm(@RequestHeader("Cookie") String cookie){
         String data = userApiService.getFormService(cookie);
@@ -44,8 +45,7 @@ public class UserApiController  extends BaseController{
         }
         return Return.success(data);
     }
-    @UserJwt
-    @CrossOrigin
+    @UserWebJwt
     @GetMapping("/user//user/getWebForm")
     public Result<Object> getWebForm(@RequestHeader("Cookie") String cookie){
         String data = userApiService.getWebFormService(cookie);
@@ -57,7 +57,6 @@ public class UserApiController  extends BaseController{
 
 
     @UserJwt
-    @CrossOrigin
     @PutMapping("/user/setstatus")
     public Result<Object> setStatus(@RequestHeader("Cookie") String cookie, @RequestBody String request){
         boolean judge = userApiService.setStatusService(cookie, request);
@@ -66,7 +65,7 @@ public class UserApiController  extends BaseController{
         }
         return Return.success();
     }
-    @CrossOrigin
+
     @GetMapping("/user/getQRCode")
     public  Result<Object> getQrCode(){
         String data = userApiService.getQrcodeService();
@@ -76,7 +75,7 @@ public class UserApiController  extends BaseController{
         return Return.success(data);
     }
     @UserJwt
-    @CrossOrigin
+
     @PostMapping("/user/loginByCode")
     public Result<Object> loginByCode(@RequestHeader("Cookie") String jwt, @RequestBody String uuid){
         boolean judge = userApiService.loginByCodeService(jwt, uuid);
@@ -85,18 +84,19 @@ public class UserApiController  extends BaseController{
         }
         return Return.success();
     }
-    @CrossOrigin
+
+
     @GetMapping("/user/weblogin")
     public Result<Object> weLogin(){
-        String jwt = userApiService.webLogin();
-        if(jwt == null){
+        Map<Integer,String> response = userApiService.webLogin();
+        if(response == null){
             return Return.error(Status.WEBLOGINFALL);
         }else{
-            return Return.success(jwt);
+            return Return.success(JSON.toJSONString(response));
         }
     }
+
     @UserJwt
-    @CrossOrigin
     @PostMapping("/user/applogin")
     public Result<Object> appLogin(@RequestHeader("Cookie") String jwt){
         String newjwt = userApiService.appLogin(jwt);
@@ -106,8 +106,9 @@ public class UserApiController  extends BaseController{
             return Return.success(newjwt);
         }
     }
+
+
     @UserJwt
-    @CrossOrigin
     @PostMapping("/user/appsign")
     public Result<Object> appSign(@RequestHeader("Cookie") String jwt,@RequestParam("name") String name, @RequestParam("grade") Integer grade,
                                @RequestParam("college") Integer college, @RequestParam("major") String major,
@@ -115,19 +116,20 @@ public class UserApiController  extends BaseController{
                                @RequestParam("dno") Integer dno, @RequestParam("secdno") Integer secdno,
                                @RequestParam("gender") Boolean gender, @RequestParam("sno") String sno,
                                @RequestParam("qq") String qq, @RequestParam("domitory") String domitory,
-                               @RequestParam("know") String know, @RequestParam("party") String party) {
+                               @RequestParam("know") String know, @RequestParam("party") String party,@RequestParam(value = "phone",required = false) String phone) {
 
         Dsign dsign = new Dsign(name, grade, college, major, userclass, dsp, dno, secdno, gender, sno, qq, domitory, know, party);
-        boolean judge = userApiService.sign(jwt,dsign,true);
-        if(!judge){
+        String judge = userApiService.sign(jwt,dsign,true,phone);
+        if(judge == null){
             return Return.error(Status.POSTAPPSIGNERROR);
         }else{
-            return Return.success();
+            return Return.success(judge);
         }
 
     }
-    @UserJwt
-    @CrossOrigin
+
+
+    @UserWebJwt
     @PostMapping("/user/websign")
     public Result<Object> webSign(@RequestHeader("Cookie") String jwt,@RequestParam("name") String name, @RequestParam("grade") Integer grade,
                                @RequestParam("college") Integer college, @RequestParam("major") String major,
@@ -135,16 +137,34 @@ public class UserApiController  extends BaseController{
                                @RequestParam("dno") Integer dno, @RequestParam("secdno") Integer secdno,
                                @RequestParam("gender") Boolean gender, @RequestParam("sno") String sno,
                                @RequestParam("qq") String qq, @RequestParam("domitory") String domitory,
-                               @RequestParam("know") String know, @RequestParam("party") String party) {
+                               @RequestParam("know") String know, @RequestParam("party") String party,@RequestParam(value = "phone",required = false) String phone) {
 
         Dsign dsign = new Dsign(name, grade, college, major, userclass, dsp, dno, secdno, gender, sno, qq, domitory, know, party);
-        boolean judge = userApiService.sign(jwt,dsign,false);
-        if(!judge){
+        String newJwt = userApiService.sign(jwt,dsign,false,phone);
+        if(newJwt == null){
             return Return.error(Status.POSTAPPSIGNERROR);
         }else{
-            return Return.success();
+            return Return.success(jwt);
         }
+    }
 
+    @UserJwt
+    @PostMapping("/user/appCheckPhone")
+    public  Result<Object> appCheckPhone(@RequestHeader("Cookie") String jwt, @RequestParam("checkCode") String code){
+
+        String newJwt = userApiService.checkPhone(jwt, code, true);
+        Assert.notNull(newJwt, Status.CHECKPHONEERROR.getMsg());
+
+        return Return.success(newJwt);
+    }
+
+    @UserWebJwt
+    @PostMapping("/user/webCheckPhone")
+    public  Result<Object> webCheckPhone(@RequestHeader("Cookie") String jwt, @RequestParam("checkCode") String code){
+
+        String newJwt = userApiService.checkPhone(jwt, code, false);
+        Assert.notNull(newJwt, Status.CHECKPHONEERROR.getMsg());
+        return Return.success(newJwt);
     }
 
 
