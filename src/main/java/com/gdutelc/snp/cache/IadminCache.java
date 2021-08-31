@@ -1,5 +1,6 @@
 package com.gdutelc.snp.cache;
 
+import com.gdutelc.snp.entity.Admin;
 import org.springframework.stereotype.Component;
 
 /**
@@ -14,4 +15,6 @@ public interface IadminCache {
      * @return 查到的密码
      */
     String getPassowrdByUsername(String username);
+
+    Admin getAdminByUsername(String username);
 }

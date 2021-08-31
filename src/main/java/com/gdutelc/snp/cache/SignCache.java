@@ -39,11 +39,18 @@ public class SignCache implements IsignCache{
             evict = {
                     @CacheEvict(value = {"signs"},key = "'getDsignByGender'"),
                     @CacheEvict(value = {"signs"},key = "'getDsignByCollege'"),
-                    @CacheEvict(value = {"signs"},key = "'getDsignByDno'")
+                    @CacheEvict(value = {"signs"},key = "'getDsignByDno'"),
+                    @CacheEvict(value = {"signs"},key = "'getDsignByUid'")
             }
     )
     @Override
     public Integer updateDsignInformByUid(Dsign dsign, Integer uid) {
         return updateDsignInformByUid(dsign, uid);
+    }
+
+    @Cacheable(key = "getMethodName()")
+    @Override
+    public Dsign getDsignByUid(Integer uid) {
+        return  signDao.getDsignByUid(uid);
     }
 }

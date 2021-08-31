@@ -5,6 +5,7 @@ import com.gdutelc.snp.result.Return;
 import com.gdutelc.snp.result.Status;
 import com.gdutelc.snp.service.AdminApiService;
 import com.gdutelc.snp.service.impl.AdminApiServiceImpl;
+import org.apache.ibatis.ognl.ObjectElementsAccessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,8 +19,6 @@ import javax.annotation.Resource;
 public class AdminApiController extends BaseController{
     @Resource
     private AdminApiService adminApiService;
-
-
 
 
 
@@ -61,5 +60,12 @@ public class AdminApiController extends BaseController{
             return Return.error(Status.GETFORMERROR);
         }
         return Return.success(data);
+    }
+
+    @AdminJwt
+    @GetMapping("/admin/confirm")
+    public Result<Object> confirm(@RequestHeader("Cookie") String jwt, @RequestParam("uid") Integer uid,@RequestParam("check") boolean check){
+        boolean confirm = adminApiService.confirm(jwt, uid, check);
+        return Return.success();
     }
 }

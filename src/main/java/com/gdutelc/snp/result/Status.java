@@ -30,6 +30,7 @@ public enum Status {
     CHECKPHONEERROR(-511,"验证手机号码失败"),
     GETPASSWORDERROR(-512,"数据库获取密码失败"),
     POSTPHONEERROR(-513,"获取手机号码失败"),
+    CONFIRMFAIL(-514,"发送确认面试结果信息失败"),
     REGISTERERROR(-600,"该用户的session已过期"),
     USERINSERTERROR(-601,"无法往数据库存入user信息"),
     QRCODECHECKERROR(-602,"二维码检验失败"),

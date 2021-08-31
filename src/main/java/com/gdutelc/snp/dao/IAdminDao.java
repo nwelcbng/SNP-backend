@@ -57,12 +57,21 @@ public interface IAdminDao {
     Admin getAdminByAid(Integer aid);
 
     /**
+     * 通过username获取管理员信息
+     *
+     * @param username username
+     * @return  管理员内容
+     */
+    Admin getAdminByUsername(String username);
+
+    /**
      * 通过aid获取密码
      *
      * @param aid aid
      * @return  管理员内容
      */
     String getPassWordByAid(Integer aid);
+
 
     /**
      * 通过openid更新密码

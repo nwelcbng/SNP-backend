@@ -25,6 +25,7 @@
         WHERE aid = #{aid}
         LIMIT 1
     </select>
+
     <select id="getPassowrdByUsername" resultType="java.lang.String">
         SELECT password
         FROM   db_sign_up.t_admin
@@ -36,6 +37,12 @@
         FROM   db_sign_up.t_admin
         WHERE  aid = #{aid}
         LIMIT 1
+    </select>
+    <select id="getAdminByUsername" resultMap="AdminMap">
+        SELECT aid, openid,username,adno, `position`, password, phone
+        FROM   db_sign_up.t_admin
+        WHERE  usernmae = #{username}
+            LIMIT 1
     </select>
     <select id="getPassWordByAid" resultType="java.lang.String">
         SELECT password

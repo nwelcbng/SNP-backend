@@ -197,3 +197,35 @@ org.apache.kafka.common.errors.TimeoutException: Expiring 4 record(s) for phone-
 org.apache.kafka.common.errors.TimeoutException: Expiring 4 record(s) for phone-0:120000 ms has passed since batch creation
 2021-08-31 20:05:24.056 [kafka-producer-network-thread | producer-1] ERROR o.s.kafka.support.LoggingProducerListener - Exception thrown when sending a message with key='null' and payload='17727329450' to topic phone:
 org.apache.kafka.common.errors.TimeoutException: Expiring 4 record(s) for phone-0:120000 ms has passed since batch creation
+2021-08-31 20:08:01.174 [kafka-producer-network-thread | producer-1] ERROR o.s.kafka.support.LoggingProducerListener - Exception thrown when sending a message with key='null' and payload='17727329450' to topic phone:
+org.apache.kafka.common.errors.TimeoutException: Expiring 1 record(s) for phone-0:120001 ms has passed since batch creation
+2021-08-31 20:40:34.410 [kafka-producer-network-thread | producer-2] ERROR o.s.kafka.support.LoggingProducerListener - Exception thrown when sending a message with key='null' and payload='17727329450' to topic phone:
+org.apache.kafka.common.KafkaException: Producer is closed forcefully.
+	at org.apache.kafka.clients.producer.internals.RecordAccumulator.abortBatches(RecordAccumulator.java:750)
+	at org.apache.kafka.clients.producer.internals.RecordAccumulator.abortIncompleteBatches(RecordAccumulator.java:737)
+	at org.apache.kafka.clients.producer.internals.Sender.run(Sender.java:280)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-08-31 20:46:34.316 [kafka-producer-network-thread | producer-1] ERROR o.s.kafka.support.LoggingProducerListener - Exception thrown when sending a message with key='null' and payload='17727329450' to topic phone:
+org.apache.kafka.common.errors.TimeoutException: Expiring 1 record(s) for phone-0:120001 ms has passed since batch creation
+2021-08-31 20:56:36.910 [kafka-producer-network-thread | producer-1] ERROR o.s.kafka.support.LoggingProducerListener - Exception thrown when sending a message with key='null' and payload='17727329450' to topic phone:
+org.apache.kafka.common.errors.TimeoutException: Expiring 1 record(s) for phone-0:120002 ms has passed since batch creation
+2021-08-31 20:58:42.455 [kafka-producer-network-thread | producer-1] ERROR o.s.kafka.support.LoggingProducerListener - Exception thrown when sending a message with key='null' and payload='17727329450' to topic phone:
+org.apache.kafka.common.errors.TimeoutException: Expiring 1 record(s) for phone-0:120001 ms has passed since batch creation
+2021-08-31 21:02:40.774 [kafka-producer-network-thread | producer-2] ERROR o.s.kafka.support.LoggingProducerListener - Exception thrown when sending a message with key='null' and payload='17727329450' to topic phone:
+org.apache.kafka.common.KafkaException: Producer is closed forcefully.
+	at org.apache.kafka.clients.producer.internals.RecordAccumulator.abortBatches(RecordAccumulator.java:750)
+	at org.apache.kafka.clients.producer.internals.RecordAccumulator.abortIncompleteBatches(RecordAccumulator.java:737)
+	at org.apache.kafka.clients.producer.internals.Sender.run(Sender.java:280)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-08-31 21:10:31.021 [kafka-producer-network-thread | producer-3] ERROR o.s.kafka.support.LoggingProducerListener - Exception thrown when sending a message with key='null' and payload='17727329450' to topic phone:
+org.apache.kafka.common.KafkaException: Producer is closed forcefully.
+	at org.apache.kafka.clients.producer.internals.RecordAccumulator.abortBatches(RecordAccumulator.java:750)
+	at org.apache.kafka.clients.producer.internals.RecordAccumulator.abortIncompleteBatches(RecordAccumulator.java:737)
+	at org.apache.kafka.clients.producer.internals.Sender.run(Sender.java:280)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-08-31 21:12:02.706 [kafka-producer-network-thread | producer-5] ERROR o.s.kafka.support.LoggingProducerListener - Exception thrown when sending a message with key='null' and payload='17727329450' to topic phone:
+org.apache.kafka.common.KafkaException: Producer is closed forcefully.
+	at org.apache.kafka.clients.producer.internals.RecordAccumulator.abortBatches(RecordAccumulator.java:750)
+	at org.apache.kafka.clients.producer.internals.RecordAccumulator.abortIncompleteBatches(RecordAccumulator.java:737)
+	at org.apache.kafka.clients.producer.internals.Sender.run(Sender.java:280)
+	at java.base/java.lang.Thread.run(Thread.java:834)

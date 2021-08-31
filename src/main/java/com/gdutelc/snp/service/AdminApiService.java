@@ -37,4 +37,13 @@ public interface AdminApiService {
      * @return 符合条件的所有用户的信息
      */
     String getDsignByDno(Integer dno);
+
+    /**
+     * 确认新生通过面试
+     * @param jwt 意向部门
+     * @param uid 用户id
+     * @param check 是否通过面试
+     * @return 是否给新生发送信息
+     */
+    boolean confirm(String jwt, Integer uid, boolean check);
 }

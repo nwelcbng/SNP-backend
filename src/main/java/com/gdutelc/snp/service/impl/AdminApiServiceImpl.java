@@ -2,14 +2,18 @@ package com.gdutelc.snp.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.gdutelc.snp.cache.AdminCache;
 import com.gdutelc.snp.cache.SignCache;
+import com.gdutelc.snp.cache.UserCache;
 import com.gdutelc.snp.config.jwt.AdminJwtConfig;
 import com.gdutelc.snp.dto.Dsign;
+import com.gdutelc.snp.entity.Admin;
+import com.gdutelc.snp.entity.Message;
 import com.gdutelc.snp.exception.AdminServiceException;
 import com.gdutelc.snp.result.Status;
 import com.gdutelc.snp.service.AdminApiService;
+import com.gdutelc.snp.util.RedisUtil;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
-
 import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
@@ -28,6 +32,17 @@ public class AdminApiServiceImpl implements AdminApiService {
 
     @Resource
     private SignCache signCache;
+
+    @Resource
+    private KafkaTemplate kafkaTemplate;
+
+    @Resource
+    private UserCache userCache;
+
+    @Resource
+    private RedisUtil redisUtil;
+
+
 
 
     @Override
@@ -79,5 +94,27 @@ public class AdminApiServiceImpl implements AdminApiService {
             throw new AdminServiceException(Status.GETFORMERROR);
         }
         return JSON.toJSONString(dsigns);
+    }
+
+    @Override
+    public boolean confirm(String jwt, Integer uid, boolean check) {
+        try{
+            String username = adminJwtConfig.getPayload(jwt).get("username");
+            Admin admin = adminCache.getAdminByUsername(username);
+            String opneid = userCache.getOpenidByUid(uid);
+
+            String session = (String) redisUtil.get("msg" + opneid);
+            Dsign dsign = signCache.getDsignByUid(uid);
+
+            Message message = new Message(dsign.getName(),admin.getAdno(),session,opneid);
+            if (check){
+                kafkaTemplate.send("success",message);
+            }else{
+                kafkaTemplate.send("fail",message);
+            }
+            return true;
+        }catch (Exception e){
+            throw new AdminServiceException(Status.CONFIRMFAIL);
+        }
     }
 }
