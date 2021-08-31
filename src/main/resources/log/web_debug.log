@@ -1,52 +1,595 @@
-2021-08-29 11:21:05.916 [restartedMain] DEBUG com.gdutelc.snp.SnpApplication - Running with Spring Boot v2.5.2, Spring v5.3.8
-2021-08-29 11:21:05.920 [restartedMain] DEBUG org.springframework.boot.SpringApplication - Loading source class com.gdutelc.snp.SnpApplication
-2021-08-29 11:21:05.992 [restartedMain] DEBUG o.s.boot.devtools.restart.ChangeableUrls - Matching URLs for reloading : [file:/D:/java%20project/SNP-backend/target/classes/]
-2021-08-29 11:21:05.992 [restartedMain] DEBUG o.s.boot.devtools.settings.DevToolsSettings - Included patterns for restart : []
-2021-08-29 11:21:05.992 [restartedMain] DEBUG o.s.boot.devtools.settings.DevToolsSettings - Excluded patterns for restart : [/spring-boot-starter-[\w-]+/, /spring-boot/(bin|build|out)/, /spring-boot-starter/(bin|build|out)/, /spring-boot-devtools/(bin|build|out)/, /spring-boot-actuator/(bin|build|out)/, /spring-boot-autoconfigure/(bin|build|out)/]
-2021-08-29 11:21:05.994 [restartedMain] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1cc3793b
-2021-08-29 11:21:06.617 [restartedMain] DEBUG o.s.boot.autoconfigure.AutoConfigurationPackages - @EnableAutoConfiguration was declared on a class in the package 'com.gdutelc.snp'. Automatic @Repository and @Entity scanning is enabled.
-2021-08-29 11:21:07.533 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
-2021-08-29 11:21:07.533 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
-2021-08-29 11:21:07.533 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - None of the document roots [src/main/webapp, public, static] point to a directory and will be ignored.
-2021-08-29 11:21:07.670 [restartedMain] DEBUG o.s.b.w.s.c.ServletWebServerApplicationContext - Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
-2021-08-29 11:21:07.683 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
-2021-08-29 11:21:07.683 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping servlets: dispatcherServlet urls=[/]
-2021-08-29 11:21:07.699 [restartedMain] DEBUG o.s.b.w.servlet.filter.OrderedRequestContextFilter - Filter 'requestContextFilter' configured for use
-2021-08-29 11:21:07.699 [restartedMain] DEBUG o.s.b.w.s.filter.OrderedCharacterEncodingFilter - Filter 'characterEncodingFilter' configured for use
-2021-08-29 11:21:07.699 [restartedMain] DEBUG o.s.b.web.servlet.filter.OrderedFormContentFilter - Filter 'formContentFilter' configured for use
-2021-08-29 11:21:08.241 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
-2021-08-29 11:21:08.286 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 18 mappings in 'requestMappingHandlerMapping'
-2021-08-29 11:21:08.315 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
-2021-08-29 11:21:08.323 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
-2021-08-29 11:21:08.458 [restartedMain] DEBUG o.s.boot.devtools.livereload.LiveReloadServer - Starting live reload server on port 35729
-2021-08-29 11:21:08.501 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state LivenessState changed to CORRECT
-2021-08-29 11:21:08.503 [restartedMain] DEBUG o.springframework.boot.devtools.restart.Restarter - Creating new Restarter for thread Thread[main,5,main]
-2021-08-29 11:21:08.503 [restartedMain] DEBUG o.springframework.boot.devtools.restart.Restarter - Immediately restarting application
-2021-08-29 11:21:08.503 [restartedMain] DEBUG o.springframework.boot.devtools.restart.Restarter - Created RestartClassLoader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@5e35f3d6
-2021-08-29 11:21:08.503 [restartedMain] DEBUG o.springframework.boot.devtools.restart.Restarter - Starting application com.gdutelc.snp.SnpApplication with URLs [file:/D:/java%20project/SNP-backend/target/classes/]
-2021-08-29 11:21:08.503 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
-2021-08-29 11:23:26.252 [File Watcher] DEBUG o.springframework.boot.devtools.restart.Restarter - Restarting application
-2021-08-29 11:23:26.254 [Thread-5] DEBUG o.springframework.boot.devtools.restart.Restarter - Stopping application
-2021-08-29 11:23:26.254 [Thread-5] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
-2021-08-29 11:23:26.255 [Thread-5] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1cc3793b, started on Sun Aug 29 11:21:05 CST 2021
-2021-08-29 11:23:26.722 [Thread-5] DEBUG o.springframework.boot.devtools.restart.Restarter - Created RestartClassLoader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@11d4aa7
-2021-08-29 11:23:26.723 [Thread-5] DEBUG o.springframework.boot.devtools.restart.Restarter - Starting application com.gdutelc.snp.SnpApplication with URLs [file:/D:/java%20project/SNP-backend/target/classes/]
-2021-08-29 11:23:26.815 [restartedMain] DEBUG com.gdutelc.snp.SnpApplication - Running with Spring Boot v2.5.2, Spring v5.3.8
-2021-08-29 11:23:26.815 [restartedMain] DEBUG org.springframework.boot.SpringApplication - Loading source class com.gdutelc.snp.SnpApplication
-2021-08-29 11:23:26.819 [restartedMain] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@33c42a32
-2021-08-29 11:23:27.019 [restartedMain] DEBUG o.s.boot.autoconfigure.AutoConfigurationPackages - @EnableAutoConfiguration was declared on a class in the package 'com.gdutelc.snp'. Automatic @Repository and @Entity scanning is enabled.
-2021-08-29 11:23:27.132 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
-2021-08-29 11:23:27.133 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
-2021-08-29 11:23:27.133 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - None of the document roots [src/main/webapp, public, static] point to a directory and will be ignored.
-2021-08-29 11:23:27.176 [restartedMain] DEBUG o.s.b.w.s.c.ServletWebServerApplicationContext - Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
-2021-08-29 11:23:27.182 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
-2021-08-29 11:23:27.182 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping servlets: dispatcherServlet urls=[/]
-2021-08-29 11:23:27.183 [restartedMain] DEBUG o.s.b.w.servlet.filter.OrderedRequestContextFilter - Filter 'requestContextFilter' configured for use
-2021-08-29 11:23:27.183 [restartedMain] DEBUG o.s.b.w.s.filter.OrderedCharacterEncodingFilter - Filter 'characterEncodingFilter' configured for use
-2021-08-29 11:23:27.183 [restartedMain] DEBUG o.s.b.web.servlet.filter.OrderedFormContentFilter - Filter 'formContentFilter' configured for use
-2021-08-29 11:23:27.310 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
-2021-08-29 11:23:27.319 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 18 mappings in 'requestMappingHandlerMapping'
-2021-08-29 11:23:27.331 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
-2021-08-29 11:23:27.337 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
-2021-08-29 11:23:27.392 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state LivenessState changed to CORRECT
-2021-08-29 11:23:27.394 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2021-08-31 19:54:02.737 [restartedMain] DEBUG com.gdutelc.snp.SnpApplication - Running with Spring Boot v2.5.2, Spring v5.3.8
+2021-08-31 19:54:02.744 [restartedMain] DEBUG org.springframework.boot.SpringApplication - Loading source class com.gdutelc.snp.SnpApplication
+2021-08-31 19:54:02.849 [restartedMain] DEBUG o.s.boot.devtools.restart.ChangeableUrls - Matching URLs for reloading : [file:/D:/java%20project/SNP-backend/target/classes/]
+2021-08-31 19:54:02.850 [restartedMain] DEBUG o.s.boot.devtools.settings.DevToolsSettings - Included patterns for restart : []
+2021-08-31 19:54:02.850 [restartedMain] DEBUG o.s.boot.devtools.settings.DevToolsSettings - Excluded patterns for restart : [/spring-boot-starter-[\w-]+/, /spring-boot/(bin|build|out)/, /spring-boot-starter/(bin|build|out)/, /spring-boot-devtools/(bin|build|out)/, /spring-boot-actuator/(bin|build|out)/, /spring-boot-autoconfigure/(bin|build|out)/]
+2021-08-31 19:54:02.852 [restartedMain] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2b86ccc8
+2021-08-31 19:54:03.431 [restartedMain] DEBUG o.s.boot.autoconfigure.AutoConfigurationPackages - @EnableAutoConfiguration was declared on a class in the package 'com.gdutelc.snp'. Automatic @Repository and @Entity scanning is enabled.
+2021-08-31 19:54:04.291 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 19:54:04.291 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 19:54:04.291 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - None of the document roots [src/main/webapp, public, static] point to a directory and will be ignored.
+2021-08-31 19:54:04.424 [restartedMain] DEBUG o.s.b.w.s.c.ServletWebServerApplicationContext - Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2021-08-31 19:54:04.437 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
+2021-08-31 19:54:04.437 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping servlets: dispatcherServlet urls=[/]
+2021-08-31 19:54:04.453 [restartedMain] DEBUG o.s.b.w.servlet.filter.OrderedRequestContextFilter - Filter 'requestContextFilter' configured for use
+2021-08-31 19:54:04.453 [restartedMain] DEBUG o.s.b.w.s.filter.OrderedCharacterEncodingFilter - Filter 'characterEncodingFilter' configured for use
+2021-08-31 19:54:04.453 [restartedMain] DEBUG o.s.b.web.servlet.filter.OrderedFormContentFilter - Filter 'formContentFilter' configured for use
+2021-08-31 19:54:05.033 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-08-31 19:54:05.077 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 18 mappings in 'requestMappingHandlerMapping'
+2021-08-31 19:54:05.107 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2021-08-31 19:54:05.117 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-08-31 19:54:05.287 [restartedMain] DEBUG o.s.boot.devtools.livereload.LiveReloadServer - Starting live reload server on port 35729
+2021-08-31 19:54:05.328 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state LivenessState changed to CORRECT
+2021-08-31 19:54:05.330 [restartedMain] DEBUG o.springframework.boot.devtools.restart.Restarter - Creating new Restarter for thread Thread[main,5,main]
+2021-08-31 19:54:05.330 [restartedMain] DEBUG o.springframework.boot.devtools.restart.Restarter - Immediately restarting application
+2021-08-31 19:54:05.330 [restartedMain] DEBUG o.springframework.boot.devtools.restart.Restarter - Created RestartClassLoader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@3c5cea0e
+2021-08-31 19:54:05.330 [restartedMain] DEBUG o.springframework.boot.devtools.restart.Restarter - Starting application com.gdutelc.snp.SnpApplication with URLs [file:/D:/java%20project/SNP-backend/target/classes/]
+2021-08-31 19:54:05.331 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2021-08-31 19:54:23.857 [File Watcher] DEBUG o.springframework.boot.devtools.restart.Restarter - Restarting application
+2021-08-31 19:54:23.858 [Thread-5] DEBUG o.springframework.boot.devtools.restart.Restarter - Stopping application
+2021-08-31 19:54:23.859 [Thread-5] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2021-08-31 19:54:23.859 [Thread-5] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2b86ccc8, started on Tue Aug 31 19:54:02 CST 2021
+2021-08-31 19:54:24.307 [Thread-5] DEBUG o.springframework.boot.devtools.restart.Restarter - Created RestartClassLoader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@6f4a847a
+2021-08-31 19:54:24.307 [Thread-5] DEBUG o.springframework.boot.devtools.restart.Restarter - Starting application com.gdutelc.snp.SnpApplication with URLs [file:/D:/java%20project/SNP-backend/target/classes/]
+2021-08-31 19:54:24.357 [restartedMain] DEBUG com.gdutelc.snp.SnpApplication - Running with Spring Boot v2.5.2, Spring v5.3.8
+2021-08-31 19:54:24.357 [restartedMain] DEBUG org.springframework.boot.SpringApplication - Loading source class com.gdutelc.snp.SnpApplication
+2021-08-31 19:54:24.360 [restartedMain] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@7d6f62d3
+2021-08-31 19:54:24.527 [restartedMain] DEBUG o.s.boot.autoconfigure.AutoConfigurationPackages - @EnableAutoConfiguration was declared on a class in the package 'com.gdutelc.snp'. Automatic @Repository and @Entity scanning is enabled.
+2021-08-31 19:54:24.614 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 19:54:24.614 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 19:54:24.614 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - None of the document roots [src/main/webapp, public, static] point to a directory and will be ignored.
+2021-08-31 19:54:24.655 [restartedMain] DEBUG o.s.b.w.s.c.ServletWebServerApplicationContext - Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2021-08-31 19:54:24.662 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
+2021-08-31 19:54:24.663 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping servlets: dispatcherServlet urls=[/]
+2021-08-31 19:54:24.663 [restartedMain] DEBUG o.s.b.w.servlet.filter.OrderedRequestContextFilter - Filter 'requestContextFilter' configured for use
+2021-08-31 19:54:24.663 [restartedMain] DEBUG o.s.b.w.s.filter.OrderedCharacterEncodingFilter - Filter 'characterEncodingFilter' configured for use
+2021-08-31 19:54:24.664 [restartedMain] DEBUG o.s.b.web.servlet.filter.OrderedFormContentFilter - Filter 'formContentFilter' configured for use
+2021-08-31 19:54:24.826 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-08-31 19:54:24.839 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 18 mappings in 'requestMappingHandlerMapping'
+2021-08-31 19:54:24.855 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2021-08-31 19:54:24.862 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-08-31 19:54:24.942 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state LivenessState changed to CORRECT
+2021-08-31 19:54:24.944 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2021-08-31 19:54:32.853 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+2021-08-31 19:54:32.853 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+2021-08-31 19:54:32.853 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+2021-08-31 19:54:32.853 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@5d2d23cc
+2021-08-31 19:54:32.854 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@3534f651
+2021-08-31 19:54:32.854 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2021-08-31 19:54:32.859 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - POST "/user/appGetPhone", parameters={masked}
+2021-08-31 19:54:32.860 [http-nio-10080-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.gdutelc.snp.controller.UserApiController#appGetPhone(String, String)
+2021-08-31 19:54:32.863 [http-nio-10080-exec-1] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Using @ExceptionHandler com.gdutelc.snp.controller.GlobalExceptionController#jwtErrorException(JwtErrorException)
+2021-08-31 19:54:32.873 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Using resolved error view: ModelAndView [view="user/appGetPhone"; model={result=Result(code=-404, msg=jwt为空, data=null)}]
+2021-08-31 19:54:32.878 [http-nio-10080-exec-1] DEBUG o.s.w.servlet.view.ContentNegotiatingViewResolver - Selected '*/*' given [*/*]
+2021-08-31 19:54:32.878 [http-nio-10080-exec-1] DEBUG o.s.web.servlet.view.InternalResourceView - View name 'user/appGetPhone', model {result=Result(code=-404, msg=jwt为空, data=null)}
+2021-08-31 19:54:32.879 [http-nio-10080-exec-1] DEBUG o.s.web.servlet.view.InternalResourceView - Forwarding to [user/appGetPhone]
+2021-08-31 19:54:32.881 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - "FORWARD" dispatch for POST "/user/user/appGetPhone", parameters={masked}
+2021-08-31 19:54:32.883 [http-nio-10080-exec-1] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [Classpath [META-INF/resources/], Classpath [resources/], Classpath [static/], Classpath [public/], ServletContext [/]]
+2021-08-31 19:54:32.884 [http-nio-10080-exec-1] DEBUG o.s.w.servlet.resource.ResourceHttpRequestHandler - Resource not found
+2021-08-31 19:54:32.884 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Exiting from "FORWARD" dispatch, status 404
+2021-08-31 19:54:32.885 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 404 NOT_FOUND
+2021-08-31 19:54:32.886 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - "ERROR" dispatch for POST "/error", parameters={masked}
+2021-08-31 19:54:32.886 [http-nio-10080-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2021-08-31 19:54:32.904 [http-nio-10080-exec-1] DEBUG o.s.w.s.m.m.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-08-31 19:54:32.905 [http-nio-10080-exec-1] DEBUG o.s.w.s.m.m.annotation.HttpEntityMethodProcessor - Writing [{timestamp=Tue Aug 31 19:54:32 CST 2021, status=404, error=Not Found, trace=com.gdutelc.snp.exceptio (truncated)...]
+2021-08-31 19:54:32.933 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Exiting from "ERROR" dispatch, status 404
+2021-08-31 19:55:06.710 [File Watcher] DEBUG o.springframework.boot.devtools.restart.Restarter - Restarting application
+2021-08-31 19:55:06.710 [Thread-7] DEBUG o.springframework.boot.devtools.restart.Restarter - Stopping application
+2021-08-31 19:55:06.710 [Thread-7] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2021-08-31 19:55:06.710 [Thread-7] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@7d6f62d3, started on Tue Aug 31 19:54:24 CST 2021
+2021-08-31 19:55:07.250 [Thread-7] DEBUG o.springframework.boot.devtools.restart.Restarter - Created RestartClassLoader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@6964d1e8
+2021-08-31 19:55:07.250 [Thread-7] DEBUG o.springframework.boot.devtools.restart.Restarter - Starting application com.gdutelc.snp.SnpApplication with URLs [file:/D:/java%20project/SNP-backend/target/classes/]
+2021-08-31 19:55:07.331 [restartedMain] DEBUG com.gdutelc.snp.SnpApplication - Running with Spring Boot v2.5.2, Spring v5.3.8
+2021-08-31 19:55:07.331 [restartedMain] DEBUG org.springframework.boot.SpringApplication - Loading source class com.gdutelc.snp.SnpApplication
+2021-08-31 19:55:07.335 [restartedMain] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2c35f131
+2021-08-31 19:55:07.590 [restartedMain] DEBUG o.s.boot.autoconfigure.AutoConfigurationPackages - @EnableAutoConfiguration was declared on a class in the package 'com.gdutelc.snp'. Automatic @Repository and @Entity scanning is enabled.
+2021-08-31 19:55:07.717 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 19:55:07.718 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 19:55:07.718 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - None of the document roots [src/main/webapp, public, static] point to a directory and will be ignored.
+2021-08-31 19:55:07.760 [restartedMain] DEBUG o.s.b.w.s.c.ServletWebServerApplicationContext - Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2021-08-31 19:55:07.768 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
+2021-08-31 19:55:07.768 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping servlets: dispatcherServlet urls=[/]
+2021-08-31 19:55:07.769 [restartedMain] DEBUG o.s.b.w.servlet.filter.OrderedRequestContextFilter - Filter 'requestContextFilter' configured for use
+2021-08-31 19:55:07.769 [restartedMain] DEBUG o.s.b.w.s.filter.OrderedCharacterEncodingFilter - Filter 'characterEncodingFilter' configured for use
+2021-08-31 19:55:07.769 [restartedMain] DEBUG o.s.b.web.servlet.filter.OrderedFormContentFilter - Filter 'formContentFilter' configured for use
+2021-08-31 19:55:07.927 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-08-31 19:55:07.937 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 18 mappings in 'requestMappingHandlerMapping'
+2021-08-31 19:55:07.952 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2021-08-31 19:55:07.959 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-08-31 19:55:08.036 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state LivenessState changed to CORRECT
+2021-08-31 19:55:08.038 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2021-08-31 19:55:08.244 [main] DEBUG com.gdutelc.snp.JwtTests - Running with Spring Boot v2.5.2, Spring v5.3.8
+2021-08-31 19:55:26.598 [File Watcher] DEBUG o.springframework.boot.devtools.restart.Restarter - Restarting application
+2021-08-31 19:55:26.598 [Thread-11] DEBUG o.springframework.boot.devtools.restart.Restarter - Stopping application
+2021-08-31 19:55:26.598 [Thread-11] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2021-08-31 19:55:26.598 [Thread-11] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2c35f131, started on Tue Aug 31 19:55:07 CST 2021
+2021-08-31 19:55:27.051 [Thread-11] DEBUG o.springframework.boot.devtools.restart.Restarter - Created RestartClassLoader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@2ff2394e
+2021-08-31 19:55:27.051 [Thread-11] DEBUG o.springframework.boot.devtools.restart.Restarter - Starting application com.gdutelc.snp.SnpApplication with URLs [file:/D:/java%20project/SNP-backend/target/classes/]
+2021-08-31 19:55:27.089 [restartedMain] DEBUG com.gdutelc.snp.SnpApplication - Running with Spring Boot v2.5.2, Spring v5.3.8
+2021-08-31 19:55:27.089 [restartedMain] DEBUG org.springframework.boot.SpringApplication - Loading source class com.gdutelc.snp.SnpApplication
+2021-08-31 19:55:27.091 [restartedMain] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@76f47036
+2021-08-31 19:55:27.219 [restartedMain] DEBUG o.s.boot.autoconfigure.AutoConfigurationPackages - @EnableAutoConfiguration was declared on a class in the package 'com.gdutelc.snp'. Automatic @Repository and @Entity scanning is enabled.
+2021-08-31 19:55:27.286 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 19:55:27.286 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 19:55:27.286 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - None of the document roots [src/main/webapp, public, static] point to a directory and will be ignored.
+2021-08-31 19:55:27.325 [restartedMain] DEBUG o.s.b.w.s.c.ServletWebServerApplicationContext - Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2021-08-31 19:55:27.330 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
+2021-08-31 19:55:27.330 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping servlets: dispatcherServlet urls=[/]
+2021-08-31 19:55:27.331 [restartedMain] DEBUG o.s.b.w.servlet.filter.OrderedRequestContextFilter - Filter 'requestContextFilter' configured for use
+2021-08-31 19:55:27.331 [restartedMain] DEBUG o.s.b.w.s.filter.OrderedCharacterEncodingFilter - Filter 'characterEncodingFilter' configured for use
+2021-08-31 19:55:27.331 [restartedMain] DEBUG o.s.b.web.servlet.filter.OrderedFormContentFilter - Filter 'formContentFilter' configured for use
+2021-08-31 19:55:27.459 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-08-31 19:55:27.467 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 18 mappings in 'requestMappingHandlerMapping'
+2021-08-31 19:55:27.482 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2021-08-31 19:55:27.486 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-08-31 19:55:27.556 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state LivenessState changed to CORRECT
+2021-08-31 19:55:27.558 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2021-08-31 19:55:39.043 [File Watcher] DEBUG o.springframework.boot.devtools.restart.Restarter - Restarting application
+2021-08-31 19:55:39.043 [Thread-15] DEBUG o.springframework.boot.devtools.restart.Restarter - Stopping application
+2021-08-31 19:55:39.044 [Thread-15] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2021-08-31 19:55:39.044 [Thread-15] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@76f47036, started on Tue Aug 31 19:55:27 CST 2021
+2021-08-31 19:55:39.481 [Thread-15] DEBUG o.springframework.boot.devtools.restart.Restarter - Created RestartClassLoader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@112cfa27
+2021-08-31 19:55:39.481 [Thread-15] DEBUG o.springframework.boot.devtools.restart.Restarter - Starting application com.gdutelc.snp.SnpApplication with URLs [file:/D:/java%20project/SNP-backend/target/classes/]
+2021-08-31 19:55:39.526 [restartedMain] DEBUG com.gdutelc.snp.SnpApplication - Running with Spring Boot v2.5.2, Spring v5.3.8
+2021-08-31 19:55:39.526 [restartedMain] DEBUG org.springframework.boot.SpringApplication - Loading source class com.gdutelc.snp.SnpApplication
+2021-08-31 19:55:39.528 [restartedMain] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3c50256
+2021-08-31 19:55:39.698 [restartedMain] DEBUG o.s.boot.autoconfigure.AutoConfigurationPackages - @EnableAutoConfiguration was declared on a class in the package 'com.gdutelc.snp'. Automatic @Repository and @Entity scanning is enabled.
+2021-08-31 19:55:39.793 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 19:55:39.794 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 19:55:39.794 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - None of the document roots [src/main/webapp, public, static] point to a directory and will be ignored.
+2021-08-31 19:55:39.840 [restartedMain] DEBUG o.s.b.w.s.c.ServletWebServerApplicationContext - Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2021-08-31 19:55:39.849 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
+2021-08-31 19:55:39.849 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping servlets: dispatcherServlet urls=[/]
+2021-08-31 19:55:39.850 [restartedMain] DEBUG o.s.b.w.servlet.filter.OrderedRequestContextFilter - Filter 'requestContextFilter' configured for use
+2021-08-31 19:55:39.850 [restartedMain] DEBUG o.s.b.w.s.filter.OrderedCharacterEncodingFilter - Filter 'characterEncodingFilter' configured for use
+2021-08-31 19:55:39.850 [restartedMain] DEBUG o.s.b.web.servlet.filter.OrderedFormContentFilter - Filter 'formContentFilter' configured for use
+2021-08-31 19:55:40.019 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-08-31 19:55:40.027 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 18 mappings in 'requestMappingHandlerMapping'
+2021-08-31 19:55:40.041 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2021-08-31 19:55:40.048 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-08-31 19:55:40.126 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state LivenessState changed to CORRECT
+2021-08-31 19:55:40.128 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2021-08-31 19:55:40.312 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+2021-08-31 19:55:40.312 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+2021-08-31 19:55:40.312 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+2021-08-31 19:55:40.313 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@5c6b2ee7
+2021-08-31 19:55:40.313 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@5854b1b2
+2021-08-31 19:55:40.313 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2021-08-31 19:55:40.313 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - POST "/user/appGetPhone", parameters={masked}
+2021-08-31 19:55:40.313 [http-nio-10080-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.gdutelc.snp.controller.UserApiController#appGetPhone(String, String)
+2021-08-31 19:55:40.332 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Failed to complete request: java.lang.NumberFormatException: null
+2021-08-31 19:55:40.338 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - "ERROR" dispatch for POST "/error", parameters={masked}
+2021-08-31 19:55:40.338 [http-nio-10080-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2021-08-31 19:55:40.339 [http-nio-10080-exec-1] DEBUG o.s.w.s.m.m.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-08-31 19:55:40.340 [http-nio-10080-exec-1] DEBUG o.s.w.s.m.m.annotation.HttpEntityMethodProcessor - Writing [{timestamp=Tue Aug 31 19:55:40 CST 2021, status=500, error=Internal Server Error, trace=java.lang.Nu (truncated)...]
+2021-08-31 19:55:40.341 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Exiting from "ERROR" dispatch, status 500
+2021-08-31 19:56:30.947 [File Watcher] DEBUG o.springframework.boot.devtools.restart.Restarter - Restarting application
+2021-08-31 19:56:30.948 [Thread-19] DEBUG o.springframework.boot.devtools.restart.Restarter - Stopping application
+2021-08-31 19:56:30.948 [Thread-19] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2021-08-31 19:56:30.948 [Thread-19] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3c50256, started on Tue Aug 31 19:55:39 CST 2021
+2021-08-31 19:56:31.384 [Thread-19] DEBUG o.springframework.boot.devtools.restart.Restarter - Created RestartClassLoader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@4f891da4
+2021-08-31 19:56:31.384 [Thread-19] DEBUG o.springframework.boot.devtools.restart.Restarter - Starting application com.gdutelc.snp.SnpApplication with URLs [file:/D:/java%20project/SNP-backend/target/classes/]
+2021-08-31 19:56:31.424 [restartedMain] DEBUG com.gdutelc.snp.SnpApplication - Running with Spring Boot v2.5.2, Spring v5.3.8
+2021-08-31 19:56:31.424 [restartedMain] DEBUG org.springframework.boot.SpringApplication - Loading source class com.gdutelc.snp.SnpApplication
+2021-08-31 19:56:31.427 [restartedMain] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@388488d5
+2021-08-31 19:56:31.582 [restartedMain] DEBUG o.s.boot.autoconfigure.AutoConfigurationPackages - @EnableAutoConfiguration was declared on a class in the package 'com.gdutelc.snp'. Automatic @Repository and @Entity scanning is enabled.
+2021-08-31 19:56:31.658 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 19:56:31.658 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 19:56:31.659 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - None of the document roots [src/main/webapp, public, static] point to a directory and will be ignored.
+2021-08-31 19:56:31.701 [restartedMain] DEBUG o.s.b.w.s.c.ServletWebServerApplicationContext - Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2021-08-31 19:56:31.709 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
+2021-08-31 19:56:31.709 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping servlets: dispatcherServlet urls=[/]
+2021-08-31 19:56:31.710 [restartedMain] DEBUG o.s.b.w.servlet.filter.OrderedRequestContextFilter - Filter 'requestContextFilter' configured for use
+2021-08-31 19:56:31.710 [restartedMain] DEBUG o.s.b.w.s.filter.OrderedCharacterEncodingFilter - Filter 'characterEncodingFilter' configured for use
+2021-08-31 19:56:31.711 [restartedMain] DEBUG o.s.b.web.servlet.filter.OrderedFormContentFilter - Filter 'formContentFilter' configured for use
+2021-08-31 19:56:31.860 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-08-31 19:56:31.872 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 18 mappings in 'requestMappingHandlerMapping'
+2021-08-31 19:56:31.891 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2021-08-31 19:56:31.898 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-08-31 19:56:31.973 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state LivenessState changed to CORRECT
+2021-08-31 19:56:31.974 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2021-08-31 19:56:32.707 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+2021-08-31 19:56:32.707 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+2021-08-31 19:56:32.707 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+2021-08-31 19:56:32.707 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@2d7a6832
+2021-08-31 19:56:32.708 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@23bd83ed
+2021-08-31 19:56:32.708 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2021-08-31 19:56:32.708 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - POST "/user/appGetPhone", parameters={masked}
+2021-08-31 19:56:32.708 [http-nio-10080-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.gdutelc.snp.controller.UserApiController#appGetPhone(String, String)
+2021-08-31 19:56:32.710 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Failed to complete request: java.lang.NumberFormatException: null
+2021-08-31 19:56:32.711 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - "ERROR" dispatch for POST "/error", parameters={masked}
+2021-08-31 19:56:32.711 [http-nio-10080-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2021-08-31 19:56:32.713 [http-nio-10080-exec-1] DEBUG o.s.w.s.m.m.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-08-31 19:56:32.713 [http-nio-10080-exec-1] DEBUG o.s.w.s.m.m.annotation.HttpEntityMethodProcessor - Writing [{timestamp=Tue Aug 31 19:56:32 CST 2021, status=500, error=Internal Server Error, trace=java.lang.Nu (truncated)...]
+2021-08-31 19:56:32.715 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Exiting from "ERROR" dispatch, status 500
+2021-08-31 19:57:09.690 [File Watcher] DEBUG o.springframework.boot.devtools.restart.Restarter - Restarting application
+2021-08-31 19:57:09.691 [Thread-23] DEBUG o.springframework.boot.devtools.restart.Restarter - Stopping application
+2021-08-31 19:57:09.691 [Thread-23] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2021-08-31 19:57:09.691 [Thread-23] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@388488d5, started on Tue Aug 31 19:56:31 CST 2021
+2021-08-31 19:57:10.112 [Thread-23] DEBUG o.springframework.boot.devtools.restart.Restarter - Created RestartClassLoader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@1e369ab2
+2021-08-31 19:57:10.113 [Thread-23] DEBUG o.springframework.boot.devtools.restart.Restarter - Starting application com.gdutelc.snp.SnpApplication with URLs [file:/D:/java%20project/SNP-backend/target/classes/]
+2021-08-31 19:57:10.152 [restartedMain] DEBUG com.gdutelc.snp.SnpApplication - Running with Spring Boot v2.5.2, Spring v5.3.8
+2021-08-31 19:57:10.152 [restartedMain] DEBUG org.springframework.boot.SpringApplication - Loading source class com.gdutelc.snp.SnpApplication
+2021-08-31 19:57:10.154 [restartedMain] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@524573ee
+2021-08-31 19:57:10.292 [restartedMain] DEBUG o.s.boot.autoconfigure.AutoConfigurationPackages - @EnableAutoConfiguration was declared on a class in the package 'com.gdutelc.snp'. Automatic @Repository and @Entity scanning is enabled.
+2021-08-31 19:57:10.364 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 19:57:10.364 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 19:57:10.364 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - None of the document roots [src/main/webapp, public, static] point to a directory and will be ignored.
+2021-08-31 19:57:10.403 [restartedMain] DEBUG o.s.b.w.s.c.ServletWebServerApplicationContext - Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2021-08-31 19:57:10.410 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
+2021-08-31 19:57:10.410 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping servlets: dispatcherServlet urls=[/]
+2021-08-31 19:57:10.410 [restartedMain] DEBUG o.s.b.w.servlet.filter.OrderedRequestContextFilter - Filter 'requestContextFilter' configured for use
+2021-08-31 19:57:10.411 [restartedMain] DEBUG o.s.b.w.s.filter.OrderedCharacterEncodingFilter - Filter 'characterEncodingFilter' configured for use
+2021-08-31 19:57:10.411 [restartedMain] DEBUG o.s.b.web.servlet.filter.OrderedFormContentFilter - Filter 'formContentFilter' configured for use
+2021-08-31 19:57:10.519 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-08-31 19:57:10.525 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 18 mappings in 'requestMappingHandlerMapping'
+2021-08-31 19:57:10.537 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2021-08-31 19:57:10.541 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-08-31 19:57:10.590 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state LivenessState changed to CORRECT
+2021-08-31 19:57:10.591 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2021-08-31 19:58:54.890 [File Watcher] DEBUG o.springframework.boot.devtools.restart.Restarter - Restarting application
+2021-08-31 19:58:54.891 [Thread-27] DEBUG o.springframework.boot.devtools.restart.Restarter - Stopping application
+2021-08-31 19:58:54.891 [Thread-27] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2021-08-31 19:58:54.891 [Thread-27] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@524573ee, started on Tue Aug 31 19:57:10 CST 2021
+2021-08-31 19:58:55.332 [Thread-27] DEBUG o.springframework.boot.devtools.restart.Restarter - Created RestartClassLoader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@194cc4cf
+2021-08-31 19:58:55.332 [Thread-27] DEBUG o.springframework.boot.devtools.restart.Restarter - Starting application com.gdutelc.snp.SnpApplication with URLs [file:/D:/java%20project/SNP-backend/target/classes/]
+2021-08-31 19:58:55.371 [restartedMain] DEBUG com.gdutelc.snp.SnpApplication - Running with Spring Boot v2.5.2, Spring v5.3.8
+2021-08-31 19:58:55.371 [restartedMain] DEBUG org.springframework.boot.SpringApplication - Loading source class com.gdutelc.snp.SnpApplication
+2021-08-31 19:58:55.372 [restartedMain] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@75fc6921
+2021-08-31 19:58:55.534 [restartedMain] DEBUG o.s.boot.autoconfigure.AutoConfigurationPackages - @EnableAutoConfiguration was declared on a class in the package 'com.gdutelc.snp'. Automatic @Repository and @Entity scanning is enabled.
+2021-08-31 19:58:55.602 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 19:58:55.602 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 19:58:55.603 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - None of the document roots [src/main/webapp, public, static] point to a directory and will be ignored.
+2021-08-31 19:58:55.636 [restartedMain] DEBUG o.s.b.w.s.c.ServletWebServerApplicationContext - Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2021-08-31 19:58:55.641 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
+2021-08-31 19:58:55.641 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping servlets: dispatcherServlet urls=[/]
+2021-08-31 19:58:55.641 [restartedMain] DEBUG o.s.b.w.servlet.filter.OrderedRequestContextFilter - Filter 'requestContextFilter' configured for use
+2021-08-31 19:58:55.642 [restartedMain] DEBUG o.s.b.w.s.filter.OrderedCharacterEncodingFilter - Filter 'characterEncodingFilter' configured for use
+2021-08-31 19:58:55.642 [restartedMain] DEBUG o.s.b.web.servlet.filter.OrderedFormContentFilter - Filter 'formContentFilter' configured for use
+2021-08-31 19:58:55.750 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-08-31 19:58:55.757 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 18 mappings in 'requestMappingHandlerMapping'
+2021-08-31 19:58:55.769 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2021-08-31 19:58:55.774 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-08-31 19:58:55.949 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state LivenessState changed to CORRECT
+2021-08-31 19:58:55.950 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2021-08-31 19:59:12.497 [File Watcher] DEBUG o.springframework.boot.devtools.restart.Restarter - Restarting application
+2021-08-31 19:59:12.498 [Thread-31] DEBUG o.springframework.boot.devtools.restart.Restarter - Stopping application
+2021-08-31 19:59:12.498 [Thread-31] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2021-08-31 19:59:12.498 [Thread-31] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@75fc6921, started on Tue Aug 31 19:58:55 CST 2021
+2021-08-31 19:59:13.071 [Thread-31] DEBUG o.springframework.boot.devtools.restart.Restarter - Created RestartClassLoader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@49812c62
+2021-08-31 19:59:13.071 [Thread-31] DEBUG o.springframework.boot.devtools.restart.Restarter - Starting application com.gdutelc.snp.SnpApplication with URLs [file:/D:/java%20project/SNP-backend/target/classes/]
+2021-08-31 19:59:13.124 [restartedMain] DEBUG com.gdutelc.snp.SnpApplication - Running with Spring Boot v2.5.2, Spring v5.3.8
+2021-08-31 19:59:13.125 [restartedMain] DEBUG org.springframework.boot.SpringApplication - Loading source class com.gdutelc.snp.SnpApplication
+2021-08-31 19:59:13.126 [restartedMain] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2e344405
+2021-08-31 19:59:13.350 [restartedMain] DEBUG o.s.boot.autoconfigure.AutoConfigurationPackages - @EnableAutoConfiguration was declared on a class in the package 'com.gdutelc.snp'. Automatic @Repository and @Entity scanning is enabled.
+2021-08-31 19:59:13.440 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 19:59:13.440 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 19:59:13.441 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - None of the document roots [src/main/webapp, public, static] point to a directory and will be ignored.
+2021-08-31 19:59:13.490 [restartedMain] DEBUG o.s.b.w.s.c.ServletWebServerApplicationContext - Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2021-08-31 19:59:13.497 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
+2021-08-31 19:59:13.497 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping servlets: dispatcherServlet urls=[/]
+2021-08-31 19:59:13.498 [restartedMain] DEBUG o.s.b.w.servlet.filter.OrderedRequestContextFilter - Filter 'requestContextFilter' configured for use
+2021-08-31 19:59:13.498 [restartedMain] DEBUG o.s.b.w.s.filter.OrderedCharacterEncodingFilter - Filter 'characterEncodingFilter' configured for use
+2021-08-31 19:59:13.498 [restartedMain] DEBUG o.s.b.web.servlet.filter.OrderedFormContentFilter - Filter 'formContentFilter' configured for use
+2021-08-31 19:59:13.642 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-08-31 19:59:13.653 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 18 mappings in 'requestMappingHandlerMapping'
+2021-08-31 19:59:13.670 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2021-08-31 19:59:13.676 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-08-31 19:59:13.737 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state LivenessState changed to CORRECT
+2021-08-31 19:59:13.738 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2021-08-31 19:59:15.141 [File Watcher] DEBUG o.springframework.boot.devtools.restart.Restarter - Restarting application
+2021-08-31 19:59:15.141 [Thread-35] DEBUG o.springframework.boot.devtools.restart.Restarter - Stopping application
+2021-08-31 19:59:15.141 [Thread-35] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2021-08-31 19:59:15.141 [Thread-35] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2e344405, started on Tue Aug 31 19:59:13 CST 2021
+2021-08-31 19:59:15.688 [Thread-35] DEBUG o.springframework.boot.devtools.restart.Restarter - Created RestartClassLoader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@6b77c889
+2021-08-31 19:59:15.689 [Thread-35] DEBUG o.springframework.boot.devtools.restart.Restarter - Starting application com.gdutelc.snp.SnpApplication with URLs [file:/D:/java%20project/SNP-backend/target/classes/]
+2021-08-31 19:59:15.721 [restartedMain] DEBUG com.gdutelc.snp.SnpApplication - Running with Spring Boot v2.5.2, Spring v5.3.8
+2021-08-31 19:59:15.721 [restartedMain] DEBUG org.springframework.boot.SpringApplication - Loading source class com.gdutelc.snp.SnpApplication
+2021-08-31 19:59:15.722 [restartedMain] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@14251c10
+2021-08-31 19:59:15.872 [restartedMain] DEBUG o.s.boot.autoconfigure.AutoConfigurationPackages - @EnableAutoConfiguration was declared on a class in the package 'com.gdutelc.snp'. Automatic @Repository and @Entity scanning is enabled.
+2021-08-31 19:59:15.955 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 19:59:15.955 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 19:59:15.955 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - None of the document roots [src/main/webapp, public, static] point to a directory and will be ignored.
+2021-08-31 19:59:15.997 [restartedMain] DEBUG o.s.b.w.s.c.ServletWebServerApplicationContext - Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2021-08-31 19:59:16.003 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
+2021-08-31 19:59:16.003 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping servlets: dispatcherServlet urls=[/]
+2021-08-31 19:59:16.004 [restartedMain] DEBUG o.s.b.w.servlet.filter.OrderedRequestContextFilter - Filter 'requestContextFilter' configured for use
+2021-08-31 19:59:16.004 [restartedMain] DEBUG o.s.b.w.s.filter.OrderedCharacterEncodingFilter - Filter 'characterEncodingFilter' configured for use
+2021-08-31 19:59:16.004 [restartedMain] DEBUG o.s.b.web.servlet.filter.OrderedFormContentFilter - Filter 'formContentFilter' configured for use
+2021-08-31 19:59:16.125 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-08-31 19:59:16.132 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 18 mappings in 'requestMappingHandlerMapping'
+2021-08-31 19:59:16.148 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2021-08-31 19:59:16.154 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-08-31 19:59:16.220 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state LivenessState changed to CORRECT
+2021-08-31 19:59:16.221 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2021-08-31 19:59:41.261 [File Watcher] DEBUG o.springframework.boot.devtools.restart.Restarter - Restarting application
+2021-08-31 19:59:41.262 [Thread-39] DEBUG o.springframework.boot.devtools.restart.Restarter - Stopping application
+2021-08-31 19:59:41.263 [Thread-39] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2021-08-31 19:59:41.263 [Thread-39] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@14251c10, started on Tue Aug 31 19:59:15 CST 2021
+2021-08-31 19:59:41.957 [Thread-39] DEBUG o.springframework.boot.devtools.restart.Restarter - Created RestartClassLoader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@6cdfdf0b
+2021-08-31 19:59:41.957 [Thread-39] DEBUG o.springframework.boot.devtools.restart.Restarter - Starting application com.gdutelc.snp.SnpApplication with URLs [file:/D:/java%20project/SNP-backend/target/classes/]
+2021-08-31 19:59:42.034 [restartedMain] DEBUG com.gdutelc.snp.SnpApplication - Running with Spring Boot v2.5.2, Spring v5.3.8
+2021-08-31 19:59:42.034 [restartedMain] DEBUG org.springframework.boot.SpringApplication - Loading source class com.gdutelc.snp.SnpApplication
+2021-08-31 19:59:42.037 [restartedMain] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1ec844d7
+2021-08-31 19:59:42.230 [restartedMain] DEBUG o.s.boot.autoconfigure.AutoConfigurationPackages - @EnableAutoConfiguration was declared on a class in the package 'com.gdutelc.snp'. Automatic @Repository and @Entity scanning is enabled.
+2021-08-31 19:59:42.304 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 19:59:42.304 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 19:59:42.304 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - None of the document roots [src/main/webapp, public, static] point to a directory and will be ignored.
+2021-08-31 19:59:42.345 [restartedMain] DEBUG o.s.b.w.s.c.ServletWebServerApplicationContext - Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2021-08-31 19:59:42.351 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
+2021-08-31 19:59:42.351 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping servlets: dispatcherServlet urls=[/]
+2021-08-31 19:59:42.352 [restartedMain] DEBUG o.s.b.w.servlet.filter.OrderedRequestContextFilter - Filter 'requestContextFilter' configured for use
+2021-08-31 19:59:42.352 [restartedMain] DEBUG o.s.b.w.s.filter.OrderedCharacterEncodingFilter - Filter 'characterEncodingFilter' configured for use
+2021-08-31 19:59:42.352 [restartedMain] DEBUG o.s.b.web.servlet.filter.OrderedFormContentFilter - Filter 'formContentFilter' configured for use
+2021-08-31 19:59:42.481 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-08-31 19:59:42.489 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 18 mappings in 'requestMappingHandlerMapping'
+2021-08-31 19:59:42.502 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2021-08-31 19:59:42.507 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-08-31 19:59:42.561 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state LivenessState changed to CORRECT
+2021-08-31 19:59:42.561 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2021-08-31 19:59:42.712 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+2021-08-31 19:59:42.712 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+2021-08-31 19:59:42.712 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+2021-08-31 19:59:42.713 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@2b44f818
+2021-08-31 19:59:42.713 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@25830300
+2021-08-31 19:59:42.713 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2021-08-31 19:59:42.713 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - POST "/user/appGetPhone", parameters={masked}
+2021-08-31 19:59:42.713 [http-nio-10080-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.gdutelc.snp.controller.UserApiController#appGetPhone(String, String)
+2021-08-31 19:59:42.715 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Failed to complete request: java.lang.NumberFormatException: null
+2021-08-31 19:59:42.716 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - "ERROR" dispatch for POST "/error", parameters={masked}
+2021-08-31 19:59:42.716 [http-nio-10080-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2021-08-31 19:59:42.718 [http-nio-10080-exec-1] DEBUG o.s.w.s.m.m.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-08-31 19:59:42.718 [http-nio-10080-exec-1] DEBUG o.s.w.s.m.m.annotation.HttpEntityMethodProcessor - Writing [{timestamp=Tue Aug 31 19:59:42 CST 2021, status=500, error=Internal Server Error, trace=java.lang.Nu (truncated)...]
+2021-08-31 19:59:42.720 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Exiting from "ERROR" dispatch, status 500
+2021-08-31 19:59:43.964 [File Watcher] DEBUG o.springframework.boot.devtools.restart.Restarter - Restarting application
+2021-08-31 19:59:43.965 [Thread-43] DEBUG o.springframework.boot.devtools.restart.Restarter - Stopping application
+2021-08-31 19:59:43.966 [Thread-43] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2021-08-31 19:59:43.966 [Thread-43] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1ec844d7, started on Tue Aug 31 19:59:42 CST 2021
+2021-08-31 19:59:44.308 [Thread-43] DEBUG o.springframework.boot.devtools.restart.Restarter - Created RestartClassLoader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@60852478
+2021-08-31 19:59:44.308 [Thread-43] DEBUG o.springframework.boot.devtools.restart.Restarter - Starting application com.gdutelc.snp.SnpApplication with URLs [file:/D:/java%20project/SNP-backend/target/classes/]
+2021-08-31 19:59:44.334 [restartedMain] DEBUG com.gdutelc.snp.SnpApplication - Running with Spring Boot v2.5.2, Spring v5.3.8
+2021-08-31 19:59:44.334 [restartedMain] DEBUG org.springframework.boot.SpringApplication - Loading source class com.gdutelc.snp.SnpApplication
+2021-08-31 19:59:44.336 [restartedMain] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@4fd00a0c
+2021-08-31 19:59:44.450 [restartedMain] DEBUG o.s.boot.autoconfigure.AutoConfigurationPackages - @EnableAutoConfiguration was declared on a class in the package 'com.gdutelc.snp'. Automatic @Repository and @Entity scanning is enabled.
+2021-08-31 19:59:44.507 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 19:59:44.508 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 19:59:44.508 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - None of the document roots [src/main/webapp, public, static] point to a directory and will be ignored.
+2021-08-31 19:59:44.541 [restartedMain] DEBUG o.s.b.w.s.c.ServletWebServerApplicationContext - Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2021-08-31 19:59:44.546 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
+2021-08-31 19:59:44.546 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping servlets: dispatcherServlet urls=[/]
+2021-08-31 19:59:44.547 [restartedMain] DEBUG o.s.b.w.servlet.filter.OrderedRequestContextFilter - Filter 'requestContextFilter' configured for use
+2021-08-31 19:59:44.547 [restartedMain] DEBUG o.s.b.w.s.filter.OrderedCharacterEncodingFilter - Filter 'characterEncodingFilter' configured for use
+2021-08-31 19:59:44.547 [restartedMain] DEBUG o.s.b.web.servlet.filter.OrderedFormContentFilter - Filter 'formContentFilter' configured for use
+2021-08-31 19:59:44.645 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-08-31 19:59:44.652 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 18 mappings in 'requestMappingHandlerMapping'
+2021-08-31 19:59:44.664 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2021-08-31 19:59:44.668 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-08-31 19:59:44.714 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state LivenessState changed to CORRECT
+2021-08-31 19:59:44.715 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2021-08-31 19:59:49.142 [File Watcher] DEBUG o.springframework.boot.devtools.restart.Restarter - Restarting application
+2021-08-31 19:59:49.142 [Thread-47] DEBUG o.springframework.boot.devtools.restart.Restarter - Stopping application
+2021-08-31 19:59:49.143 [Thread-47] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2021-08-31 19:59:49.143 [Thread-47] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@4fd00a0c, started on Tue Aug 31 19:59:44 CST 2021
+2021-08-31 19:59:49.562 [Thread-47] DEBUG o.springframework.boot.devtools.restart.Restarter - Created RestartClassLoader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@155e794f
+2021-08-31 19:59:49.563 [Thread-47] DEBUG o.springframework.boot.devtools.restart.Restarter - Starting application com.gdutelc.snp.SnpApplication with URLs [file:/D:/java%20project/SNP-backend/target/classes/]
+2021-08-31 19:59:49.591 [restartedMain] DEBUG com.gdutelc.snp.SnpApplication - Running with Spring Boot v2.5.2, Spring v5.3.8
+2021-08-31 19:59:49.591 [restartedMain] DEBUG org.springframework.boot.SpringApplication - Loading source class com.gdutelc.snp.SnpApplication
+2021-08-31 19:59:49.593 [restartedMain] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@682cfb1c
+2021-08-31 19:59:49.730 [restartedMain] DEBUG o.s.boot.autoconfigure.AutoConfigurationPackages - @EnableAutoConfiguration was declared on a class in the package 'com.gdutelc.snp'. Automatic @Repository and @Entity scanning is enabled.
+2021-08-31 19:59:49.799 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 19:59:49.800 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 19:59:49.800 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - None of the document roots [src/main/webapp, public, static] point to a directory and will be ignored.
+2021-08-31 19:59:49.836 [restartedMain] DEBUG o.s.b.w.s.c.ServletWebServerApplicationContext - Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2021-08-31 19:59:49.842 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
+2021-08-31 19:59:49.842 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping servlets: dispatcherServlet urls=[/]
+2021-08-31 19:59:49.842 [restartedMain] DEBUG o.s.b.w.servlet.filter.OrderedRequestContextFilter - Filter 'requestContextFilter' configured for use
+2021-08-31 19:59:49.842 [restartedMain] DEBUG o.s.b.w.s.filter.OrderedCharacterEncodingFilter - Filter 'characterEncodingFilter' configured for use
+2021-08-31 19:59:49.843 [restartedMain] DEBUG o.s.b.web.servlet.filter.OrderedFormContentFilter - Filter 'formContentFilter' configured for use
+2021-08-31 19:59:49.937 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-08-31 19:59:49.943 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 18 mappings in 'requestMappingHandlerMapping'
+2021-08-31 19:59:49.953 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2021-08-31 19:59:49.958 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-08-31 19:59:50.010 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state LivenessState changed to CORRECT
+2021-08-31 19:59:50.011 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2021-08-31 20:00:01.491 [restartedMain] DEBUG com.gdutelc.snp.SnpApplication - Running with Spring Boot v2.5.2, Spring v5.3.8
+2021-08-31 20:00:01.492 [restartedMain] DEBUG org.springframework.boot.SpringApplication - Loading source class com.gdutelc.snp.SnpApplication
+2021-08-31 20:00:01.549 [restartedMain] DEBUG o.s.boot.devtools.restart.ChangeableUrls - Matching URLs for reloading : [file:/D:/java%20project/SNP-backend/target/classes/]
+2021-08-31 20:00:01.549 [restartedMain] DEBUG o.s.boot.devtools.settings.DevToolsSettings - Included patterns for restart : []
+2021-08-31 20:00:01.549 [restartedMain] DEBUG o.s.boot.devtools.settings.DevToolsSettings - Excluded patterns for restart : [/spring-boot-starter-[\w-]+/, /spring-boot/(bin|build|out)/, /spring-boot-starter/(bin|build|out)/, /spring-boot-devtools/(bin|build|out)/, /spring-boot-actuator/(bin|build|out)/, /spring-boot-autoconfigure/(bin|build|out)/]
+2021-08-31 20:00:01.550 [restartedMain] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1a26b0be
+2021-08-31 20:00:02.148 [restartedMain] DEBUG o.s.boot.autoconfigure.AutoConfigurationPackages - @EnableAutoConfiguration was declared on a class in the package 'com.gdutelc.snp'. Automatic @Repository and @Entity scanning is enabled.
+2021-08-31 20:00:02.944 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 20:00:02.945 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 20:00:02.945 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - None of the document roots [src/main/webapp, public, static] point to a directory and will be ignored.
+2021-08-31 20:00:03.068 [restartedMain] DEBUG o.s.b.w.s.c.ServletWebServerApplicationContext - Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2021-08-31 20:00:03.080 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
+2021-08-31 20:00:03.080 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping servlets: dispatcherServlet urls=[/]
+2021-08-31 20:00:03.093 [restartedMain] DEBUG o.s.b.w.servlet.filter.OrderedRequestContextFilter - Filter 'requestContextFilter' configured for use
+2021-08-31 20:00:03.093 [restartedMain] DEBUG o.s.b.w.s.filter.OrderedCharacterEncodingFilter - Filter 'characterEncodingFilter' configured for use
+2021-08-31 20:00:03.093 [restartedMain] DEBUG o.s.b.web.servlet.filter.OrderedFormContentFilter - Filter 'formContentFilter' configured for use
+2021-08-31 20:00:03.747 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-08-31 20:00:03.806 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 18 mappings in 'requestMappingHandlerMapping'
+2021-08-31 20:00:03.842 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2021-08-31 20:00:03.856 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-08-31 20:00:04.052 [restartedMain] DEBUG o.s.boot.devtools.livereload.LiveReloadServer - Starting live reload server on port 35729
+2021-08-31 20:00:04.108 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state LivenessState changed to CORRECT
+2021-08-31 20:00:04.110 [restartedMain] DEBUG o.springframework.boot.devtools.restart.Restarter - Creating new Restarter for thread Thread[main,5,main]
+2021-08-31 20:00:04.110 [restartedMain] DEBUG o.springframework.boot.devtools.restart.Restarter - Immediately restarting application
+2021-08-31 20:00:04.110 [restartedMain] DEBUG o.springframework.boot.devtools.restart.Restarter - Created RestartClassLoader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@69cd7126
+2021-08-31 20:00:04.110 [restartedMain] DEBUG o.springframework.boot.devtools.restart.Restarter - Starting application com.gdutelc.snp.SnpApplication with URLs [file:/D:/java%20project/SNP-backend/target/classes/]
+2021-08-31 20:00:04.111 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2021-08-31 20:00:08.240 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+2021-08-31 20:00:08.241 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+2021-08-31 20:00:08.241 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+2021-08-31 20:00:08.242 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@574a9e58
+2021-08-31 20:00:08.242 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@2eba42ac
+2021-08-31 20:00:08.242 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2021-08-31 20:00:08.247 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - POST "/user/appGetPhone", parameters={masked}
+2021-08-31 20:00:08.249 [http-nio-10080-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.gdutelc.snp.controller.UserApiController#appGetPhone(String, String)
+2021-08-31 20:00:08.276 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Failed to complete request: java.lang.NumberFormatException: null
+2021-08-31 20:00:08.284 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - "ERROR" dispatch for POST "/error", parameters={masked}
+2021-08-31 20:00:08.286 [http-nio-10080-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2021-08-31 20:00:08.302 [http-nio-10080-exec-1] DEBUG o.s.w.s.m.m.annotation.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-08-31 20:00:08.302 [http-nio-10080-exec-1] DEBUG o.s.w.s.m.m.annotation.HttpEntityMethodProcessor - Writing [{timestamp=Tue Aug 31 20:00:08 CST 2021, status=500, error=Internal Server Error, trace=java.lang.Nu (truncated)...]
+2021-08-31 20:00:08.323 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Exiting from "ERROR" dispatch, status 500
+2021-08-31 20:01:38.186 [main] DEBUG com.gdutelc.snp.JwtTests - Running with Spring Boot v2.5.2, Spring v5.3.8
+2021-08-31 20:01:52.414 [File Watcher] DEBUG o.springframework.boot.devtools.restart.Restarter - Restarting application
+2021-08-31 20:01:52.414 [Thread-5] DEBUG o.springframework.boot.devtools.restart.Restarter - Stopping application
+2021-08-31 20:01:52.414 [Thread-5] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2021-08-31 20:01:52.414 [Thread-5] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1a26b0be, started on Tue Aug 31 20:00:01 CST 2021
+2021-08-31 20:01:52.848 [Thread-5] DEBUG o.springframework.boot.devtools.restart.Restarter - Created RestartClassLoader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@f7dddcf
+2021-08-31 20:01:52.848 [Thread-5] DEBUG o.springframework.boot.devtools.restart.Restarter - Starting application com.gdutelc.snp.SnpApplication with URLs [file:/D:/java%20project/SNP-backend/target/classes/]
+2021-08-31 20:01:52.917 [restartedMain] DEBUG com.gdutelc.snp.SnpApplication - Running with Spring Boot v2.5.2, Spring v5.3.8
+2021-08-31 20:01:52.917 [restartedMain] DEBUG org.springframework.boot.SpringApplication - Loading source class com.gdutelc.snp.SnpApplication
+2021-08-31 20:01:52.920 [restartedMain] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3d8b9238
+2021-08-31 20:01:53.138 [restartedMain] DEBUG o.s.boot.autoconfigure.AutoConfigurationPackages - @EnableAutoConfiguration was declared on a class in the package 'com.gdutelc.snp'. Automatic @Repository and @Entity scanning is enabled.
+2021-08-31 20:01:53.223 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 20:01:53.224 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 20:01:53.224 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - None of the document roots [src/main/webapp, public, static] point to a directory and will be ignored.
+2021-08-31 20:01:53.273 [restartedMain] DEBUG o.s.b.w.s.c.ServletWebServerApplicationContext - Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2021-08-31 20:01:53.279 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
+2021-08-31 20:01:53.279 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping servlets: dispatcherServlet urls=[/]
+2021-08-31 20:01:53.280 [restartedMain] DEBUG o.s.b.w.servlet.filter.OrderedRequestContextFilter - Filter 'requestContextFilter' configured for use
+2021-08-31 20:01:53.280 [restartedMain] DEBUG o.s.b.w.s.filter.OrderedCharacterEncodingFilter - Filter 'characterEncodingFilter' configured for use
+2021-08-31 20:01:53.280 [restartedMain] DEBUG o.s.b.web.servlet.filter.OrderedFormContentFilter - Filter 'formContentFilter' configured for use
+2021-08-31 20:01:53.415 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-08-31 20:01:53.423 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 18 mappings in 'requestMappingHandlerMapping'
+2021-08-31 20:01:53.434 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2021-08-31 20:01:53.440 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-08-31 20:01:53.498 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state LivenessState changed to CORRECT
+2021-08-31 20:01:53.499 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2021-08-31 20:02:02.988 [File Watcher] DEBUG o.springframework.boot.devtools.restart.Restarter - Restarting application
+2021-08-31 20:02:02.989 [Thread-7] DEBUG o.springframework.boot.devtools.restart.Restarter - Stopping application
+2021-08-31 20:02:02.989 [Thread-7] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2021-08-31 20:02:02.989 [Thread-7] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3d8b9238, started on Tue Aug 31 20:01:52 CST 2021
+2021-08-31 20:02:03.413 [Thread-7] DEBUG o.springframework.boot.devtools.restart.Restarter - Created RestartClassLoader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@47d56e27
+2021-08-31 20:02:03.414 [Thread-7] DEBUG o.springframework.boot.devtools.restart.Restarter - Starting application com.gdutelc.snp.SnpApplication with URLs [file:/D:/java%20project/SNP-backend/target/classes/]
+2021-08-31 20:02:03.459 [restartedMain] DEBUG com.gdutelc.snp.SnpApplication - Running with Spring Boot v2.5.2, Spring v5.3.8
+2021-08-31 20:02:03.459 [restartedMain] DEBUG org.springframework.boot.SpringApplication - Loading source class com.gdutelc.snp.SnpApplication
+2021-08-31 20:02:03.462 [restartedMain] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@5aa793c7
+2021-08-31 20:02:03.620 [restartedMain] DEBUG o.s.boot.autoconfigure.AutoConfigurationPackages - @EnableAutoConfiguration was declared on a class in the package 'com.gdutelc.snp'. Automatic @Repository and @Entity scanning is enabled.
+2021-08-31 20:02:03.712 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 20:02:03.713 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 20:02:03.713 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - None of the document roots [src/main/webapp, public, static] point to a directory and will be ignored.
+2021-08-31 20:02:03.752 [restartedMain] DEBUG o.s.b.w.s.c.ServletWebServerApplicationContext - Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2021-08-31 20:02:03.760 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
+2021-08-31 20:02:03.761 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping servlets: dispatcherServlet urls=[/]
+2021-08-31 20:02:03.761 [restartedMain] DEBUG o.s.b.w.servlet.filter.OrderedRequestContextFilter - Filter 'requestContextFilter' configured for use
+2021-08-31 20:02:03.761 [restartedMain] DEBUG o.s.b.w.s.filter.OrderedCharacterEncodingFilter - Filter 'characterEncodingFilter' configured for use
+2021-08-31 20:02:03.762 [restartedMain] DEBUG o.s.b.web.servlet.filter.OrderedFormContentFilter - Filter 'formContentFilter' configured for use
+2021-08-31 20:02:03.894 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-08-31 20:02:03.904 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 18 mappings in 'requestMappingHandlerMapping'
+2021-08-31 20:02:03.917 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2021-08-31 20:02:03.923 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-08-31 20:02:03.987 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state LivenessState changed to CORRECT
+2021-08-31 20:02:03.988 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2021-08-31 20:02:08.763 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+2021-08-31 20:02:08.763 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+2021-08-31 20:02:08.763 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+2021-08-31 20:02:08.764 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@56d03fa9
+2021-08-31 20:02:08.764 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@5817db03
+2021-08-31 20:02:08.764 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2021-08-31 20:02:08.764 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - POST "/user/appGetPhone", parameters={masked}
+2021-08-31 20:02:08.764 [http-nio-10080-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.gdutelc.snp.controller.UserApiController#appGetPhone(String, String)
+2021-08-31 20:02:11.308 [http-nio-10080-exec-1] DEBUG com.gdutelc.snp.dao.IUserDao.getOpenidByUid - ==>  Preparing: SELECT openid FROM db_sign_up.t_user WHERE uid = ? LIMIT 1
+2021-08-31 20:02:11.322 [http-nio-10080-exec-1] DEBUG com.gdutelc.snp.dao.IUserDao.getOpenidByUid - ==> Parameters: 1(Integer)
+2021-08-31 20:02:11.505 [http-nio-10080-exec-1] DEBUG com.gdutelc.snp.dao.IUserDao.getOpenidByUid - <==      Total: 1
+2021-08-31 20:02:12.370 [http-nio-10080-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-08-31 20:02:12.373 [http-nio-10080-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=1, msg=成功, data=null)]
+2021-08-31 20:02:12.374 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2021-08-31 20:02:28.592 [File Watcher] DEBUG o.springframework.boot.devtools.restart.Restarter - Restarting application
+2021-08-31 20:02:28.593 [Thread-11] DEBUG o.springframework.boot.devtools.restart.Restarter - Stopping application
+2021-08-31 20:02:28.593 [Thread-11] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2021-08-31 20:02:28.593 [Thread-11] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@5aa793c7, started on Tue Aug 31 20:02:03 CST 2021
+2021-08-31 20:02:59.049 [Thread-11] DEBUG o.springframework.boot.devtools.restart.Restarter - Created RestartClassLoader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@41b35ca0
+2021-08-31 20:02:59.049 [Thread-11] DEBUG o.springframework.boot.devtools.restart.Restarter - Starting application com.gdutelc.snp.SnpApplication with URLs [file:/D:/java%20project/SNP-backend/target/classes/]
+2021-08-31 20:02:59.086 [restartedMain] DEBUG com.gdutelc.snp.SnpApplication - Running with Spring Boot v2.5.2, Spring v5.3.8
+2021-08-31 20:02:59.086 [restartedMain] DEBUG org.springframework.boot.SpringApplication - Loading source class com.gdutelc.snp.SnpApplication
+2021-08-31 20:02:59.088 [restartedMain] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2439f746
+2021-08-31 20:02:59.214 [restartedMain] DEBUG o.s.boot.autoconfigure.AutoConfigurationPackages - @EnableAutoConfiguration was declared on a class in the package 'com.gdutelc.snp'. Automatic @Repository and @Entity scanning is enabled.
+2021-08-31 20:02:59.281 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 20:02:59.281 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 20:02:59.281 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - None of the document roots [src/main/webapp, public, static] point to a directory and will be ignored.
+2021-08-31 20:02:59.314 [restartedMain] DEBUG o.s.b.w.s.c.ServletWebServerApplicationContext - Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2021-08-31 20:02:59.322 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
+2021-08-31 20:02:59.322 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping servlets: dispatcherServlet urls=[/]
+2021-08-31 20:02:59.322 [restartedMain] DEBUG o.s.b.w.servlet.filter.OrderedRequestContextFilter - Filter 'requestContextFilter' configured for use
+2021-08-31 20:02:59.323 [restartedMain] DEBUG o.s.b.w.s.filter.OrderedCharacterEncodingFilter - Filter 'characterEncodingFilter' configured for use
+2021-08-31 20:02:59.323 [restartedMain] DEBUG o.s.b.web.servlet.filter.OrderedFormContentFilter - Filter 'formContentFilter' configured for use
+2021-08-31 20:02:59.436 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-08-31 20:02:59.443 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 18 mappings in 'requestMappingHandlerMapping'
+2021-08-31 20:02:59.458 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2021-08-31 20:02:59.465 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-08-31 20:03:01.965 [restartedMain] DEBUG com.gdutelc.snp.SnpApplication - Running with Spring Boot v2.5.2, Spring v5.3.8
+2021-08-31 20:03:01.968 [restartedMain] DEBUG org.springframework.boot.SpringApplication - Loading source class com.gdutelc.snp.SnpApplication
+2021-08-31 20:03:02.009 [restartedMain] DEBUG o.s.boot.devtools.restart.ChangeableUrls - Matching URLs for reloading : [file:/D:/java%20project/SNP-backend/target/classes/]
+2021-08-31 20:03:02.009 [restartedMain] DEBUG o.s.boot.devtools.settings.DevToolsSettings - Included patterns for restart : []
+2021-08-31 20:03:02.010 [restartedMain] DEBUG o.s.boot.devtools.settings.DevToolsSettings - Excluded patterns for restart : [/spring-boot-starter-[\w-]+/, /spring-boot/(bin|build|out)/, /spring-boot-starter/(bin|build|out)/, /spring-boot-devtools/(bin|build|out)/, /spring-boot-actuator/(bin|build|out)/, /spring-boot-autoconfigure/(bin|build|out)/]
+2021-08-31 20:03:02.010 [restartedMain] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@19eb6442
+2021-08-31 20:03:02.570 [restartedMain] DEBUG o.s.boot.autoconfigure.AutoConfigurationPackages - @EnableAutoConfiguration was declared on a class in the package 'com.gdutelc.snp'. Automatic @Repository and @Entity scanning is enabled.
+2021-08-31 20:03:03.369 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 20:03:03.369 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-08-31 20:03:03.369 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - None of the document roots [src/main/webapp, public, static] point to a directory and will be ignored.
+2021-08-31 20:03:03.498 [restartedMain] DEBUG o.s.b.w.s.c.ServletWebServerApplicationContext - Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2021-08-31 20:03:03.511 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
+2021-08-31 20:03:03.511 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping servlets: dispatcherServlet urls=[/]
+2021-08-31 20:03:03.524 [restartedMain] DEBUG o.s.b.w.servlet.filter.OrderedRequestContextFilter - Filter 'requestContextFilter' configured for use
+2021-08-31 20:03:03.525 [restartedMain] DEBUG o.s.b.w.s.filter.OrderedCharacterEncodingFilter - Filter 'characterEncodingFilter' configured for use
+2021-08-31 20:03:03.525 [restartedMain] DEBUG o.s.b.web.servlet.filter.OrderedFormContentFilter - Filter 'formContentFilter' configured for use
+2021-08-31 20:03:04.028 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-08-31 20:03:04.070 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 18 mappings in 'requestMappingHandlerMapping'
+2021-08-31 20:03:04.098 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2021-08-31 20:03:04.109 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-08-31 20:03:04.260 [restartedMain] DEBUG o.s.boot.devtools.livereload.LiveReloadServer - Starting live reload server on port 35729
+2021-08-31 20:03:04.300 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state LivenessState changed to CORRECT
+2021-08-31 20:03:04.301 [restartedMain] DEBUG o.springframework.boot.devtools.restart.Restarter - Creating new Restarter for thread Thread[main,5,main]
+2021-08-31 20:03:04.301 [restartedMain] DEBUG o.springframework.boot.devtools.restart.Restarter - Immediately restarting application
+2021-08-31 20:03:04.301 [restartedMain] DEBUG o.springframework.boot.devtools.restart.Restarter - Created RestartClassLoader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@5f5aad6c
+2021-08-31 20:03:04.301 [restartedMain] DEBUG o.springframework.boot.devtools.restart.Restarter - Starting application com.gdutelc.snp.SnpApplication with URLs [file:/D:/java%20project/SNP-backend/target/classes/]
+2021-08-31 20:03:04.301 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2021-08-31 20:03:20.649 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+2021-08-31 20:03:20.650 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+2021-08-31 20:03:20.650 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+2021-08-31 20:03:20.650 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@5b8a975b
+2021-08-31 20:03:20.650 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@1c68dbe0
+2021-08-31 20:03:20.650 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2021-08-31 20:03:20.655 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - POST "/user/appGetPhone", parameters={masked}
+2021-08-31 20:03:20.657 [http-nio-10080-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.gdutelc.snp.controller.UserApiController#appGetPhone(String, String)
+2021-08-31 20:03:23.073 [http-nio-10080-exec-1] DEBUG com.gdutelc.snp.dao.IUserDao.getOpenidByUid - ==>  Preparing: SELECT openid FROM db_sign_up.t_user WHERE uid = ? LIMIT 1
+2021-08-31 20:03:23.086 [http-nio-10080-exec-1] DEBUG com.gdutelc.snp.dao.IUserDao.getOpenidByUid - ==> Parameters: 1(Integer)
+2021-08-31 20:03:23.261 [http-nio-10080-exec-1] DEBUG com.gdutelc.snp.dao.IUserDao.getOpenidByUid - <==      Total: 1
+2021-08-31 20:03:24.081 [http-nio-10080-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-08-31 20:03:24.085 [http-nio-10080-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=1, msg=成功, data=null)]
+2021-08-31 20:03:24.095 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2021-08-31 20:03:29.944 [http-nio-10080-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - POST "/user/appGetPhone", parameters={masked}
+2021-08-31 20:03:29.944 [http-nio-10080-exec-2] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.gdutelc.snp.controller.UserApiController#appGetPhone(String, String)
+2021-08-31 20:03:30.111 [http-nio-10080-exec-2] DEBUG com.gdutelc.snp.dao.IUserDao.getOpenidByUid - ==>  Preparing: SELECT openid FROM db_sign_up.t_user WHERE uid = ? LIMIT 1
+2021-08-31 20:03:30.111 [http-nio-10080-exec-2] DEBUG com.gdutelc.snp.dao.IUserDao.getOpenidByUid - ==> Parameters: 1(Integer)
+2021-08-31 20:03:30.277 [http-nio-10080-exec-2] DEBUG com.gdutelc.snp.dao.IUserDao.getOpenidByUid - <==      Total: 1
+2021-08-31 20:03:30.280 [http-nio-10080-exec-2] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-08-31 20:03:30.280 [http-nio-10080-exec-2] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=1, msg=成功, data=null)]
+2021-08-31 20:03:30.281 [http-nio-10080-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2021-08-31 20:03:33.339 [http-nio-10080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - POST "/user/appGetPhone", parameters={masked}
+2021-08-31 20:03:33.339 [http-nio-10080-exec-3] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.gdutelc.snp.controller.UserApiController#appGetPhone(String, String)
+2021-08-31 20:03:33.505 [http-nio-10080-exec-3] DEBUG com.gdutelc.snp.dao.IUserDao.getOpenidByUid - ==>  Preparing: SELECT openid FROM db_sign_up.t_user WHERE uid = ? LIMIT 1
+2021-08-31 20:03:33.506 [http-nio-10080-exec-3] DEBUG com.gdutelc.snp.dao.IUserDao.getOpenidByUid - ==> Parameters: 1(Integer)
+2021-08-31 20:03:33.671 [http-nio-10080-exec-3] DEBUG com.gdutelc.snp.dao.IUserDao.getOpenidByUid - <==      Total: 1
+2021-08-31 20:03:33.673 [http-nio-10080-exec-3] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-08-31 20:03:33.673 [http-nio-10080-exec-3] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=1, msg=成功, data=null)]
+2021-08-31 20:03:33.674 [http-nio-10080-exec-3] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2021-08-31 20:03:36.125 [http-nio-10080-exec-4] DEBUG org.springframework.web.servlet.DispatcherServlet - POST "/user/appGetPhone", parameters={masked}
+2021-08-31 20:03:36.125 [http-nio-10080-exec-4] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.gdutelc.snp.controller.UserApiController#appGetPhone(String, String)
+2021-08-31 20:03:36.291 [http-nio-10080-exec-4] DEBUG com.gdutelc.snp.dao.IUserDao.getOpenidByUid - ==>  Preparing: SELECT openid FROM db_sign_up.t_user WHERE uid = ? LIMIT 1
+2021-08-31 20:03:36.292 [http-nio-10080-exec-4] DEBUG com.gdutelc.snp.dao.IUserDao.getOpenidByUid - ==> Parameters: 1(Integer)
+2021-08-31 20:03:36.457 [http-nio-10080-exec-4] DEBUG com.gdutelc.snp.dao.IUserDao.getOpenidByUid - <==      Total: 1
+2021-08-31 20:03:36.459 [http-nio-10080-exec-4] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-08-31 20:03:36.460 [http-nio-10080-exec-4] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=1, msg=成功, data=null)]
+2021-08-31 20:03:36.460 [http-nio-10080-exec-4] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2021-08-31 20:06:00.845 [http-nio-10080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - POST "/user/appGetPhone", parameters={masked}
+2021-08-31 20:06:00.845 [http-nio-10080-exec-5] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.gdutelc.snp.controller.UserApiController#appGetPhone(String, String)
+2021-08-31 20:06:01.004 [http-nio-10080-exec-5] DEBUG com.gdutelc.snp.dao.IUserDao.getOpenidByUid - ==>  Preparing: SELECT openid FROM db_sign_up.t_user WHERE uid = ? LIMIT 1
+2021-08-31 20:06:01.004 [http-nio-10080-exec-5] DEBUG com.gdutelc.snp.dao.IUserDao.getOpenidByUid - ==> Parameters: 1(Integer)
+2021-08-31 20:06:01.169 [http-nio-10080-exec-5] DEBUG com.gdutelc.snp.dao.IUserDao.getOpenidByUid - <==      Total: 1
+2021-08-31 20:06:01.174 [http-nio-10080-exec-5] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-08-31 20:06:01.174 [http-nio-10080-exec-5] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=1, msg=成功, data=null)]
+2021-08-31 20:06:01.174 [http-nio-10080-exec-5] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK

@@ -45,6 +45,7 @@ public class UserJwtInterceptor implements HandlerInterceptor {
             throw new JwtErrorException(Status.JWTMISSERROR);
         }
         String uid = userJwtConfig.getPayload(cookie).get("uid");
+        System.out.println(uid);
 
         String openid = userDao.getOpenidByUid(Integer.parseInt(uid));
         System.out.println(openid);

@@ -19,6 +19,7 @@ import com.gdutelc.snp.util.QrCodeUtil;
 import com.gdutelc.snp.util.RedisUtil;
 import com.github.kevinsawicki.http.HttpRequest;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import javax.annotation.Resource;
@@ -64,6 +65,9 @@ public class UserApiServiceImpl implements UserApiService {
 
     @Resource
     private PhoneUtil phoneUtil;
+
+    @Resource
+    private KafkaTemplate kafkaTemplate;
 
 
 
@@ -260,7 +264,7 @@ public class UserApiServiceImpl implements UserApiService {
 
 
     @Override
-    public String sign(String jwt, Dsign dsign,boolean app,String phone) {
+    public String sign(String jwt, Dsign dsign,boolean app,String checkCode) {
         try{
             String uid;
             if (app){
@@ -268,11 +272,26 @@ public class UserApiServiceImpl implements UserApiService {
             }else{
                  uid = userWebJwtConfig.getPayload(jwt).get("uid");
             }
-            if (phone != null){
-                String openid = userCache.getUserByUid(Integer.parseInt(uid)).getOpenid();
-                userDao.updatePhoneByOpenid(openid,phone);
-                phoneUtil.sendMessage(phone);
+            String openid = userCache.getUserByUid(Integer.parseInt(uid)).getOpenid();
+            Map<String,Object> claims = new HashMap<>(8);
+            claims.put("uid",uid);
+            claims.put("phone",false);
+            if(checkCode != null){
+                String phone = userCache.getPhoneByUid(Integer.parseInt(uid));
+                try{
+                    Assert.state(!phone.equals(Integer.toString(0)),Status.GETPHONEERROR.getMsg());
+                }catch (Exception e){
+                    throw new UserServiceException(Status.GETPHONEERROR);
+                }
 
+                boolean judge = phoneUtil.checkCode(checkCode, phone);
+
+                if (judge){
+                    claims.put("phone",true);
+                }else{
+                    claims.put("phone",false);
+
+                }
             }
             if (iSignDao.getSignByUid(Integer.parseInt(uid)) == null){
                 Sign sign = new Sign(null,Integer.parseInt(uid),dsign.getName(),dsign.getGrade(),dsign.getCollege(),dsign.getMajor(),
@@ -284,44 +303,29 @@ public class UserApiServiceImpl implements UserApiService {
             }else{
                 signCache.updateDsignInformByUid(dsign,Integer.parseInt(uid));
             }
-            return Integer.toString(1);
+            if (app){
+                return userJwtConfig.createJwt(claims, openid);
+            }
+            return userWebJwtConfig.createJwt(claims,openid);
         }catch (Exception e){
             throw new UserServiceException(Status.POSTAPPSIGNERROR);
         }
     }
 
     @Override
-    public String checkPhone(String cookie, String code, boolean app) {
+    public boolean getPhone(String jwt, String phone, boolean app) {
         String uid;
         if (app){
-             uid = userJwtConfig.getPayload(cookie).get("uid");
+             uid = userJwtConfig.getPayload(jwt).get("uid");
         }else{
-            uid = userWebJwtConfig.getPayload(cookie).get("uid");
+            uid = userWebJwtConfig.getPayload(jwt).get("uid");
         }
-        String openid = userCache.getUserByUid(Integer.parseInt(uid)).getOpenid();
-
-        String phone = userCache.getPhoneByUid(Integer.parseInt(uid));
-
         try{
-            Assert.state(!phone.equals(Integer.toString(0)),Status.GETPHONEERROR.getMsg());
+            kafkaTemplate.send("phone",phone);
+            return true;
         }catch (Exception e){
-            throw new UserServiceException(Status.GETPHONEERROR);
+            return false;
         }
-
-        boolean judge = phoneUtil.checkCode(code, phone);
-        Map<String,Object> claims = new HashMap<>(8);
-        claims.put("uid",uid);
-        if (judge){
-            claims.put("phone",true);
-        }else{
-            claims.put("phone",false);
-
-        }
-        if (app){
-            return userJwtConfig.createJwt(claims, openid);
-        }
-        return userWebJwtConfig.createJwt(claims,openid);
-
     }
 
 

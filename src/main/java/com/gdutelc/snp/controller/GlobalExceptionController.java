@@ -42,7 +42,7 @@ public class GlobalExceptionController extends BaseController{
         log.error(e.getMessage(), e);
         return Return.error(Status.REQUESTERROREXCEPTION);
     }
-//    @ExceptionHandler()
+
 
 
 }

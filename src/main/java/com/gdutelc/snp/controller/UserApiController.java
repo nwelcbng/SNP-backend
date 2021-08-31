@@ -7,7 +7,6 @@ import com.gdutelc.snp.result.Result;
 import com.gdutelc.snp.result.Return;
 import com.gdutelc.snp.result.Status;
 import com.gdutelc.snp.service.UserApiService;
-import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.util.Map;
@@ -116,14 +115,14 @@ public class UserApiController  extends BaseController{
                                @RequestParam("dno") Integer dno, @RequestParam("secdno") Integer secdno,
                                @RequestParam("gender") Boolean gender, @RequestParam("sno") String sno,
                                @RequestParam("qq") String qq, @RequestParam("domitory") String domitory,
-                               @RequestParam("know") String know, @RequestParam("party") String party,@RequestParam(value = "phone",required = false) String phone) {
+                               @RequestParam("know") String know, @RequestParam("party") String party,@RequestParam(value = "checkCode",required = false) String checkCode) {
 
         Dsign dsign = new Dsign(name, grade, college, major, userclass, dsp, dno, secdno, gender, sno, qq, domitory, know, party);
-        String judge = userApiService.sign(jwt,dsign,true,phone);
-        if(judge == null){
+        String newJwt = userApiService.sign(jwt,dsign,true,checkCode);
+        if(newJwt == null){
             return Return.error(Status.POSTAPPSIGNERROR);
         }else{
-            return Return.success(judge);
+            return Return.success(newJwt);
         }
 
     }
@@ -137,10 +136,10 @@ public class UserApiController  extends BaseController{
                                @RequestParam("dno") Integer dno, @RequestParam("secdno") Integer secdno,
                                @RequestParam("gender") Boolean gender, @RequestParam("sno") String sno,
                                @RequestParam("qq") String qq, @RequestParam("domitory") String domitory,
-                               @RequestParam("know") String know, @RequestParam("party") String party,@RequestParam(value = "phone",required = false) String phone) {
+                               @RequestParam("know") String know, @RequestParam("party") String party,@RequestParam(value = "checkCode",required = false) String checkCode) {
 
         Dsign dsign = new Dsign(name, grade, college, major, userclass, dsp, dno, secdno, gender, sno, qq, domitory, know, party);
-        String newJwt = userApiService.sign(jwt,dsign,false,phone);
+        String newJwt = userApiService.sign(jwt,dsign,false,checkCode);
         if(newJwt == null){
             return Return.error(Status.POSTAPPSIGNERROR);
         }else{
@@ -149,23 +148,32 @@ public class UserApiController  extends BaseController{
     }
 
     @UserJwt
-    @PostMapping("/user/appCheckPhone")
-    public  Result<Object> appCheckPhone(@RequestHeader("Cookie") String jwt, @RequestParam("checkCode") String code){
+    @PostMapping("/user/appGetPhone")
+    public Result<Object> appGetPhone(@RequestHeader("Cookie") String jwt,@RequestParam("phone") String phone ){
+        boolean judge = userApiService.getPhone(jwt, phone, true);
+        if (!judge){
+            return Return.error(Status.POSTPHONEERROR);
+        }else{
+            return Return.success();
+        }
 
-        String newJwt = userApiService.checkPhone(jwt, code, true);
-        Assert.notNull(newJwt, Status.CHECKPHONEERROR.getMsg());
 
-        return Return.success(newJwt);
     }
 
     @UserWebJwt
-    @PostMapping("/user/webCheckPhone")
-    public  Result<Object> webCheckPhone(@RequestHeader("Cookie") String jwt, @RequestParam("checkCode") String code){
+    @PostMapping("/user/webGetPhone")
+    public Result<Object> webGetPhone(@RequestHeader("Cookie") String jwt,@RequestParam("phone") String phone ){
+        boolean judge = userApiService.getPhone(jwt, phone, false);
+        if (!judge){
+            return Return.error(Status.POSTPHONEERROR);
+        }else{
+            return Return.success();
+        }
 
-        String newJwt = userApiService.checkPhone(jwt, code, false);
-        Assert.notNull(newJwt, Status.CHECKPHONEERROR.getMsg());
-        return Return.success(newJwt);
     }
+
+
+
 
 
 

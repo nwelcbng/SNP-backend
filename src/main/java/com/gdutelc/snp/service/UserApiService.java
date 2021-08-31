@@ -76,16 +76,18 @@ public interface UserApiService {
      * @param app
      * @return  返回jwt
      */
-    String sign(String jwt, Dsign dsign,boolean app,String phone);
+    String sign(String jwt, Dsign dsign,boolean app,String checkCode);
+
 
     /**
-     * 验证码校验
-     * @param cookie
-     * @param code
+     * 获取手机
+     * @param jwt
+     * @param phone
      * @param app
-     * @return  返回jwt
+     * @return  返回是否成功获取
      */
-    String checkPhone(String cookie,String code, boolean app);
+    boolean getPhone(String jwt, String phone, boolean app);
+
 
 
 

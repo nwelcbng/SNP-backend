@@ -1,0 +1,6 @@
+2021-08-28 10:26:39.097 [kafka-producer-network-thread | producer-1] ERROR o.s.kafka.support.LoggingProducerListener - Exception thrown when sending a message with key='null' and payload='17727329450' to topic phone:
+org.apache.kafka.common.KafkaException: Producer is closed forcefully.
+	at org.apache.kafka.clients.producer.internals.RecordAccumulator.abortBatches(RecordAccumulator.java:750)
+	at org.apache.kafka.clients.producer.internals.RecordAccumulator.abortIncompleteBatches(RecordAccumulator.java:737)
+	at org.apache.kafka.clients.producer.internals.Sender.run(Sender.java:280)
+	at java.base/java.lang.Thread.run(Thread.java:834)
