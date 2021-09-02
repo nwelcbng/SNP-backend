@@ -22,6 +22,7 @@ public class JwtTests {
         jwtConfig.setHeader("jwt");
         HashMap<String,Object> claims = new HashMap<>();
         claims.put("uid",1);
+        claims.put("phone",false);
         String jwt = jwtConfig.createJwt(claims, "oPndU5eWqEkM2101oOOf_rWSM3Fk");
         System.out.println(jwt);
 

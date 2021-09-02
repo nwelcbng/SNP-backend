@@ -67,7 +67,7 @@ public class UserApiServiceImpl implements UserApiService {
     private PhoneUtil phoneUtil;
 
     @Resource
-    private KafkaTemplate kafkaTemplate;
+    private KafkaTemplate<String,Object> kafkaTemplate;
 
 
 
@@ -314,12 +314,6 @@ public class UserApiServiceImpl implements UserApiService {
 
     @Override
     public boolean getPhone(String jwt, String phone, boolean app) {
-        String uid;
-        if (app){
-             uid = userJwtConfig.getPayload(jwt).get("uid");
-        }else{
-            uid = userWebJwtConfig.getPayload(jwt).get("uid");
-        }
         try{
             kafkaTemplate.send("phone",phone);
             return true;

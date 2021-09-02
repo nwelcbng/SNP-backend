@@ -11,6 +11,8 @@ import com.gdutelc.snp.exception.AdminServiceException;
 import com.gdutelc.snp.result.Status;
 import com.gdutelc.snp.service.AdminApiService;
 import com.gdutelc.snp.util.RedisUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -24,6 +26,7 @@ import java.util.Map;
  */
 @Service
 public class AdminApiServiceImpl implements AdminApiService {
+    protected final Logger log = LoggerFactory.getLogger(this.getClass());
     @Resource
     AdminJwtConfig adminJwtConfig;
 
@@ -34,7 +37,7 @@ public class AdminApiServiceImpl implements AdminApiService {
     private SignCache signCache;
 
     @Resource
-    private KafkaTemplate kafkaTemplate;
+    private KafkaTemplate<String, Object> kafkaTemplate;
 
     @Resource
     private UserCache userCache;
@@ -108,9 +111,13 @@ public class AdminApiServiceImpl implements AdminApiService {
 
             Message message = new Message(dsign.getName(),admin.getAdno(),session,opneid);
             if (check){
-                kafkaTemplate.send("success",message);
+                kafkaTemplate.send("success",message).addCallback(success-> log.info("成功往kafka传入confirm信息"), fail->{
+                    throw new AdminServiceException(Status.CONFIRMFAIL);
+                });
             }else{
-                kafkaTemplate.send("fail",message);
+                kafkaTemplate.send("fail",message).addCallback(success-> log.info("成功往kafka传入confirm信息"), fail->{
+                    throw new AdminServiceException(Status.CONFIRMFAIL);
+                });
             }
             return true;
         }catch (Exception e){
