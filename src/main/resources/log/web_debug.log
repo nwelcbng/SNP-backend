@@ -1696,3 +1696,160 @@ org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying b
 2021-09-14 22:55:28.968 [restartedMain] DEBUG o.springframework.boot.devtools.restart.Restarter - Created RestartClassLoader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@3c5cea0e
 2021-09-14 22:55:28.968 [restartedMain] DEBUG o.springframework.boot.devtools.restart.Restarter - Starting application com.gdutelc.snp.SnpApplication with URLs [file:/D:/java%20project/SNP-backend/target/classes/]
 2021-09-14 22:55:28.969 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2021-09-14 22:58:25.672 [File Watcher] DEBUG o.springframework.boot.devtools.restart.Restarter - Restarting application
+2021-09-14 22:58:25.674 [Thread-5] DEBUG o.springframework.boot.devtools.restart.Restarter - Stopping application
+2021-09-14 22:58:25.674 [Thread-5] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2021-09-14 22:58:25.674 [Thread-5] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2b86ccc8, started on Tue Sep 14 22:55:26 CST 2021
+2021-09-14 22:58:26.161 [Thread-5] DEBUG o.springframework.boot.devtools.restart.Restarter - Created RestartClassLoader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@96af33b
+2021-09-14 22:58:26.161 [Thread-5] DEBUG o.springframework.boot.devtools.restart.Restarter - Starting application com.gdutelc.snp.SnpApplication with URLs [file:/D:/java%20project/SNP-backend/target/classes/]
+2021-09-14 22:58:26.243 [restartedMain] DEBUG com.gdutelc.snp.SnpApplication - Running with Spring Boot v2.5.2, Spring v5.3.8
+2021-09-14 22:58:26.243 [restartedMain] DEBUG org.springframework.boot.SpringApplication - Loading source class com.gdutelc.snp.SnpApplication
+2021-09-14 22:58:26.253 [restartedMain] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@199f78b2
+2021-09-14 22:58:26.720 [restartedMain] DEBUG o.s.boot.autoconfigure.AutoConfigurationPackages - @EnableAutoConfiguration was declared on a class in the package 'com.gdutelc.snp'. Automatic @Repository and @Entity scanning is enabled.
+2021-09-14 22:58:26.843 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-09-14 22:58:26.843 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-09-14 22:58:26.843 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - None of the document roots [src/main/webapp, public, static] point to a directory and will be ignored.
+2021-09-14 22:58:26.893 [restartedMain] DEBUG o.s.b.w.s.c.ServletWebServerApplicationContext - Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2021-09-14 22:58:26.904 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
+2021-09-14 22:58:26.904 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping servlets: dispatcherServlet urls=[/]
+2021-09-14 22:58:26.904 [restartedMain] DEBUG o.s.b.w.servlet.filter.OrderedRequestContextFilter - Filter 'requestContextFilter' configured for use
+2021-09-14 22:58:26.904 [restartedMain] DEBUG o.s.b.w.s.filter.OrderedCharacterEncodingFilter - Filter 'characterEncodingFilter' configured for use
+2021-09-14 22:58:26.905 [restartedMain] DEBUG o.s.b.web.servlet.filter.OrderedFormContentFilter - Filter 'formContentFilter' configured for use
+2021-09-14 22:58:27.062 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-09-14 22:58:27.071 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 21 mappings in 'requestMappingHandlerMapping'
+2021-09-14 22:58:27.084 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2021-09-14 22:58:27.088 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-09-14 22:58:27.148 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state LivenessState changed to CORRECT
+2021-09-14 22:58:27.150 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2021-09-14 23:03:38.847 [restartedMain] DEBUG com.gdutelc.snp.SnpApplication - Running with Spring Boot v2.5.2, Spring v5.3.8
+2021-09-14 23:03:38.848 [restartedMain] DEBUG org.springframework.boot.SpringApplication - Loading source class com.gdutelc.snp.SnpApplication
+2021-09-14 23:03:38.895 [restartedMain] DEBUG o.s.boot.devtools.restart.ChangeableUrls - Matching URLs for reloading : [file:/D:/java%20project/SNP-backend/target/classes/]
+2021-09-14 23:03:38.895 [restartedMain] DEBUG o.s.boot.devtools.settings.DevToolsSettings - Included patterns for restart : []
+2021-09-14 23:03:38.895 [restartedMain] DEBUG o.s.boot.devtools.settings.DevToolsSettings - Excluded patterns for restart : [/spring-boot-starter-[\w-]+/, /spring-boot/(bin|build|out)/, /spring-boot-starter/(bin|build|out)/, /spring-boot-devtools/(bin|build|out)/, /spring-boot-actuator/(bin|build|out)/, /spring-boot-autoconfigure/(bin|build|out)/]
+2021-09-14 23:03:38.897 [restartedMain] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@7b9af58
+2021-09-14 23:03:39.741 [restartedMain] DEBUG o.s.boot.autoconfigure.AutoConfigurationPackages - @EnableAutoConfiguration was declared on a class in the package 'com.gdutelc.snp'. Automatic @Repository and @Entity scanning is enabled.
+2021-09-14 23:03:40.856 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-09-14 23:03:40.857 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - Code archive: C:\Users\10501\.m2\repository\org\springframework\boot\spring-boot\2.5.2\spring-boot-2.5.2.jar
+2021-09-14 23:03:40.857 [restartedMain] DEBUG o.s.b.w.e.tomcat.TomcatServletWebServerFactory - None of the document roots [src/main/webapp, public, static] point to a directory and will be ignored.
+2021-09-14 23:03:41.158 [restartedMain] DEBUG o.s.b.w.s.c.ServletWebServerApplicationContext - Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2021-09-14 23:03:41.230 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
+2021-09-14 23:03:41.231 [restartedMain] DEBUG o.s.b.web.servlet.ServletContextInitializerBeans - Mapping servlets: dispatcherServlet urls=[/]
+2021-09-14 23:03:41.256 [restartedMain] DEBUG o.s.b.w.servlet.filter.OrderedRequestContextFilter - Filter 'requestContextFilter' configured for use
+2021-09-14 23:03:41.257 [restartedMain] DEBUG o.s.b.w.s.filter.OrderedCharacterEncodingFilter - Filter 'characterEncodingFilter' configured for use
+2021-09-14 23:03:41.257 [restartedMain] DEBUG o.s.b.web.servlet.filter.OrderedFormContentFilter - Filter 'formContentFilter' configured for use
+2021-09-14 23:03:41.975 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-09-14 23:03:42.053 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 21 mappings in 'requestMappingHandlerMapping'
+2021-09-14 23:03:42.101 [restartedMain] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2021-09-14 23:03:42.118 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-09-14 23:03:42.371 [restartedMain] DEBUG o.s.boot.devtools.livereload.LiveReloadServer - Starting live reload server on port 35729
+2021-09-14 23:03:42.449 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state LivenessState changed to CORRECT
+2021-09-14 23:03:42.452 [restartedMain] DEBUG o.springframework.boot.devtools.restart.Restarter - Creating new Restarter for thread Thread[main,5,main]
+2021-09-14 23:03:42.452 [restartedMain] DEBUG o.springframework.boot.devtools.restart.Restarter - Immediately restarting application
+2021-09-14 23:03:42.452 [restartedMain] DEBUG o.springframework.boot.devtools.restart.Restarter - Created RestartClassLoader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@7d26a2e6
+2021-09-14 23:03:42.452 [restartedMain] DEBUG o.springframework.boot.devtools.restart.Restarter - Starting application com.gdutelc.snp.SnpApplication with URLs [file:/D:/java%20project/SNP-backend/target/classes/]
+2021-09-14 23:03:42.453 [restartedMain] DEBUG o.s.boot.availability.ApplicationAvailabilityBean - Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2021-09-14 23:03:59.071 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+2021-09-14 23:03:59.072 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+2021-09-14 23:03:59.072 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+2021-09-14 23:03:59.073 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@762a6921
+2021-09-14 23:03:59.073 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@24a07d3d
+2021-09-14 23:03:59.073 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2021-09-14 23:03:59.079 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - POST "/user/applogin", parameters={}
+2021-09-14 23:03:59.080 [http-nio-10080-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.gdutelc.snp.controller.UserApiController#appLogin(String)
+2021-09-14 23:04:01.597 [http-nio-10080-exec-1] DEBUG com.gdutelc.snp.dao.IUserDao.getOpenidByUid - ==>  Preparing: SELECT openid FROM db_sign_up.t_user WHERE uid = ? LIMIT 1
+2021-09-14 23:04:01.612 [http-nio-10080-exec-1] DEBUG com.gdutelc.snp.dao.IUserDao.getOpenidByUid - ==> Parameters: 1(Integer)
+2021-09-14 23:04:01.786 [http-nio-10080-exec-1] DEBUG com.gdutelc.snp.dao.IUserDao.getOpenidByUid - <==      Total: 1
+2021-09-14 23:04:01.797 [http-nio-10080-exec-1] DEBUG com.gdutelc.snp.dao.IUserDao.getOpenidByUid - ==>  Preparing: SELECT openid FROM db_sign_up.t_user WHERE uid = ? LIMIT 1
+2021-09-14 23:04:01.797 [http-nio-10080-exec-1] DEBUG com.gdutelc.snp.dao.IUserDao.getOpenidByUid - ==> Parameters: 1(Integer)
+2021-09-14 23:04:01.970 [http-nio-10080-exec-1] DEBUG com.gdutelc.snp.dao.IUserDao.getOpenidByUid - <==      Total: 1
+2021-09-14 23:04:02.016 [http-nio-10080-exec-1] DEBUG com.gdutelc.snp.dao.IUserDao.getOpenidByUid - ==>  Preparing: SELECT openid FROM db_sign_up.t_user WHERE uid = ? LIMIT 1
+2021-09-14 23:04:02.017 [http-nio-10080-exec-1] DEBUG com.gdutelc.snp.dao.IUserDao.getOpenidByUid - ==> Parameters: 1(Integer)
+2021-09-14 23:04:02.178 [http-nio-10080-exec-1] DEBUG com.gdutelc.snp.dao.IUserDao.getOpenidByUid - <==      Total: 1
+2021-09-14 23:04:02.180 [http-nio-10080-exec-1] DEBUG com.gdutelc.snp.dao.IUserDao.getUserByUid - ==>  Preparing: SELECT uid, openid, phone, enroll, `check`, `result`, que FROM db_sign_up.t_user WHERE uid = ? LIMIT 1
+2021-09-14 23:04:02.181 [http-nio-10080-exec-1] DEBUG com.gdutelc.snp.dao.IUserDao.getUserByUid - ==> Parameters: 1(Integer)
+2021-09-14 23:04:02.374 [http-nio-10080-exec-1] DEBUG com.gdutelc.snp.dao.IUserDao.getUserByUid - <==      Total: 1
+2021-09-14 23:04:02.428 [http-nio-10080-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-09-14 23:04:02.433 [http-nio-10080-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=1, msg=成功, data=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIxIiwicGhvbmUiOiJ0cnVlIiw (truncated)...]
+2021-09-14 23:04:02.441 [http-nio-10080-exec-1] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2021-09-14 23:06:02.352 [http-nio-10080-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - POST "/admin/login", parameters={masked}
+2021-09-14 23:06:02.352 [http-nio-10080-exec-2] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.gdutelc.snp.controller.AdminApiController#adminLogin(String, String)
+2021-09-14 23:06:02.586 [http-nio-10080-exec-2] DEBUG c.gdutelc.snp.dao.IAdminDao.getPassowrdByUsername - ==>  Preparing: SELECT password FROM db_sign_up.t_admin WHERE username = ? LIMIT 1
+2021-09-14 23:06:02.587 [http-nio-10080-exec-2] DEBUG c.gdutelc.snp.dao.IAdminDao.getPassowrdByUsername - ==> Parameters: kid(String)
+2021-09-14 23:06:02.866 [http-nio-10080-exec-2] DEBUG c.gdutelc.snp.dao.IAdminDao.getPassowrdByUsername - <==      Total: 1
+2021-09-14 23:06:02.868 [http-nio-10080-exec-2] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2021-09-14 23:06:02.869 [http-nio-10080-exec-2] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [Result(code=1, msg=成功, data=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MzE2Njc5NjIsImlhdCI6MTY (truncated)...]
+2021-09-14 23:06:02.870 [http-nio-10080-exec-2] DEBUG org.springframework.web.servlet.DispatcherServlet - Completed 200 OK
+2021-09-14 23:22:32.072 [main] DEBUG com.gdutelc.snp.AdminDaoTests - Running with Spring Boot v2.5.2, Spring v5.3.8
+2021-09-14 23:22:43.335 [main] DEBUG com.gdutelc.snp.dao.IAdminDao.getPassWordByAid - ==>  Preparing: SELECT password FROM db_sign_up.t_admin WHERE aid = ? LIMIT 1
+2021-09-14 23:22:43.413 [main] DEBUG com.gdutelc.snp.dao.IAdminDao.getPassWordByAid - ==> Parameters: 2(Integer)
+2021-09-14 23:22:43.618 [main] DEBUG com.gdutelc.snp.dao.IAdminDao.getPassWordByAid - <==      Total: 0
+2021-09-14 23:22:43.659 [main] DEBUG c.gdutelc.snp.dao.IAdminDao.updatePositionByOpenid - ==>  Preparing: UPDATE db_sign_up.t_admin SET `position` = ? WHERE openid =?
+2021-09-14 23:22:43.660 [main] DEBUG c.gdutelc.snp.dao.IAdminDao.updatePositionByOpenid - ==> Parameters: 1(Integer), asdfghjjkkl(String)
+2021-09-14 23:22:43.969 [main] DEBUG c.gdutelc.snp.dao.IAdminDao.updatePositionByOpenid - <==    Updates: 0
+2021-09-14 23:22:43.978 [main] DEBUG c.gdutelc.snp.dao.IAdminDao.updatePasswordByOpenid - ==>  Preparing: UPDATE db_sign_up.t_admin SET password =? WHERE openid =?
+2021-09-14 23:22:43.979 [main] DEBUG c.gdutelc.snp.dao.IAdminDao.updatePasswordByOpenid - ==> Parameters: 11111(String), asdfghjjkkl(String)
+2021-09-14 23:22:44.288 [main] DEBUG c.gdutelc.snp.dao.IAdminDao.updatePasswordByOpenid - <==    Updates: 0
+2021-09-14 23:22:44.300 [main] DEBUG com.gdutelc.snp.dao.IAdminDao.getOpenIdByAid - ==>  Preparing: SELECT openid FROM db_sign_up.t_admin WHERE aid = ? LIMIT 1
+2021-09-14 23:22:44.301 [main] DEBUG com.gdutelc.snp.dao.IAdminDao.getOpenIdByAid - ==> Parameters: 2(Integer)
+2021-09-14 23:22:44.455 [main] DEBUG com.gdutelc.snp.dao.IAdminDao.getOpenIdByAid - <==      Total: 0
+2021-09-14 23:22:44.464 [main] DEBUG c.gdutelc.snp.dao.IAdminDao.updatePositionByOpenid - ==>  Preparing: UPDATE db_sign_up.t_admin SET `position` = ? WHERE openid =?
+2021-09-14 23:22:44.464 [main] DEBUG c.gdutelc.snp.dao.IAdminDao.updatePositionByOpenid - ==> Parameters: 12(Integer), asdfghjjkkl(String)
+2021-09-14 23:22:44.773 [main] DEBUG c.gdutelc.snp.dao.IAdminDao.updatePositionByOpenid - <==    Updates: 0
+2021-09-14 23:22:44.782 [main] DEBUG com.gdutelc.snp.dao.IAdminDao.getAdminByAid - ==>  Preparing: SELECT aid, openid,username,adno, `position`, password, phone FROM db_sign_up.t_admin WHERE aid = ? LIMIT 1
+2021-09-14 23:22:44.782 [main] DEBUG com.gdutelc.snp.dao.IAdminDao.getAdminByAid - ==> Parameters: 2(Integer)
+2021-09-14 23:22:44.940 [main] DEBUG com.gdutelc.snp.dao.IAdminDao.getAdminByAid - <==      Total: 0
+2021-09-14 23:22:44.953 [main] DEBUG com.gdutelc.snp.dao.IAdminDao.updatePhoneByOpenid - ==>  Preparing: UPDATE db_sign_up.t_admin SET phone = ? WHERE openid = ?
+2021-09-14 23:22:44.954 [main] DEBUG com.gdutelc.snp.dao.IAdminDao.updatePhoneByOpenid - ==> Parameters: 11111(String), asdfghjjkkl(String)
+2021-09-14 23:22:45.262 [main] DEBUG com.gdutelc.snp.dao.IAdminDao.updatePhoneByOpenid - <==    Updates: 0
+2021-09-14 23:22:45.273 [main] DEBUG com.gdutelc.snp.dao.IAdminDao.insertInform - ==>  Preparing: INSERT INTO db_sign_up.t_admin (openid, username, adno, `position`, password, phone) VALUES (?, ?, ?, ?, ?, ?)
+2021-09-14 23:22:45.275 [main] DEBUG com.gdutelc.snp.dao.IAdminDao.insertInform - ==> Parameters: qwer1235(String), kid(String), 1(Integer), 2(Integer), 123456(String), 13428765420(String)
+2021-09-14 23:22:45.759 [main] DEBUG com.gdutelc.snp.dao.IAdminDao.insertInformByAdmin - ==>  Preparing: INSERT INTO db_sign_up.t_admin (openid, username, adno, `position`, password, phone) VALUES (?, ?, ?, ?, ?, ?)
+2021-09-14 23:22:45.762 [main] DEBUG com.gdutelc.snp.dao.IAdminDao.insertInformByAdmin - ==> Parameters: a123123123(String), qqqqqqqqqq(String), 4(Integer), 5(Integer), qwert(String), wwwwwwwwwww(String)
+2021-09-14 23:22:46.112 [main] DEBUG com.gdutelc.snp.dao.IAdminDao.insertInformByAdmin - <==    Updates: 1
+2021-09-14 23:22:49.021 [main] DEBUG com.gdutelc.snp.dao.IUserDao.getUserByOpenid - ==>  Preparing: SELECT uid, openid, phone, enroll, `check`, `result`, que FROM db_sign_up.t_user WHERE openid = ? LIMIT 1
+2021-09-14 23:22:49.022 [main] DEBUG com.gdutelc.snp.dao.IUserDao.getUserByOpenid - ==> Parameters: oPndU5eWqEkM2101oOOf_rWSM3Fk(String)
+2021-09-14 23:22:49.180 [main] DEBUG com.gdutelc.snp.dao.IUserDao.getUserByOpenid - <==      Total: 1
+2021-09-14 23:22:49.201 [main] DEBUG com.gdutelc.snp.dao.ICommentDao.getCommentByAid - ==>  Preparing: SELECT cid, aid, uid, comment, `time` FROM db_sign_up.t_comment WHERE aid = ?
+2021-09-14 23:22:49.202 [main] DEBUG com.gdutelc.snp.dao.ICommentDao.getCommentByAid - ==> Parameters: 1(Integer)
+2021-09-14 23:22:49.359 [main] DEBUG com.gdutelc.snp.dao.ICommentDao.getCommentByAid - <==      Total: 0
+2021-09-14 23:22:49.370 [main] DEBUG com.gdutelc.snp.dao.ICommentDao.getCommentByUid - ==>  Preparing: SELECT cid, aid, uid, comment, `time` FROM db_sign_up.t_comment WHERE uid = ?
+2021-09-14 23:22:49.370 [main] DEBUG com.gdutelc.snp.dao.ICommentDao.getCommentByUid - ==> Parameters: 3(Integer)
+2021-09-14 23:22:49.524 [main] DEBUG com.gdutelc.snp.dao.ICommentDao.getCommentByUid - <==      Total: 0
+2021-09-14 23:22:49.536 [main] DEBUG com.gdutelc.snp.dao.ICommentDao.insertCommnet - ==>  Preparing: INSERT INTO db_sign_up.t_comment (aid, uid, comment, `time`) values (?, ?, ?, ?)
+2021-09-14 23:22:49.545 [main] DEBUG com.gdutelc.snp.dao.ICommentDao.insertCommnet - ==> Parameters: 1(Integer), 3(Integer), hentai(String), 2021-09-14 23:22:49.536(Timestamp)
+2021-09-14 23:22:49.946 [main] DEBUG com.gdutelc.snp.dao.ICommentDao.insertCommnet - <==    Updates: 1
+2021-09-14 23:22:51.596 [main] DEBUG com.gdutelc.snp.dao.ISignDao.getSignByUid - ==>  Preparing: SELECT sid, uid, `name`, grade, college, major, class, dsp, dno,secdno, gender, sno, qq, domitory, know, party FROM db_sign_up.t_sign WHERE uid = ? LIMIT 1
+2021-09-14 23:22:51.597 [main] DEBUG com.gdutelc.snp.dao.ISignDao.getSignByUid - ==> Parameters: 1(Integer)
+2021-09-14 23:22:51.757 [main] DEBUG com.gdutelc.snp.dao.ISignDao.getSignByUid - <==      Total: 1
+2021-09-14 23:22:51.770 [main] DEBUG com.gdutelc.snp.dao.ISignDao.getDsignByGender - ==>  Preparing: SELECT `name`, grade, college, major, class, dsp, dno,secdno, gender, sno, qq, domitory, know, party FROM db_sign_up.t_sign WHERE gender = ?
+2021-09-14 23:22:51.771 [main] DEBUG com.gdutelc.snp.dao.ISignDao.getDsignByGender - ==> Parameters: true(Boolean)
+2021-09-14 23:22:51.997 [main] DEBUG com.gdutelc.snp.dao.ISignDao.getDsignByGender - <==      Total: 1
+2021-09-14 23:22:52.012 [main] DEBUG com.gdutelc.snp.dao.ISignDao.getDsignByUid - ==>  Preparing: SELECT `name`, grade, college, major, class, dsp, dno,secdno, gender, sno, qq, domitory, know, party FROM db_sign_up.t_sign WHERE uid = ? LIMIT 1
+2021-09-14 23:22:52.014 [main] DEBUG com.gdutelc.snp.dao.ISignDao.getDsignByUid - ==> Parameters: 10(Integer)
+2021-09-14 23:22:52.199 [main] DEBUG com.gdutelc.snp.dao.ISignDao.getDsignByUid - <==      Total: 0
+2021-09-14 23:22:52.209 [main] DEBUG c.gdutelc.snp.dao.ISignDao.updateDsignInformByUid - ==>  Preparing: UPDATE db_sign_up.t_sign SET `name` = ?, grade = ?, college = ?, major = ?, class = ?, dsp = ?, dno = ?, secdno = ?, gender = ?, sno = ?, qq = ?, domitory = ?, know = ?, party = ? WHERE uid = ?
+2021-09-14 23:22:52.220 [main] DEBUG c.gdutelc.snp.dao.ISignDao.updateDsignInformByUid - ==> Parameters: 小朋友(String), 2(Integer), 3(Integer), 电子科学与技术(String), 四班(String), hh(String), 3(Integer), 4(Integer), false(Boolean), 3119007324(String), 123445556(String), 东十四(String), heitai(String), no(String), 2(Integer)
+2021-09-14 23:22:52.609 [main] DEBUG c.gdutelc.snp.dao.ISignDao.updateDsignInformByUid - <==    Updates: 0
+2021-09-14 23:22:52.621 [main] DEBUG com.gdutelc.snp.dao.ISignDao.insertSign - ==>  Preparing: INSERT INTO db_sign_up.t_sign (uid, `name`, grade, college, major, class, dsp, dno,secdno, gender, sno, qq, domitory, know, party) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2021-09-14 23:22:52.624 [main] DEBUG com.gdutelc.snp.dao.ISignDao.insertSign - ==> Parameters: 2(Integer), kid(String), 23(Integer), 3(Integer), 电子科学与技术(String), 四班(String), hh(String), 3(Integer), 4(Integer), true(Boolean), 3119007324(String), 123445556(String), 东十三(String), heitai(String), no(String)
+2021-09-14 23:22:53.020 [main] DEBUG com.gdutelc.snp.dao.ISignDao.insertSign - <==    Updates: 1
+2021-09-14 23:22:53.032 [main] DEBUG com.gdutelc.snp.dao.ISignDao.getDsignByDno - ==>  Preparing: SELECT `name`, grade, college, major, class, dsp, dno,secdno, gender, sno, qq, domitory, know, party FROM db_sign_up.t_sign WHERE dno = ?
+2021-09-14 23:22:53.033 [main] DEBUG com.gdutelc.snp.dao.ISignDao.getDsignByDno - ==> Parameters: 3(Integer)
+2021-09-14 23:22:53.226 [main] DEBUG com.gdutelc.snp.dao.ISignDao.getDsignByDno - <==      Total: 1
+2021-09-14 23:22:53.279 [main] DEBUG com.gdutelc.snp.dao.IUserDao.getPhoneByUid - ==>  Preparing: SELECT phone FROM db_sign_up.t_user WHERE uid = ? LIMIT 1
+2021-09-14 23:22:53.279 [main] DEBUG com.gdutelc.snp.dao.IUserDao.getPhoneByUid - ==> Parameters: 1(Integer)
+2021-09-14 23:22:53.530 [main] DEBUG com.gdutelc.snp.dao.IUserDao.getPhoneByUid - <==      Total: 1
+2021-09-14 23:22:53.538 [main] DEBUG com.gdutelc.snp.dao.IUserDao.getOpenidByUid - ==>  Preparing: SELECT openid FROM db_sign_up.t_user WHERE uid = ? LIMIT 1
+2021-09-14 23:22:53.539 [main] DEBUG com.gdutelc.snp.dao.IUserDao.getOpenidByUid - ==> Parameters: 1(Integer)
+2021-09-14 23:22:53.844 [main] DEBUG com.gdutelc.snp.dao.IUserDao.getOpenidByUid - <==      Total: 1
+2021-09-14 23:22:53.851 [main] DEBUG com.gdutelc.snp.dao.IUserDao.updatePhoneByOpenid - ==>  Preparing: UPDATE db_sign_up.t_user SET phone = ? WHERE openid = ?
+2021-09-14 23:22:53.852 [main] DEBUG com.gdutelc.snp.dao.IUserDao.updatePhoneByOpenid - ==> Parameters: 11111111111(String), 1rrrrrrrr(String)
+2021-09-14 23:22:54.159 [main] DEBUG com.gdutelc.snp.dao.IUserDao.updatePhoneByOpenid - <==    Updates: 0
+2021-09-14 23:22:54.169 [main] DEBUG com.gdutelc.snp.dao.IUserDao.getUserByOpenid - ==>  Preparing: SELECT uid, openid, phone, enroll, `check`, `result`, que FROM db_sign_up.t_user WHERE openid = ? LIMIT 1
+2021-09-14 23:22:54.169 [main] DEBUG com.gdutelc.snp.dao.IUserDao.getUserByOpenid - ==> Parameters: 12354(String)
+2021-09-14 23:22:54.323 [main] DEBUG com.gdutelc.snp.dao.IUserDao.getUserByOpenid - <==      Total: 0
+2021-09-14 23:22:54.335 [main] DEBUG com.gdutelc.snp.dao.IUserDao.insertOidPhone - ==>  Preparing: INSERT INTO db_sign_up.t_user (openid,phone) VALUES(?, ?)
+2021-09-14 23:22:54.336 [main] DEBUG com.gdutelc.snp.dao.IUserDao.insertOidPhone - ==> Parameters: oPndU5eWqEkM2101oOOf_rWSM3Fk(String), 12344567888(String)
+2021-09-14 23:22:54.688 [main] DEBUG com.gdutelc.snp.dao.IUserDao.getUserByUid - ==>  Preparing: SELECT uid, openid, phone, enroll, `check`, `result`, que FROM db_sign_up.t_user WHERE uid = ? LIMIT 1
+2021-09-14 23:22:54.688 [main] DEBUG com.gdutelc.snp.dao.IUserDao.getUserByUid - ==> Parameters: 1(Integer)
+2021-09-14 23:22:54.849 [main] DEBUG com.gdutelc.snp.dao.IUserDao.getUserByUid - <==      Total: 1
