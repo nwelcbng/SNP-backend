@@ -34,6 +34,7 @@ public enum Status {
     REGISTERERROR(-600,"该用户的session已过期"),
     USERINSERTERROR(-601,"无法往数据库存入user信息"),
     QRCODECHECKERROR(-602,"二维码检验失败"),
+    QRUUIDERROR(-603,"二维码uuid有误"),
     SUCCESS(1,"成功");
 
 

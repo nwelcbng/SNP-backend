@@ -1,0 +1,30 @@
+2021-09-09 23:39:24.213 [restartedMain] ERROR o.s.b.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+A component required a bean of type 'com.gdutelc.snp.service.UserApiService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.gdutelc.snp.service.UserApiService' in your configuration.
+
+2021-09-09 23:56:07.035 [restartedMain] ERROR o.s.b.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+A component required a bean of type 'com.gdutelc.snp.service.UserApiService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.gdutelc.snp.service.UserApiService' in your configuration.
+

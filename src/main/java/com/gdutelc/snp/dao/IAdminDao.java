@@ -3,6 +3,7 @@ package com.gdutelc.snp.dao;
 
 import com.gdutelc.snp.entity.Admin;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 /**
  * @author kid

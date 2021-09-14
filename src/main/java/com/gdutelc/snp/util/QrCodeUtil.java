@@ -24,29 +24,21 @@ public class QrCodeUtil {
         try{
             String uuid = UUID.randomUUID().toString();
             //加密uuid
-            String encrypt = aesUtil.encrypt(uuid);
             Qrcode qrcode = new Qrcode(0,0);
-            List<String> getuuid = (List<String>) redisUtil.get("uuid");
-            if (getuuid != null){
-                getuuid.add(uuid);
-                redisUtil.set("uuid",getuuid,180);
-            }else{
-                List<String> newuuid = new LinkedList<>();
-                redisUtil.set("uuid",newuuid,180);
-            }
+            String encrypt = aesUtil.encrypt(uuid);
             redisUtil.set(uuid,qrcode,180);
             return encrypt;
         }catch (Exception e){
-            e.printStackTrace();
-            return null;
+            throw new UserServiceException(Status.GETQRCODEERROR);
         }
     }
-    public boolean checkCode(String encrypt,String uid){
-        String uuid = aesUtil.decrypt(encrypt);
-        boolean judge = redisUtil.hasKey(uuid);
+    public boolean checkCode(String uuid,String uid){
+        //解密uuid
+        String decrypt = aesUtil.decrypt(uuid);
+        boolean judge = redisUtil.hasKey(decrypt);
         if(judge){
             Qrcode qrcode = new Qrcode(Integer.parseInt(uid),1);
-            redisUtil.set(uuid,qrcode,180);
+            redisUtil.set(decrypt,qrcode,180);
             return true;
         }else{
             throw new UserServiceException(Status.CHECKQRCODEERROR);

@@ -57,4 +57,10 @@ public class UserDaoTests {
     void updateResultQueTest(){
     }
 
+    @Test
+    void getUserBy(){
+        User user = iUserDao.getUserByOpenid("12354");
+        System.out.println(user);
+    }
+
 }

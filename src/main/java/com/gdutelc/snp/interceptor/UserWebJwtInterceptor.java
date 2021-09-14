@@ -39,7 +39,7 @@ public class UserWebJwtInterceptor implements HandlerInterceptor {
         if(!annotation.require()){
             return true;
         }
-        String cookie = request.getHeader("Cookie");
+        String cookie = request.getHeader("Authorization");
         if(cookie == null || cookie.isBlank()){
             throw new JwtErrorException(Status.JWTMISSERROR);
         }

@@ -61,7 +61,7 @@ public class AdminApiController extends BaseController{
 
     @AdminJwt
     @GetMapping("/admin/confirm")
-    public Result<Object> confirm(@RequestHeader("Cookie") String jwt, @RequestParam("uid") Integer uid,@RequestParam("check") boolean check){
+    public Result<Object> confirm(@RequestHeader("Authorization") String jwt, @RequestParam("uid") Integer uid,@RequestParam("check") boolean check){
         adminApiService.confirm(jwt, uid, check);
         return Return.success();
     }

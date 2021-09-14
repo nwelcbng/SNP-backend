@@ -60,7 +60,7 @@ public interface UserApiService {
      * web前端轮询获取网页jwt
      * @return  确认是否成功
      */
-    Map<Integer,String> webLogin();
+    String webLogin(String uuid);
 
     /**
      * 小程序前端每次登录获取更新的jwt
@@ -76,7 +76,7 @@ public interface UserApiService {
      * @param app
      * @return  返回jwt
      */
-    String sign(String jwt, Dsign dsign,boolean app,String checkCode);
+    String sign(String jwt, Dsign dsign,boolean app);
 
 
     /**
@@ -87,6 +87,17 @@ public interface UserApiService {
      * @return  返回是否成功获取
      */
     boolean getPhone(String jwt, String phone, boolean app);
+
+
+    /**
+     * 检验验证码
+     * @param jwt
+     * @param checkCode
+     * @param app
+     * @param phone
+     * @return  返回新的jwt
+     */
+    String checkCode(String jwt,String checkCode,String phone,boolean app);
 
 
 

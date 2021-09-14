@@ -14,7 +14,8 @@ import com.gdutelc.snp.entity.User;
 import com.gdutelc.snp.exception.*;
 import com.gdutelc.snp.result.Status;
 import com.gdutelc.snp.service.UserApiService;
-import com.gdutelc.snp.util.PhoneUtil;
+import com.gdutelc.snp.util.AesUtil;
+import com.gdutelc.snp.util.JwtUtil;
 import com.gdutelc.snp.util.QrCodeUtil;
 import com.gdutelc.snp.util.RedisUtil;
 import com.github.kevinsawicki.http.HttpRequest;
@@ -63,11 +64,16 @@ public class UserApiServiceImpl implements UserApiService {
     @Resource
     private SignCache signCache;
 
-    @Resource
-    private PhoneUtil phoneUtil;
 
     @Resource
     private KafkaTemplate<String,Object> kafkaTemplate;
+
+
+    @Resource
+    private JwtUtil jwtUtil;
+
+    @Resource
+    private AesUtil aesUtil;
 
 
 
@@ -85,7 +91,6 @@ public class UserApiServiceImpl implements UserApiService {
         data.put("grant_type", "authorization_code");
         String response = HttpRequest.get("https://api.weixin.qq.com/sns/jscode2session").form(data).body();
         if (response.isEmpty()){
-
             throw new UserServiceException(Status.GETRESOURCEERROR);
         }
         JSONObject object = JSON.parseObject(response);
@@ -109,16 +114,13 @@ public class UserApiServiceImpl implements UserApiService {
         User user = userCache.getUserByOpenid(openid);
         //如果数据库存在用户信息，则重新发送jwt
         if (user != null){
-            Integer uid = user.getUid();
-            Map<String,Object> claims = new HashMap<>(4);
-            claims.put("uid",uid);
+            //验证手机号是否存在
             if (user.getPhone().equals(Integer.toString(0))){
-                claims.put("phone",false);
+                return jwtUtil.userJwtCreate(user.getUid(),false,user.getOpenid());
             }
             if (!user.getPhone().equals(Integer.toString(0))){
-                claims.put("phone",true);
+                return jwtUtil.userJwtCreate(user.getUid(),true,user.getOpenid());
             }
-            return userJwtConfig.createJwt(claims,openid);
         }
         //如果不存在，则新建用户，重新插入数据
         Integer judge = userDao.insertOidPhone(openid, "0");
@@ -128,13 +130,8 @@ public class UserApiServiceImpl implements UserApiService {
         }catch (Exception e){
             throw new UserServiceException(Status.USERINSERTERROR);
         }
-
         Integer uid = userCache.getUserByOpenid(openid).getUid();
-        Map<String,Object> claims = new HashMap<>(4);
-        claims.put("uid",uid);
-        claims.put("phone",false);
-        return userJwtConfig.createJwt(claims, openid);
-
+        return jwtUtil.userJwtCreate(uid,false,openid);
     }
 
 
@@ -143,7 +140,7 @@ public class UserApiServiceImpl implements UserApiService {
     public String getFormService(String jwt) {
         //从数据库查找用户信息
         String uid = userJwtConfig.getPayload(jwt).get("uid");
-        Sign userinfo = iSignDao.getSignByUid(Integer.parseInt(uid));
+        Dsign userinfo = signCache.getDsignByUid(Integer.parseInt(uid));
         try{
             Assert.notNull(userinfo,Status.GETFORMERROR.getMsg());
         }catch (Exception e){
@@ -155,8 +152,7 @@ public class UserApiServiceImpl implements UserApiService {
     @Override
     public String getWebFormService(String jwt) {
         String uid = userWebJwtConfig.getPayload(jwt).get("uid");
-        Sign userinfo = iSignDao.getSignByUid(Integer.parseInt(uid));
-
+        Dsign userinfo = signCache.getDsignByUid(Integer.parseInt(uid));
         try{
             Assert.notNull(userinfo,Status.GETFORMERROR.getMsg());
         }catch (Exception e){
@@ -167,7 +163,6 @@ public class UserApiServiceImpl implements UserApiService {
 
     @Override
     public boolean setStatusService(String jwt, String request) {
-
 
         //解析json获取参数
         JSONObject jsonObject = JSON.parseObject(request);
@@ -188,83 +183,55 @@ public class UserApiServiceImpl implements UserApiService {
     @Override
     public boolean loginByCodeService(String jwt,String uuid) {
             //检验二维码
-            String uid = userJwtConfig.getPayload(jwt).get("uid");
-            return qrCodeUtil.checkCode(uuid, uid);
+        String uid = userJwtConfig.getPayload(jwt).get("uid");
+        JSONObject jsonObject = JSON.parseObject(uuid);
+        String newUuid = jsonObject.getString("uuid");
+        return qrCodeUtil.checkCode(newUuid, uid);
     }
 
     @Override
-    public Map<Integer, String> webLogin() {
-        try {
-            List<String> uuidList = (List<String>)redisUtil.get("uuid");
-            if(uuidList.isEmpty()){
-                return (Map<Integer, String>) new HashMap<>(4).put(-1,"");
+    public String webLogin(String uuid) {
+        if (redisUtil.hasKey(aesUtil.decrypt(uuid))){
+            Qrcode qrcode = (Qrcode) redisUtil.get(aesUtil.decrypt(uuid));
+            Integer uid = qrcode.getUid();
+            boolean flag = false;
+            String phone = userDao.getPhoneByUid(uid);
+            String openid = userDao.getOpenidByUid(uid);
+            int code = qrcode.getCode();
+            if (!phone.equals(0)){
+                flag = true;
             }
-            int size = uuidList.size();
-            int flag = 0;
-            for(int i = 0; i<size; i++){
-                String uuid = uuidList.get(i);
-                Qrcode qrcode = (Qrcode) redisUtil.get(uuid);
-                if(qrcode == null){
-                    return (Map<Integer, String>) new HashMap<>(4).put(-1,"");
-                }
-                int code = qrcode.getCode();
-                if(code == 1){
-                    flag = i;
-                    break;
-                }
-                if (code == 0){
-                    return (Map<Integer, String>) new HashMap<>(4).put(0,"");
-                }
-
-
+            if (code == 1){
+                return jwtUtil.userWebJwtCreate(uid,flag,openid);
             }
-            String find = uuidList.get(flag);
-            Qrcode code = (Qrcode) redisUtil.get(find);
-            Integer uid = code.getUid();
-            String openid = userCache.getOpenidByUid(uid);
-            Map<String,Object> claims = new HashMap<>(4);
-            String phone = userCache.getUserByUid(uid).getPhone();
-            claims.put("uid",uid);
-            if (phone.equals(Integer.toString(0))){
-                claims.put("phone",false);
-            }
-            if (!phone.equals(Integer.toString(0))){
-                claims.put("phone",true);
-            }
-            uuidList.remove(find);
-            redisUtil.set("uuid",uuidList,180);
-            redisUtil.del(find);
-            String jwt = userWebJwtConfig.createJwt(claims, openid);
-            return (Map<Integer, String>) new HashMap<>(4).put(-1,jwt);
-        }catch (Exception e){
-            throw new UserServiceException(Status.CHECKQRCODEERROR);
         }
+        throw new UserServiceException(Status.QRUUIDERROR);
+
     }
 
     @Override
     public String appLogin(String jwt) {
         try{
+            //通过jwt获取uid
             String uid = userJwtConfig.getPayload(jwt).get("uid");
             String openid = userCache.getOpenidByUid(Integer.parseInt(uid));
-            Map<String,Object> claims = new HashMap<>(4);
-            claims.put("uid",uid);
             String phone = userCache.getUserByUid(Integer.parseInt(uid)).getPhone();
             if (phone.equals(Integer.toString(0))){
-                claims.put("phone",false);
+                return jwtUtil.userJwtCreate(Integer.parseInt(uid),false,openid);
             }
             if (!phone.equals(Integer.toString(0))){
-                claims.put("phone",true);
+                return jwtUtil.userJwtCreate(Integer.parseInt(uid),true,openid);
             }
-            return userJwtConfig.createJwt(claims,openid);
         }catch (Exception e){
             throw new UserServiceException(Status.JWTUPDATEERROR);
         }
+        return null;
     }
 
 
 
     @Override
-    public String sign(String jwt, Dsign dsign,boolean app,String checkCode) {
+    public String sign(String jwt, Dsign dsign,boolean app) {
         try{
             String uid;
             if (app){
@@ -276,23 +243,6 @@ public class UserApiServiceImpl implements UserApiService {
             Map<String,Object> claims = new HashMap<>(8);
             claims.put("uid",uid);
             claims.put("phone",false);
-            if(checkCode != null){
-                String phone = userCache.getPhoneByUid(Integer.parseInt(uid));
-                try{
-                    Assert.state(!phone.equals(Integer.toString(0)),Status.GETPHONEERROR.getMsg());
-                }catch (Exception e){
-                    throw new UserServiceException(Status.GETPHONEERROR);
-                }
-
-                boolean judge = phoneUtil.checkCode(checkCode, phone);
-
-                if (judge){
-                    claims.put("phone",true);
-                }else{
-                    claims.put("phone",false);
-
-                }
-            }
             if (iSignDao.getSignByUid(Integer.parseInt(uid)) == null){
                 Sign sign = new Sign(null,Integer.parseInt(uid),dsign.getName(),dsign.getGrade(),dsign.getCollege(),dsign.getMajor(),
                         dsign.getUserclass(),dsign.getDsp(),dsign.getDno(),dsign.getSecdno(),
@@ -320,6 +270,32 @@ public class UserApiServiceImpl implements UserApiService {
         }catch (Exception e){
             return false;
         }
+    }
+
+    @Override
+    public String checkCode(String jwt,String checkCode,String phone, boolean app) {
+        String uid;
+        if (app){
+            uid = userJwtConfig.getPayload(jwt).get("uid");
+        }else{
+            uid = userWebJwtConfig.getPayload(jwt).get("uid");
+        }
+        String openid = userDao.getOpenidByUid(Integer.parseInt(uid));
+        boolean judge = redisUtil.hasKey(phone);
+        if (judge){
+            String code = (String)redisUtil.get(phone);
+            if (code.equals(checkCode)){
+                userDao.updatePhoneByUid(phone,Integer.parseInt(uid));
+                if (app){
+                    return jwtUtil.userJwtCreate(Integer.parseInt(uid),true,openid);
+                }else{
+                    return jwtUtil.userWebJwtCreate(Integer.parseInt(uid),true,openid);
+                }
+            }
+        }
+        throw new UserServiceException(Status.CHECKPHONEERROR);
+
+
     }
 
 

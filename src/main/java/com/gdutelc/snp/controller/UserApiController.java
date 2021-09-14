@@ -37,7 +37,7 @@ public class UserApiController  extends BaseController{
 
     @UserJwt
     @GetMapping("/user/getform")
-    public Result<Object> getForm(@RequestHeader("Cookie") String cookie){
+    public Result<Object> getForm(@RequestHeader("Authorization") String cookie){
         String data = userApiService.getFormService(cookie);
         if (data == null){
             return Return.error(Status.GETFORMERROR);
@@ -46,7 +46,7 @@ public class UserApiController  extends BaseController{
     }
     @UserWebJwt
     @GetMapping("/user//user/getWebForm")
-    public Result<Object> getWebForm(@RequestHeader("Cookie") String cookie){
+    public Result<Object> getWebForm(@RequestHeader("Authorization") String cookie){
         String data = userApiService.getWebFormService(cookie);
         if (data == null){
             return Return.error(Status.GETFORMERROR);
@@ -57,7 +57,7 @@ public class UserApiController  extends BaseController{
 
     @UserJwt
     @PutMapping("/user/setstatus")
-    public Result<Object> setStatus(@RequestHeader("Cookie") String cookie, @RequestBody String request){
+    public Result<Object> setStatus(@RequestHeader("Authorization") String cookie, @RequestBody String request){
         boolean judge = userApiService.setStatusService(cookie, request);
         if(!judge){
             return Return.error(Status.SETSTATUSERROR);
@@ -76,7 +76,7 @@ public class UserApiController  extends BaseController{
     @UserJwt
 
     @PostMapping("/user/loginByCode")
-    public Result<Object> loginByCode(@RequestHeader("Cookie") String jwt, @RequestBody String uuid){
+    public Result<Object> loginByCode(@RequestHeader("Authorization") String jwt, @RequestBody String uuid){
         boolean judge = userApiService.loginByCodeService(jwt, uuid);
         if (!judge){
             return Return.error(Status.CHECKQRCODEERROR);
@@ -85,19 +85,20 @@ public class UserApiController  extends BaseController{
     }
 
 
-    @GetMapping("/user/weblogin")
-    public Result<Object> weLogin(){
-        Map<Integer,String> response = userApiService.webLogin();
+    @PostMapping("/user/weblogin")
+    public Result<Object> weLogin(@RequestParam("uuid") String uuid){
+        System.out.println(uuid);
+        String response = userApiService.webLogin(uuid);
         if(response == null){
             return Return.error(Status.WEBLOGINFALL);
         }else{
-            return Return.success(JSON.toJSONString(response));
+            return Return.success(response);
         }
     }
 
     @UserJwt
     @PostMapping("/user/applogin")
-    public Result<Object> appLogin(@RequestHeader("Cookie") String jwt){
+    public Result<Object> appLogin(@RequestHeader("Authorization") String jwt){
         String newjwt = userApiService.appLogin(jwt);
         if(newjwt == null){
             return Return.error(Status.JWTUPDATEERROR);
@@ -109,16 +110,16 @@ public class UserApiController  extends BaseController{
 
     @UserJwt
     @PostMapping("/user/appsign")
-    public Result<Object> appSign(@RequestHeader("Cookie") String jwt,@RequestParam("name") String name, @RequestParam("grade") Integer grade,
-                               @RequestParam("college") Integer college, @RequestParam("major") String major,
-                               @RequestParam("class") String userclass, @RequestParam("dsp") String dsp,
-                               @RequestParam("dno") Integer dno, @RequestParam("secdno") Integer secdno,
-                               @RequestParam("gender") Boolean gender, @RequestParam("sno") String sno,
-                               @RequestParam("qq") String qq, @RequestParam("domitory") String domitory,
-                               @RequestParam("know") String know, @RequestParam("party") String party,@RequestParam(value = "checkCode",required = false) String checkCode) {
+    public Result<Object> appSign(@RequestHeader("Authorization") String jwt,@RequestParam(value = "name", required = false ) String name, @RequestParam("grade") Integer grade,
+                               @RequestParam(value ="college", required = false) Integer college, @RequestParam(value ="major", required = false) String major,
+                               @RequestParam(value ="class", required = false) String userclass, @RequestParam(value ="dsp", required = false) String dsp,
+                               @RequestParam(value ="dno", required = false) Integer dno, @RequestParam(value ="secdno", required = false) Integer secdno,
+                               @RequestParam(value ="gender", required = false) Boolean gender, @RequestParam(value ="sno", required = false) String sno,
+                               @RequestParam(value ="qq", required = false) String qq, @RequestParam(value ="domitory", required = false) String domitory,
+                               @RequestParam(value ="know", required = false) String know, @RequestParam(value ="party", required = false) String party) {
 
         Dsign dsign = new Dsign(name, grade, college, major, userclass, dsp, dno, secdno, gender, sno, qq, domitory, know, party);
-        String newJwt = userApiService.sign(jwt,dsign,true,checkCode);
+        String newJwt = userApiService.sign(jwt,dsign,true);
         if(newJwt == null){
             return Return.error(Status.POSTAPPSIGNERROR);
         }else{
@@ -130,16 +131,16 @@ public class UserApiController  extends BaseController{
 
     @UserWebJwt
     @PostMapping("/user/websign")
-    public Result<Object> webSign(@RequestHeader("Cookie") String jwt,@RequestParam("name") String name, @RequestParam("grade") Integer grade,
+    public Result<Object> webSign(@RequestHeader("Authorization") String jwt,@RequestParam("name") String name, @RequestParam("grade") Integer grade,
                                @RequestParam("college") Integer college, @RequestParam("major") String major,
                                @RequestParam("class") String userclass, @RequestParam("dsp") String dsp,
                                @RequestParam("dno") Integer dno, @RequestParam("secdno") Integer secdno,
                                @RequestParam("gender") Boolean gender, @RequestParam("sno") String sno,
                                @RequestParam("qq") String qq, @RequestParam("domitory") String domitory,
-                               @RequestParam("know") String know, @RequestParam("party") String party,@RequestParam(value = "checkCode",required = false) String checkCode) {
+                               @RequestParam("know") String know, @RequestParam("party") String party) {
 
         Dsign dsign = new Dsign(name, grade, college, major, userclass, dsp, dno, secdno, gender, sno, qq, domitory, know, party);
-        String newJwt = userApiService.sign(jwt,dsign,false,checkCode);
+        String newJwt = userApiService.sign(jwt,dsign,false);
         if(newJwt == null){
             return Return.error(Status.POSTAPPSIGNERROR);
         }else{
@@ -149,7 +150,7 @@ public class UserApiController  extends BaseController{
 
     @UserJwt
     @PostMapping("/user/appGetPhone")
-    public Result<Object> appGetPhone(@RequestHeader("Cookie") String jwt,@RequestParam("phone") String phone ){
+    public Result<Object> appGetPhone(@RequestHeader("Authorization") String jwt,@RequestParam("phone") String phone ){
         boolean judge = userApiService.getPhone(jwt, phone, true);
         if (!judge){
             return Return.error(Status.POSTPHONEERROR);
@@ -162,13 +163,29 @@ public class UserApiController  extends BaseController{
 
     @UserWebJwt
     @PostMapping("/user/webGetPhone")
-    public Result<Object> webGetPhone(@RequestHeader("Cookie") String jwt,@RequestParam("phone") String phone ){
+    public Result<Object> webGetPhone(@RequestHeader("Authorization") String jwt,@RequestParam("phone") String phone ){
         boolean judge = userApiService.getPhone(jwt, phone, false);
         if (!judge){
             return Return.error(Status.POSTPHONEERROR);
         }else{
             return Return.success();
         }
+    }
+
+    @UserJwt
+    @PostMapping("/user/webCheckCode")
+    public Result<Object> webCheckCode(@RequestHeader("Authorization") String jwt, @RequestParam("phone") String phone, @RequestParam("code") String code){
+        //返回新的jwt
+        String data = userApiService.checkCode(jwt, code, phone, false);
+        return Return.success(data);
+
+    }
+    @UserJwt
+    @PostMapping("/user/appCheckCode")
+    public Result<Object> appCheckCode(@RequestHeader("Authorization") String jwt, @RequestParam("phone") String phone, @RequestParam("code") String code){
+        //返回新的jwt
+        String data = userApiService.checkCode(jwt, code, phone, true);
+        return Return.success(data);
 
     }
 

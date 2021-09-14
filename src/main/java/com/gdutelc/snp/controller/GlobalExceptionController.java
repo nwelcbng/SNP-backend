@@ -7,11 +7,13 @@ import com.gdutelc.snp.result.Status;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 /**
  * @author kid
  */
+@ResponseBody
 @ControllerAdvice
 public class GlobalExceptionController extends BaseController{
 

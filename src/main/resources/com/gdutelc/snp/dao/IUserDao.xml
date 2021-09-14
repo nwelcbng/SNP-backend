@@ -56,6 +56,12 @@
             que = #{que}
         WHERE openid = #{openid}
     </update>
+    <update id="updatePhoneByUid">
+        UPDATE db_sign_up.t_user
+        SET phone = #{phone}
+        WHERE uid = #{uid}
+    </update>
+
 
 
 </mapper>

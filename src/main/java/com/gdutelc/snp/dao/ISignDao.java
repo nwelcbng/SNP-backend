@@ -67,12 +67,7 @@ public interface ISignDao {
      * @return  用户报名信息
      */
     Integer updateDsignInformByUid(@Param("dsign") Dsign dsign, @Param("uid") Integer uid);
-    /**
-     * 修改用户信息
-     * @param   sign  意向部门
-     * @param  uid  uid
-     * @return  用户报名信息
-     */
+
 
 
 

@@ -1,6 +1,7 @@
 package com.gdutelc.snp.dao;
 import com.gdutelc.snp.entity.User;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 /**
@@ -59,6 +60,15 @@ public interface IUserDao {
      * @return 升级条数
      */
     Integer updatePhoneByOpenid(String openid,String phone);
+
+    /**
+     * 修改用户信息
+     * @param   phone 手机号
+     * @param  uid  uid
+     * @return  用户报名信息
+     */
+
+    Integer updatePhoneByUid(@Param("phone") String phone, @Param("uid") Integer uid);
 
 
     /**
