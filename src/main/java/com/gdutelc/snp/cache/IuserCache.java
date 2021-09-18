@@ -50,6 +50,8 @@ public interface IuserCache {
      */
     Integer updateCheckQueByOid(Integer check, String que,String openid);
 
+    Integer updateEnrollByUid(Integer enroll, Integer uid );
+
 
 
 }

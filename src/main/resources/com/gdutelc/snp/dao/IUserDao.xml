@@ -61,6 +61,11 @@
         SET phone = #{phone}
         WHERE uid = #{uid}
     </update>
+    <update id="updateEnrollByUid">
+        UPDATE db_sign_up.t_user
+        SET enroll = #{enroll}
+        WHERE uid = #{uid}
+    </update>
 
 
 

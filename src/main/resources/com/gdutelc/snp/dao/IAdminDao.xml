@@ -3,7 +3,7 @@
 <mapper namespace="com.gdutelc.snp.dao.IAdminDao">
 
     <resultMap id="AdminMap" type="com.gdutelc.snp.entity.Admin">
-        <id property="aid" column="uid"/>
+        <id property="aid" column="aid"/>
         <result property="openid" column="openid"/>
         <result property="username" column="username"/>
         <result property="adno" column="adno"/>
@@ -39,10 +39,9 @@
         LIMIT 1
     </select>
     <select id="getAdminByUsername" resultMap="AdminMap">
-        SELECT aid, openid,username,adno, `position`, password, phone
-        FROM   db_sign_up.t_admin
-        WHERE  usernmae = #{username}
-            LIMIT 1
+        SELECT * FROM  db_sign_up.t_admin
+        WHERE  username = #{username}
+        LIMIT 1
     </select>
     <select id="getPassWordByAid" resultType="java.lang.String">
         SELECT password

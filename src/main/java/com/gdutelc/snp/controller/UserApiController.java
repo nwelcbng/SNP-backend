@@ -28,10 +28,8 @@ public class UserApiController  extends BaseController{
             return Return.error(Status.JWTCREATEERROR);
         }
         if (jwt.contains("errcode")){
-            System.out.println(jwt);
             return Return.error(Status.GETOPENIDERROR,jwt);
         }
-        System.out.println(jwt.indexOf("errcode"));
         return  Return.success(jwt);
     }
 
@@ -56,9 +54,18 @@ public class UserApiController  extends BaseController{
 
 
     @UserJwt
-    @PutMapping("/user/setstatus")
-    public Result<Object> setStatus(@RequestHeader("Authorization") String cookie, @RequestBody String request){
-        boolean judge = userApiService.setStatusService(cookie, request);
+    @PutMapping("/user/appSetStatus")
+    public Result<Object> appSetStatus(@RequestHeader("Authorization") String cookie, @RequestBody String request){
+        boolean judge = userApiService.setStatusService(cookie, request,true);
+        if(!judge){
+            return Return.error(Status.SETSTATUSERROR);
+        }
+        return Return.success();
+    }
+    @UserJwt
+    @PutMapping("/user/webSetStatus")
+    public Result<Object> webSetStatus(@RequestHeader("Authorization") String cookie, @RequestBody String request){
+        boolean judge = userApiService.setStatusService(cookie, request,false);
         if(!judge){
             return Return.error(Status.SETSTATUSERROR);
         }
@@ -87,7 +94,6 @@ public class UserApiController  extends BaseController{
 
     @PostMapping("/user/weblogin")
     public Result<Object> weLogin(@RequestParam("uuid") String uuid){
-        System.out.println(uuid);
         String response = userApiService.webLogin(uuid);
         if(response == null){
             return Return.error(Status.WEBLOGINFALL);
@@ -119,7 +125,9 @@ public class UserApiController  extends BaseController{
                                @RequestParam(value ="know", required = false) String know, @RequestParam(value ="party", required = false) String party) {
 
         Dsign dsign = new Dsign(name, grade, college, major, userclass, dsp, dno, secdno, gender, sno, qq, domitory, know, party);
+        System.out.println(dsign);
         String newJwt = userApiService.sign(jwt,dsign,true);
+        System.out.println("newJwt"+newJwt);
         if(newJwt == null){
             return Return.error(Status.POSTAPPSIGNERROR);
         }else{

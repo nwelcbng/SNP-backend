@@ -12,6 +12,7 @@ import com.gdutelc.snp.entity.Qrcode;
 import com.gdutelc.snp.entity.Sign;
 import com.gdutelc.snp.entity.User;
 import com.gdutelc.snp.exception.*;
+import com.gdutelc.snp.result.Enroll;
 import com.gdutelc.snp.result.Status;
 import com.gdutelc.snp.service.UserApiService;
 import com.gdutelc.snp.util.AesUtil;
@@ -25,7 +26,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import javax.annotation.Resource;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -82,7 +82,6 @@ public class UserApiServiceImpl implements UserApiService {
         //解析json中的code
         JSONObject jsonObject = JSON.parseObject(code);
         String newcode = jsonObject.getString("code");
-        System.out.println(newcode);
         //存入地址格式
         Map<String,String> data = new HashMap<>(8);
         data.put("appid", this.appid);
@@ -162,17 +161,22 @@ public class UserApiServiceImpl implements UserApiService {
     }
 
     @Override
-    public boolean setStatusService(String jwt, String request) {
+    public boolean setStatusService(String jwt, String request, boolean app) {
+        String uid;
+        if (app){
+            uid  = userJwtConfig.getPayload(jwt).get("uid");
+        }else{
+            uid = userWebJwtConfig.getPayload(jwt).get("uid");
+        }
 
         //解析json获取参数
         JSONObject jsonObject = JSON.parseObject(request);
-        Integer check = jsonObject.getInteger("check");
-        String reason = jsonObject.getString("reason");
-
-        String uid = userJwtConfig.getPayload(jwt).get("uid");
-       String openid = userCache.getUserByUid(Integer.parseInt(uid)).getOpenid();
-        Integer integer =userCache.updateCheckQueByOid(check, reason, openid);
-        return openid != null && integer.equals(1);
+        Integer enroll = jsonObject.getInteger("enroll");
+        Integer integer = userCache.updateEnrollByUid(enroll,Integer.parseInt(uid));
+        if (integer == 1){
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -202,6 +206,7 @@ public class UserApiServiceImpl implements UserApiService {
                 flag = true;
             }
             if (code == 1){
+                redisUtil.del(uuid);
                 return jwtUtil.userWebJwtCreate(uid,flag,openid);
             }
         }
@@ -240,9 +245,10 @@ public class UserApiServiceImpl implements UserApiService {
                  uid = userWebJwtConfig.getPayload(jwt).get("uid");
             }
             String openid = userCache.getUserByUid(Integer.parseInt(uid)).getOpenid();
+
             Map<String,Object> claims = new HashMap<>(8);
             claims.put("uid",uid);
-            claims.put("phone",false);
+            claims.put("phone",true);
             if (iSignDao.getSignByUid(Integer.parseInt(uid)) == null){
                 Sign sign = new Sign(null,Integer.parseInt(uid),dsign.getName(),dsign.getGrade(),dsign.getCollege(),dsign.getMajor(),
                         dsign.getUserclass(),dsign.getDsp(),dsign.getDno(),dsign.getSecdno(),
@@ -252,12 +258,16 @@ public class UserApiServiceImpl implements UserApiService {
 
             }else{
                 signCache.updateDsignInformByUid(dsign,Integer.parseInt(uid));
+
             }
+            //修改用户状态
+            userCache.updateEnrollByUid(Enroll.HAVESIGN.getCode(),Integer.parseInt(uid));
             if (app){
                 return userJwtConfig.createJwt(claims, openid);
             }
             return userWebJwtConfig.createJwt(claims,openid);
         }catch (Exception e){
+            System.out.println(e.getMessage());
             throw new UserServiceException(Status.POSTAPPSIGNERROR);
         }
     }

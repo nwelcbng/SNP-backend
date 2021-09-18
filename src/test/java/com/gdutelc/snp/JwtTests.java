@@ -44,8 +44,8 @@ public class JwtTests {
         jwtConfig.setExpire(36000);
         jwtConfig.setHeader("jwt");
         HashMap<String,Object> claims = new HashMap<>();
-        claims.put("uid",4);
-        String jwt = jwtConfig.createJwt(claims, "qwer1234");
+        claims.put("aid",1);
+        String jwt = jwtConfig.createJwt(claims, "1234567");
         System.out.println(jwt);
         Map<String, String> payload = jwtConfig.getPayload(jwt);
         String uid = payload.get("uid");

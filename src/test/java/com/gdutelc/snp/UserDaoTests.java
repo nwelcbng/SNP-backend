@@ -32,6 +32,7 @@ public class UserDaoTests {
     @DisplayName("获取User")
     void getUserTest(){
         User user = iUserDao.getUserByUid(1);
+        System.out.println(user);
         System.out.println(user.getOpenid());
         System.out.println(user.getPhone());
     }

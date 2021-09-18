@@ -22,21 +22,21 @@ public interface AdminApiService {
      * @param gender 性别
      * @return 符合条件的所有用户的信息
      */
-    String getDsignByGender(Boolean gender);
+    List<Dsign> getDsignByGender(Boolean gender);
 
     /**
      * 通过学院获取用户信息
      * @param college 学院
      * @return 符合条件的所有用户的信息
      */
-    String getDsignByCollege(Integer college);
+    List<Dsign> getDsignByCollege(Integer college);
 
     /**
      * 通过意向部门获取用户信息
      * @param dno 意向部门
      * @return 符合条件的所有用户的信息
      */
-    String getDsignByDno(Integer dno);
+    List<Dsign> getDsignByDno(Integer dno);
 
     /**
      * 确认新生通过面试

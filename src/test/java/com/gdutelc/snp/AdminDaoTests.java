@@ -17,20 +17,15 @@ public class AdminDaoTests {
     @DisplayName("插入admin信息")
     void insertInformTest(){
         Admin admin = new Admin();
-        Integer integer = iAdminDao.insertInform("qwer1235","kid",1,2,"123456","13428765420");
+        Integer integer = iAdminDao.insertInform("qwer1235","cet",1,2,"123456","13428765420");
         System.out.println(integer);
     }
 
     @Test
     @DisplayName("通过admin插入")
     void insertInformByAdminTest(){
-        Admin admin = new Admin();
-        admin.setOpenid("a123123123");
-        admin.setUsername("qqqqqqqqqq");
-        admin.setAdno(4);
-        admin.setPassword("qwert");
-        admin.setPosition(5);
-        admin.setPhone("wwwwwwwwwww");
+        Admin admin = new Admin(null,"qwer","cet",1,1,"123456","134264978");
+
         Integer judge = iAdminDao.insertInformByAdmin(admin);
         System.out.println(judge);
     }
@@ -76,6 +71,12 @@ public class AdminDaoTests {
     void updateAndoTest(){
         Integer judge = iAdminDao.updatePositionByOpenid("asdfghjjkkl",12);
         System.out.println(judge);
+    }
+
+    @Test
+    void getTest(){
+        Admin kid = iAdminDao.getAdminByUsername("cet");
+        System.out.println(kid);
     }
 
 }

@@ -1,3 +1,0 @@
-2021-08-31 19:54:32.868 [http-nio-10080-exec-1] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.gdutelc.snp.exception.JwtErrorException: jwt为空]
-2021-09-01 23:22:42.953 [restartedMain] WARN  o.s.b.d.autoconfigure.OptionalLiveReloadServer - Unable to start LiveReload server
-2021-09-01 23:22:43.250 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 10080 is already in use

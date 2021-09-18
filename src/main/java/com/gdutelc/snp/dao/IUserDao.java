@@ -69,6 +69,13 @@ public interface IUserDao {
      */
 
     Integer updatePhoneByUid(@Param("phone") String phone, @Param("uid") Integer uid);
+    /**
+     * 修改用户信息
+     * @param   enroll 状态
+     * @param  uid  uid
+     * @return  用户报名信息
+     */
+    Integer updateEnrollByUid(@Param("enroll") Integer enroll, @Param("uid") Integer uid);
 
 
     /**

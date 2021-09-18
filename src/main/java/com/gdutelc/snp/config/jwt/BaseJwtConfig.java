@@ -41,13 +41,13 @@ public class BaseJwtConfig {
         //创建jwt
         JWTCreator.Builder jwt = JWT.create();
 
-        //增加payload
-        claims.forEach((k,v)->jwt.withClaim(k,v.toString()));
         //增加发送时间和到期时间
         jwt.withIssuedAt(date).withExpiresAt(expireDate);
+        //增加payload
+        claims.forEach((k,v) -> jwt.withClaim(k,v.toString()));
         //签名
-        String sign = jwt.sign(algorithm);
-        return sign;
+        return jwt.sign(algorithm);
+
 
     }
     /**

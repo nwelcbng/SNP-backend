@@ -1,9 +1,11 @@
 package com.gdutelc.snp.service.impl;
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.gdutelc.snp.cache.AdminCache;
 import com.gdutelc.snp.cache.SignCache;
 import com.gdutelc.snp.cache.UserCache;
 import com.gdutelc.snp.config.jwt.AdminJwtConfig;
+import com.gdutelc.snp.dao.IAdminDao;
 import com.gdutelc.snp.dto.Dsign;
 import com.gdutelc.snp.entity.Admin;
 import com.gdutelc.snp.entity.Message;
@@ -45,12 +47,16 @@ public class AdminApiServiceImpl implements AdminApiService {
     @Resource
     private RedisUtil redisUtil;
 
+    @Resource
+    private IAdminDao adminDao;
+
 
 
 
     @Override
     public String adminLogin(String username, String password) {
         String passowrdByUsername = adminCache.getPassowrdByUsername(username);
+        Integer aid = adminCache.getAdminByUsername(username).getAid();
         try{
             Assert.notNull(passowrdByUsername, Status.GETPASSWORDERROR.getMsg());
         }catch (Exception e){
@@ -63,40 +69,43 @@ public class AdminApiServiceImpl implements AdminApiService {
         }
         Map<String,Object> data = new HashMap<>(4);
         data.put("username",username);
+
+        data.put("aid",aid);
+
         return adminJwtConfig.createJwt(data, password);
     }
 
     @Override
-    public String getDsignByGender(Boolean gender) {
+    public List<Dsign> getDsignByGender(Boolean gender) {
         List<Dsign> dsigns = signCache.getDsignByGender(gender);
         try{
             Assert.notNull(dsigns,Status.GETFORMERROR.getMsg());
         }catch (Exception e){
             throw new AdminServiceException(Status.GETFORMERROR);
         }
-        return JSON.toJSONString(dsigns);
+        return dsigns;
     }
 
     @Override
-    public String getDsignByCollege(Integer college) {
+    public List<Dsign> getDsignByCollege(Integer college) {
         List<Dsign> dsigns = signCache.getDsignByCollege(college);
         try{
             Assert.notNull(dsigns,Status.GETFORMERROR.getMsg());
         }catch (Exception e){
             throw new AdminServiceException(Status.GETFORMERROR);
         }
-        return JSON.toJSONString(dsigns);
+        return dsigns;
     }
 
     @Override
-    public String getDsignByDno(Integer dno) {
+    public List<Dsign> getDsignByDno(Integer dno) {
         List<Dsign> dsigns = signCache.getDsignByDno(dno);
         try {
             Assert.notNull(dsigns, Status.GETFORMERROR.getMsg());
         }catch (Exception e){
             throw new AdminServiceException(Status.GETFORMERROR);
         }
-        return JSON.toJSONString(dsigns);
+        return dsigns;
     }
 
     @Override

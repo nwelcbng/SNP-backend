@@ -30,7 +30,6 @@ public interface IsignCache {
 
     Integer updateDsignInformByUid(Dsign dsign,Integer uid);
 
-
     Dsign getDsignByUid(Integer uid);
 
 }

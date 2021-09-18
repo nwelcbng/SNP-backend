@@ -1,5 +1,8 @@
 package com.gdutelc.snp.controller;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.gdutelc.snp.annotation.AdminJwt;
+import com.gdutelc.snp.dto.Dsign;
 import com.gdutelc.snp.result.Result;
 import com.gdutelc.snp.result.Return;
 import com.gdutelc.snp.result.Status;
@@ -7,6 +10,7 @@ import com.gdutelc.snp.service.AdminApiService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author kid
@@ -31,9 +35,11 @@ public class AdminApiController extends BaseController{
 
     @AdminJwt
     @GetMapping("admin/getbygen")
-    public Result<Object> getDsignByGender(@RequestBody boolean gender){
-        String data = adminApiService.getDsignByGender(gender);
-        if (data == null){
+    public Result<Object> getDsignByGender(@RequestBody String gender){
+        JSONObject jsonObject = JSON.parseObject(gender);
+        Boolean newGender = jsonObject.getBoolean("gender");
+        List<Dsign> data = adminApiService.getDsignByGender(newGender);
+        if (data.isEmpty()){
             return Return.error(Status.GETFORMERROR);
         }
         return Return.success(data);
@@ -41,9 +47,12 @@ public class AdminApiController extends BaseController{
 
     @AdminJwt
     @GetMapping("/admin/getbycolle")
-    public Result<Object> getDsignByCollege(@RequestBody Integer college){
-        String data = adminApiService.getDsignByCollege(college);
-        if (data == null){
+    public Result<Object> getDsignByCollege(@RequestBody String college){
+        JSONObject jsonObject = JSON.parseObject(college);
+        Integer newCollege = jsonObject.getInteger("college");
+        System.out.println(college);
+        List<Dsign> data = adminApiService.getDsignByCollege(newCollege);
+        if (data.isEmpty()){
             return Return.error(Status.GETFORMERROR);
         }
         return Return.success(data);
@@ -51,9 +60,11 @@ public class AdminApiController extends BaseController{
 
     @AdminJwt
     @GetMapping("/admin/getbydno")
-    public Result<Object> getDsignByDno(@RequestBody Integer dno){
-        String data = adminApiService.getDsignByDno(dno);
-        if (data == null){
+    public Result<Object> getDsignByDno(@RequestBody String dno){
+        JSONObject jsonObject = JSON.parseObject(dno);
+        Integer newDno = jsonObject.getInteger("dno");
+        List<Dsign> data = adminApiService.getDsignByDno(newDno);
+        if (data.isEmpty()){
             return Return.error(Status.GETFORMERROR);
         }
         return Return.success(data);

@@ -39,7 +39,7 @@ public interface UserApiService {
      * @param  request 前端发的json数据
      * @return  返回表单json数据
      */
-    boolean setStatusService(String jwt,String request);
+    boolean setStatusService(String jwt,String request,boolean app);
 
     /**
      * 后台发送二维码

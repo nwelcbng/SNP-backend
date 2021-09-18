@@ -1,5 +1,0 @@
-2021-09-08 23:04:33.152 [http-nio-10080-exec-2] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.gdutelc.snp.exception.JwtErrorException: jwt为空]
-2021-09-08 23:04:57.263 [http-nio-10080-exec-1] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'grade' for method parameter type Integer is present but converted to null]
-2021-09-08 23:05:39.946 [http-nio-10080-exec-1] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.gdutelc.snp.exception.UserServiceException: 获取小程序端报名信息失败]
-2021-09-08 23:05:43.208 [http-nio-10080-exec-2] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.gdutelc.snp.exception.UserServiceException: 获取小程序端报名信息失败]
-2021-09-08 23:07:05.814 [http-nio-10080-exec-1] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.gdutelc.snp.exception.UserServiceException: 获取小程序端报名信息失败]

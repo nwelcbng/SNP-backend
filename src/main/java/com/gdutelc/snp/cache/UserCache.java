@@ -3,10 +3,7 @@ package com.gdutelc.snp.cache;
 import com.gdutelc.snp.dao.IUserDao;
 import com.gdutelc.snp.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.*;
 import org.springframework.stereotype.Component;
 
 /**
@@ -14,38 +11,48 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @CacheConfig(cacheNames = "users")
+@EnableCaching
 public class UserCache implements IuserCache{
+    private final IUserDao userDao;
     @Autowired
-    private IUserDao userDao;
+    public UserCache(IUserDao userDao) {
+        this.userDao = userDao;
+    }
 
-    @Cacheable(key = "#openid")
+    @Cacheable(key = "getMethodName()", unless = "#result == null"  )
     @Override
     public User getUserByOpenid(String openid) {
         return userDao.getUserByOpenid(openid);
     }
 
-    @Cacheable(key = "getMethodName()")
+    @Cacheable(key = "getMethodName()", unless = "#result == null" )
     @Override
     public String getOpenidByUid(Integer uid) {
         return userDao.getOpenidByUid(uid);
     }
 
-    @Cacheable(key = "result.openid")
+    @Cacheable(key = "getMethodName()", unless = "#result == null" )
     @Override
     public User getUserByUid(Integer uid) {
         return userDao.getUserByUid(uid);
     }
 
 
-    @Cacheable(key = "getMethodName()")
+    @Cacheable(key = "getMethodName()", unless = "#result == null" )
     @Override
     public String getPhoneByUid(Integer uid) {
         return userDao.getPhoneByUid(uid);
     }
 
-    @CacheEvict(key = "#openid")
+    @CacheEvict(value = "users",allEntries = true)
     @Override
     public Integer updateCheckQueByOid(Integer check, String que, String openid) {
         return userDao.updateCheckQueByOid(check, que, openid);
+    }
+
+    @CacheEvict(value = "users",allEntries = true)
+    @Override
+    public Integer updateEnrollByUid(Integer enroll, Integer uid) {
+        return userDao.updateEnrollByUid(enroll, uid);
     }
 }
