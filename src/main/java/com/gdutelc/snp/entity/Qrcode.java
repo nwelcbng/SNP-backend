@@ -13,6 +13,6 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Qrcode implements Serializable {
-    private Integer uid;
+    private int uid;
     private int code;
 }

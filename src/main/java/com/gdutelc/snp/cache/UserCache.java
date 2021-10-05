@@ -55,4 +55,22 @@ public class UserCache implements IuserCache{
     public Integer updateEnrollByUid(Integer enroll, Integer uid) {
         return userDao.updateEnrollByUid(enroll, uid);
     }
+
+    @CacheEvict(value = "users",allEntries = true)
+    @Override
+    public Integer closeSign(Integer enroll) {
+        return userDao.closeSign(enroll);
+    }
+
+    @CacheEvict(value = "users",allEntries = true)
+    @Override
+    public Integer updateEnroll(Integer enroll, Integer check) {
+        return userDao.updateEnroll(enroll, check);
+
+    }
+    @CacheEvict(value = "users",allEntries = true)
+    @Override
+    public Integer updateEnrollByitself(Integer oldEnroll, Integer newEnroll) {
+        return userDao.updateEnrollByItself(oldEnroll, newEnroll);
+    }
 }

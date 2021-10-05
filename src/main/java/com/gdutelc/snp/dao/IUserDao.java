@@ -98,6 +98,29 @@ public interface IUserDao {
 
     Integer updateCheckQueByOid(Integer check, String que,String openid);
 
+    /**
+     * 禁止学生进行报名
+     * @param enroll 符合要求的状态
+     * @return 被冻结的条数
+     */
+    Integer closeSign(Integer enroll);
+
+    /**
+     * 统一修改学生状态
+     * @param enroll 符合要求的状态
+     * @param  check 是否被冻结
+     * @return 被冻结的条数
+     */
+    Integer updateEnroll(Integer enroll,Integer check);
+
+    /**
+     * 统一修改学生状态
+     * @param oldEnroll 之前的状态
+     * @param  newEnroll 新的状态
+     * @return 被冻结的条数
+     */
+    Integer updateEnrollByItself(Integer oldEnroll,Integer newEnroll);
+
 
 
 

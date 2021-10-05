@@ -66,6 +66,23 @@
         SET enroll = #{enroll}
         WHERE uid = #{uid}
     </update>
+    <update id="closeSign">
+        UPDATE db_sign_up.t_user
+        SET `check` = 1
+        WHERE enroll = #{enroll}
+    </update>
+
+    <update id="updateEnroll">
+        UPDATE db_sign_up.t_user
+        SET enroll = #{enroll}
+        WHERE `check` = #{check}
+    </update>
+    <update id="updateEnrollByItself">
+        UPDATE db_sign_up.t_user
+        SET enroll = #{newEnroll}
+        WHERE enroll = #{oldEnroll}
+    </update>
+
 
 
 

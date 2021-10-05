@@ -90,7 +90,7 @@ public class UserApiServiceImpl implements UserApiService {
         data.put("grant_type", "authorization_code");
         String response = HttpRequest.get("https://api.weixin.qq.com/sns/jscode2session").form(data).body();
         if (response.isEmpty()){
-            throw new UserServiceException(Status.GETRESOURCEERROR);
+            throw new UserServiceException(Status.GETRESOURCEERROR,Status.GETRESOURCEERROR.getMsg());
         }
         JSONObject object = JSON.parseObject(response);
         //获取openid
@@ -106,7 +106,7 @@ public class UserApiServiceImpl implements UserApiService {
             redisUtil.set("msg"+openid,session);
 
         }else{
-            throw new UserServiceException(Status.REGISTERERROR);
+            throw new UserServiceException(Status.REGISTERERROR,Status.REGISTERERROR.getMsg());
         }
 
         //信息存入数据库
@@ -114,22 +114,26 @@ public class UserApiServiceImpl implements UserApiService {
         //如果数据库存在用户信息，则重新发送jwt
         if (user != null){
             //验证手机号是否存在
-            if (user.getPhone().equals(Integer.toString(0))){
+            if (user.getPhone().equals(user.getOpenid())){
                 return jwtUtil.userJwtCreate(user.getUid(),false,user.getOpenid());
             }
-            if (!user.getPhone().equals(Integer.toString(0))){
+            if (!user.getPhone().equals(user.getOpenid())){
                 return jwtUtil.userJwtCreate(user.getUid(),true,user.getOpenid());
             }
         }
         //如果不存在，则新建用户，重新插入数据
-        Integer judge = userDao.insertOidPhone(openid, "0");
+        Integer judge = userDao.insertOidPhone(openid, openid);
+
+
 
         try{
             Assert.state(judge.equals(1),Status.USERINSERTERROR.getMsg());
         }catch (Exception e){
-            throw new UserServiceException(Status.USERINSERTERROR);
+            throw new UserServiceException(Status.USERINSERTERROR,e.getMessage());
         }
         Integer uid = userCache.getUserByOpenid(openid).getUid();
+        //修改报名表的状态
+        userDao.updateEnrollByUid(Enroll.HAVESIGN.getCode(),uid);
         return jwtUtil.userJwtCreate(uid,false,openid);
     }
 
@@ -143,7 +147,7 @@ public class UserApiServiceImpl implements UserApiService {
         try{
             Assert.notNull(userinfo,Status.GETFORMERROR.getMsg());
         }catch (Exception e){
-            throw new UserServiceException(Status.GETFORMERROR);
+            throw new UserServiceException(Status.GETFORMERROR,e.getMessage());
         }
         return JSON.toJSONString(userinfo);
     }
@@ -155,7 +159,7 @@ public class UserApiServiceImpl implements UserApiService {
         try{
             Assert.notNull(userinfo,Status.GETFORMERROR.getMsg());
         }catch (Exception e){
-            throw new UserServiceException(Status.GETFORMERROR);
+            throw new UserServiceException(Status.GETFORMERROR,e.getMessage());
         }
         return JSON.toJSONString(userinfo);
     }
@@ -173,10 +177,7 @@ public class UserApiServiceImpl implements UserApiService {
         JSONObject jsonObject = JSON.parseObject(request);
         Integer enroll = jsonObject.getInteger("enroll");
         Integer integer = userCache.updateEnrollByUid(enroll,Integer.parseInt(uid));
-        if (integer == 1){
-            return true;
-        }
-        return false;
+        return integer == 1;
     }
 
     @Override
@@ -202,7 +203,7 @@ public class UserApiServiceImpl implements UserApiService {
             String phone = userDao.getPhoneByUid(uid);
             String openid = userDao.getOpenidByUid(uid);
             int code = qrcode.getCode();
-            if (!phone.equals(0)){
+            if (!phone.equals(openid)){
                 flag = true;
             }
             if (code == 1){
@@ -210,7 +211,7 @@ public class UserApiServiceImpl implements UserApiService {
                 return jwtUtil.userWebJwtCreate(uid,flag,openid);
             }
         }
-        throw new UserServiceException(Status.QRUUIDERROR);
+        throw new UserServiceException(Status.QRUUIDERROR,Status.QRUUIDERROR.getMsg());
 
     }
 
@@ -221,16 +222,13 @@ public class UserApiServiceImpl implements UserApiService {
             String uid = userJwtConfig.getPayload(jwt).get("uid");
             String openid = userCache.getOpenidByUid(Integer.parseInt(uid));
             String phone = userCache.getUserByUid(Integer.parseInt(uid)).getPhone();
-            if (phone.equals(Integer.toString(0))){
+            if (phone.equals(openid)){
                 return jwtUtil.userJwtCreate(Integer.parseInt(uid),false,openid);
             }
-            if (!phone.equals(Integer.toString(0))){
-                return jwtUtil.userJwtCreate(Integer.parseInt(uid),true,openid);
-            }
+            return jwtUtil.userJwtCreate(Integer.parseInt(uid),true,openid);
         }catch (Exception e){
-            throw new UserServiceException(Status.JWTUPDATEERROR);
+            throw new UserServiceException(Status.JWTUPDATEERROR,e.getMessage());
         }
-        return null;
     }
 
 
@@ -267,8 +265,7 @@ public class UserApiServiceImpl implements UserApiService {
             }
             return userWebJwtConfig.createJwt(claims,openid);
         }catch (Exception e){
-            System.out.println(e.getMessage());
-            throw new UserServiceException(Status.POSTAPPSIGNERROR);
+            throw new UserServiceException(Status.POSTAPPSIGNERROR,e.getMessage());
         }
     }
 
@@ -303,9 +300,33 @@ public class UserApiServiceImpl implements UserApiService {
                 }
             }
         }
-        throw new UserServiceException(Status.CHECKPHONEERROR);
+        throw new UserServiceException(Status.CHECKPHONEERROR,Status.CHECKPHONEERROR.getMsg());
+    }
 
+    @Override
+    public boolean giveUpFirst(String jwt, boolean judge, boolean app) {
+       try{
+           String uid;
+           if (app){
+               uid = userJwtConfig.getPayload(jwt).get("uid");
+           }else{
+               uid = userWebJwtConfig.getPayload(jwt).get("uid");
+           }
+           if (judge){
+               userCache.updateEnrollByitself(Enroll.FIRSTCHECKED.getCode(),Integer.parseInt(uid));
+           }else{
+               userCache.updateEnrollByUid(Enroll.FIRSTGIVEUP.getCode(),Integer.parseInt(uid));
+           }
+           return true;
+       }catch (Exception e){
+           throw new UserServiceException(Status.CHECKFIRSTERROR,e.getMessage());
+       }
+    }
 
+    @Override
+    public boolean signInService(String jwt, boolean first, int enroll) {
+        //TODO 扔进kafka
+        return false;
     }
 
 

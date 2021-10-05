@@ -1,15 +1,14 @@
 package com.gdutelc.snp.service.impl;
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.gdutelc.snp.cache.AdminCache;
 import com.gdutelc.snp.cache.SignCache;
 import com.gdutelc.snp.cache.UserCache;
 import com.gdutelc.snp.config.jwt.AdminJwtConfig;
-import com.gdutelc.snp.dao.IAdminDao;
+import com.gdutelc.snp.dto.Audition;
 import com.gdutelc.snp.dto.Dsign;
 import com.gdutelc.snp.entity.Admin;
 import com.gdutelc.snp.entity.Message;
 import com.gdutelc.snp.exception.AdminServiceException;
+import com.gdutelc.snp.result.Enroll;
 import com.gdutelc.snp.result.Status;
 import com.gdutelc.snp.service.AdminApiService;
 import com.gdutelc.snp.util.RedisUtil;
@@ -47,8 +46,6 @@ public class AdminApiServiceImpl implements AdminApiService {
     @Resource
     private RedisUtil redisUtil;
 
-    @Resource
-    private IAdminDao adminDao;
 
 
 
@@ -60,11 +57,11 @@ public class AdminApiServiceImpl implements AdminApiService {
         try{
             Assert.notNull(passowrdByUsername, Status.GETPASSWORDERROR.getMsg());
         }catch (Exception e){
-            throw new AdminServiceException(Status.GETPASSWORDERROR);
+            throw new AdminServiceException(Status.GETPASSWORDERROR,e.getMessage());
         }
 
         if (!password.equals(passowrdByUsername)){
-            throw new AdminServiceException(Status.PASSWORDERROR);
+            throw new AdminServiceException(Status.PASSWORDERROR,null);
 
         }
         Map<String,Object> data = new HashMap<>(4);
@@ -81,7 +78,7 @@ public class AdminApiServiceImpl implements AdminApiService {
         try{
             Assert.notNull(dsigns,Status.GETFORMERROR.getMsg());
         }catch (Exception e){
-            throw new AdminServiceException(Status.GETFORMERROR);
+            throw new AdminServiceException(Status.GETFORMERROR,e.getMessage());
         }
         return dsigns;
     }
@@ -92,7 +89,7 @@ public class AdminApiServiceImpl implements AdminApiService {
         try{
             Assert.notNull(dsigns,Status.GETFORMERROR.getMsg());
         }catch (Exception e){
-            throw new AdminServiceException(Status.GETFORMERROR);
+            throw new AdminServiceException(Status.GETFORMERROR,e.getMessage());
         }
         return dsigns;
     }
@@ -103,7 +100,7 @@ public class AdminApiServiceImpl implements AdminApiService {
         try {
             Assert.notNull(dsigns, Status.GETFORMERROR.getMsg());
         }catch (Exception e){
-            throw new AdminServiceException(Status.GETFORMERROR);
+            throw new AdminServiceException(Status.GETFORMERROR,e.getMessage());
         }
         return dsigns;
     }
@@ -121,16 +118,71 @@ public class AdminApiServiceImpl implements AdminApiService {
             Message message = new Message(dsign.getName(),admin.getAdno(),session,opneid);
             if (check){
                 kafkaTemplate.send("success",message).addCallback(success-> log.info("成功往kafka传入confirm信息"), fail->{
-                    throw new AdminServiceException(Status.CONFIRMFAIL);
+                    throw new AdminServiceException(Status.CONFIRMFAIL,Status.CONFIRMFAIL.getMsg());
                 });
             }else{
                 kafkaTemplate.send("fail",message).addCallback(success-> log.info("成功往kafka传入confirm信息"), fail->{
-                    throw new AdminServiceException(Status.CONFIRMFAIL);
+                    throw new AdminServiceException(Status.CONFIRMFAIL,Status.CONFIRMFAIL.getMsg());
                 });
             }
             return true;
         }catch (Exception e){
-            throw new AdminServiceException(Status.CONFIRMFAIL);
+            throw new AdminServiceException(Status.CONFIRMFAIL,e.getMessage());
         }
+    }
+
+    @Override
+    public boolean checkSign(Integer uid) {
+        try{
+            userCache.updateEnrollByUid(Enroll.HAVECHECKING.getCode(), uid);
+            return true;
+        }catch (Exception e){
+            throw new AdminServiceException(Status.CHECKSIGNFAIL,e.getMessage());
+        }
+    }
+
+    @Override
+    public boolean closeSign() {
+        //数据库冻结check
+        try{
+            userCache.closeSign(Enroll.NOPUSHSIGN.getCode());
+            userCache.updateEnroll(Enroll.HAVESIGN.getCode(),0);
+            return true;
+        }catch (Exception e){
+            throw new AdminServiceException(Status.CLOSESIGNERROR,Status.CLOSESIGNERROR.getMsg());
+        }
+        //TODO 塞入kafka告诉用户
+    }
+
+    @Override
+    public boolean firstAudition(Audition audition) {
+        try{
+            //扔到redis
+            redisUtil.set("firstAudition",audition);
+            //冻结小于111的user
+            userCache.closeSign(Enroll.HAVESIGN.getCode());
+            userCache.closeSign(Enroll.CHECKING.getCode());
+            //为111的用户推送
+            userCache.updateEnrollByitself(Enroll.HAVECHECKING.getCode(),Enroll.FIRSTNOCHECK.getCode());
+            kafkaTemplate.send("firstAudition",audition);
+            //TODO 塞入kafka
+            return true;
+        }catch(Exception e){
+            throw new AdminServiceException(Status.POSTFIRSTAUDITIONFAIL,e.getMessage());
+        }
+    }
+
+    @Override
+    public Audition closeFirst() {
+            boolean judge = redisUtil.hasKey("firstAudition");
+            if (!judge){
+                throw new AdminServiceException(Status.NOFIRSTDATELOCATION,Status.NOFIRSTDATELOCATION.getMsg());
+            }
+            Audition firstAudition = (Audition)redisUtil.get("firstAudition");
+            //冻结状态为202的用户
+            userCache.closeSign(Enroll.FIRSTGIVEUP.getCode());
+            //将状态为201的用户修改为210
+            userCache.updateEnrollByitself(Enroll.FIRSTCHECKED.getCode(),Enroll.FIRSTNOSIGN.getCode());
+            return firstAudition;
     }
 }

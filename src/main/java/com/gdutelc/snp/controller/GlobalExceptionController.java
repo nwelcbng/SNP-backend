@@ -24,18 +24,18 @@ public class GlobalExceptionController extends BaseController{
     }
     @ExceptionHandler(AdminServiceException.class)
     public Result<Status> adminServiceException(AdminServiceException e){
-        log.error(e.getStatus().getMsg());
+        log.error(e.getMessage());
         return Return.error(e.getStatus());
     }
 
     @ExceptionHandler(JwtErrorException.class)
     public Result<Status> jwtErrorException(JwtErrorException e){
-        log.error(e.getStatus().getMsg());
+        log.error(e.getMessage());
         return Return.error(e.getStatus());
     }
     @ExceptionHandler(UserServiceException.class)
     public Result<Status> userServiceException(UserServiceException e){
-        log.error(e.getStatus().getMsg());
+        log.error(e.getMessage());
         return Return.error(e.getStatus());
     }
 

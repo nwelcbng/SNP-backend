@@ -194,7 +194,29 @@ public class UserApiController  extends BaseController{
         //返回新的jwt
         String data = userApiService.checkCode(jwt, code, phone, true);
         return Return.success(data);
-
+    }
+    @UserJwt
+    @PostMapping("/user/webGiveUpFirstAudition")
+    public Result<Object> webGiveUpFirst(@RequestHeader("Authorization") String jwt,@RequestParam("judge") boolean judge){
+        boolean newJudge = userApiService.giveUpFirst(jwt, judge, false);
+        if (!newJudge){
+            return Return.error(Status.CHECKFIRSTERROR);
+        }
+        return Return.success();
+    }
+    @UserJwt
+    @PostMapping("/user/appGiveUpFirstAudition")
+    public Result<Object> appGiveUpFirst(@RequestHeader("Authorization") String jwt,@RequestParam("judge") boolean judge){
+        boolean newJudge = userApiService.giveUpFirst(jwt, judge, true);
+        if (!newJudge){
+            return Return.error(Status.CHECKFIRSTERROR);
+        }
+        return Return.success();
+    }
+    @UserJwt
+    @PostMapping("/user/signIn")
+    public Result<Object> signIn(@RequestHeader("Authorization") String jwt,@RequestParam("enroll") int enroll,@RequestParam("first") boolean first){
+        return null;
     }
 
 

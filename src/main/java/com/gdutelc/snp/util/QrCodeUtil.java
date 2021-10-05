@@ -29,7 +29,7 @@ public class QrCodeUtil {
             redisUtil.set(uuid,qrcode,180);
             return encrypt;
         }catch (Exception e){
-            throw new UserServiceException(Status.GETQRCODEERROR);
+            throw new UserServiceException(Status.GETQRCODEERROR,e.getMessage());
         }
     }
     public boolean checkCode(String uuid,String uid){
@@ -41,7 +41,7 @@ public class QrCodeUtil {
             redisUtil.set(decrypt,qrcode,180);
             return true;
         }else{
-            throw new UserServiceException(Status.CHECKQRCODEERROR);
+            throw new UserServiceException(Status.CHECKQRCODEERROR,Status.CHECKQRCODEERROR.getMsg());
         }
     }
 }

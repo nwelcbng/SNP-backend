@@ -1,5 +1,6 @@
 package com.gdutelc.snp.service;
 
+import com.gdutelc.snp.dto.Audition;
 import com.gdutelc.snp.dto.Dsign;
 
 import java.util.List;
@@ -46,4 +47,25 @@ public interface AdminApiService {
      * @return 是否给新生发送信息
      */
     boolean confirm(String jwt, Integer uid, boolean check);
+
+    /**
+     * 审核新生的报名表
+     * @param uid 用户id
+     */
+    boolean checkSign(Integer uid);
+
+    /**
+     * 修改新生的状态
+     */
+    boolean closeSign();
+
+    /**
+     * @param audition 面试地点信息
+     */
+    boolean firstAudition(Audition audition);
+
+    /**
+     * 冻结第一次面试并返回时间地点
+     */
+    Audition closeFirst();
 }

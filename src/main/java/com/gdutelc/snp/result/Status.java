@@ -35,6 +35,11 @@ public enum Status {
     USERINSERTERROR(-601,"无法往数据库存入user信息"),
     QRCODECHECKERROR(-602,"二维码检验失败"),
     QRUUIDERROR(-603,"二维码uuid有误"),
+    CHECKSIGNFAIL(-604,"管理员审核报名失败"),
+    CLOSESIGNERROR(-605,"禁止报名失败"),
+    POSTFIRSTAUDITIONFAIL(-606,"上传一面时间地点失败"),
+    CHECKFIRSTERROR(-607,"确认参加一面失败"),
+    NOFIRSTDATELOCATION(-608,"暂无第一次面试的时间地点"),
     SUCCESS(1,"成功");
 
 

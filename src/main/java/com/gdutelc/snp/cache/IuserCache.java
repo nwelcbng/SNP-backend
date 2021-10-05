@@ -52,6 +52,12 @@ public interface IuserCache {
 
     Integer updateEnrollByUid(Integer enroll, Integer uid );
 
+    Integer closeSign(Integer enroll);
+
+    Integer updateEnroll(Integer enroll,Integer check);
+
+    Integer updateEnrollByitself(Integer oldEnroll,Integer newEnroll);
+
 
 
 }

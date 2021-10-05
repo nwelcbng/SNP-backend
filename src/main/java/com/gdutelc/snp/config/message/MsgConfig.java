@@ -36,7 +36,7 @@ public class MsgConfig {
             var res = response.body();
             return res.contains("\"success\"");
         } catch (IOException | InterruptedException ignored) {
-            throw new UserServiceException(Status.PHONECODEERROR);
+            throw new UserServiceException(Status.PHONECODEERROR,Status.PHONECODEERROR.getMsg());
         }
 
     }

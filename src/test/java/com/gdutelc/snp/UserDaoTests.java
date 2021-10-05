@@ -63,5 +63,10 @@ public class UserDaoTests {
         User user = iUserDao.getUserByOpenid("12354");
         System.out.println(user);
     }
+    @Test
+    void update(){
+        Integer integer = iUserDao.updateEnrollByItself(201, 101);
+        System.out.println(integer);
+    }
 
 }

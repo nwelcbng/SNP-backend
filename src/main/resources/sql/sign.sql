@@ -8,7 +8,7 @@ CREATE TABLE `t_user`
 (
     `uid`       int primary key auto_increment,
     `openid`    varchar(30) unique key NOT NULL,
-    `phone`     varchar(11) unique key NOT NULL,
+    `phone`     varchar(11)            NOT NULL,
     `enroll`    int                    NOT NULL DEFAULT 100,
     `check`     int                    NOT NULL DEFAULT 0,
     `result`    varchar(600)           DEFAULT NULL,

@@ -99,6 +99,18 @@ public interface UserApiService {
      */
     String checkCode(String jwt,String checkCode,String phone,boolean app);
 
+    /**
+     * 一面是否放弃
+     * @param jwt
+     * @param app
+     * @return  判断
+     */
+    boolean giveUpFirst(String jwt,boolean judge,boolean app);
+
+
+    boolean signInService(String jwt,boolean first,int enroll);
+
+
 
 
 
