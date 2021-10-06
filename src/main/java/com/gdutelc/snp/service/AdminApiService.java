@@ -52,20 +52,20 @@ public interface AdminApiService {
      * 审核新生的报名表
      * @param uid 用户id
      */
-    boolean checkSign(Integer uid);
+    boolean checkSignService(Integer uid);
 
     /**
      * 修改新生的状态
      */
-    boolean closeSign();
+    boolean closeSignService();
 
     /**
      * @param audition 面试地点信息
      */
-    boolean firstAudition(Audition audition);
+    boolean firstAuditionService(Audition audition);
 
     /**
      * 冻结第一次面试并返回时间地点
      */
-    Audition closeFirst();
+    Audition closeFirstService();
 }

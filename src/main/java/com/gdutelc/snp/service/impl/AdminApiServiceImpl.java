@@ -132,7 +132,7 @@ public class AdminApiServiceImpl implements AdminApiService {
     }
 
     @Override
-    public boolean checkSign(Integer uid) {
+    public boolean checkSignService(Integer uid) {
         try{
             userCache.updateEnrollByUid(Enroll.HAVECHECKING.getCode(), uid);
             return true;
@@ -142,7 +142,7 @@ public class AdminApiServiceImpl implements AdminApiService {
     }
 
     @Override
-    public boolean closeSign() {
+    public boolean closeSignService() {
         //数据库冻结check
         try{
             userCache.closeSign(Enroll.NOPUSHSIGN.getCode());
@@ -155,7 +155,7 @@ public class AdminApiServiceImpl implements AdminApiService {
     }
 
     @Override
-    public boolean firstAudition(Audition audition) {
+    public boolean firstAuditionService(Audition audition) {
         try{
             //扔到redis
             redisUtil.set("firstAudition",audition);
@@ -173,7 +173,7 @@ public class AdminApiServiceImpl implements AdminApiService {
     }
 
     @Override
-    public Audition closeFirst() {
+    public Audition closeFirstService() {
             boolean judge = redisUtil.hasKey("firstAudition");
             if (!judge){
                 throw new AdminServiceException(Status.NOFIRSTDATELOCATION,Status.NOFIRSTDATELOCATION.getMsg());

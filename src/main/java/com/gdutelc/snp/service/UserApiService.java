@@ -105,7 +105,7 @@ public interface UserApiService {
      * @param app
      * @return  判断
      */
-    boolean giveUpFirst(String jwt,boolean judge,boolean app);
+    boolean giveUpFirstService(String jwt,boolean judge,boolean app);
 
 
     boolean signInService(String jwt,boolean first,int enroll);

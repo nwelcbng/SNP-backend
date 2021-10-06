@@ -260,6 +260,9 @@ public class UserApiServiceImpl implements UserApiService {
             }
             //修改用户状态
             userCache.updateEnrollByUid(Enroll.HAVESIGN.getCode(),Integer.parseInt(uid));
+            //扔到kafka进行消息推送
+
+
             if (app){
                 return userJwtConfig.createJwt(claims, openid);
             }
@@ -304,7 +307,7 @@ public class UserApiServiceImpl implements UserApiService {
     }
 
     @Override
-    public boolean giveUpFirst(String jwt, boolean judge, boolean app) {
+    public boolean giveUpFirstService(String jwt, boolean judge, boolean app) {
        try{
            String uid;
            if (app){

@@ -80,7 +80,7 @@ public class AdminApiController extends BaseController{
     @AdminJwt
     @PostMapping("/admin/checkSign")
     public Result<Object> checkSign(@RequestParam("uid") Integer uid){
-        boolean judge = adminApiService.checkSign(uid);
+        boolean judge = adminApiService.checkSignService(uid);
         if (!judge){
             return Return.error(Status.CHECKSIGNFAIL);
         }
@@ -90,7 +90,7 @@ public class AdminApiController extends BaseController{
     @AdminJwt
     @PostMapping("/admin/closeSign")
     public Result<Object> closeSign(){
-        boolean judge = adminApiService.closeSign();
+        boolean judge = adminApiService.closeSignService();
         if (!judge){
             return Return.error(Status.CLOSESIGNERROR);
         }
@@ -99,7 +99,7 @@ public class AdminApiController extends BaseController{
     @AdminJwt
     @PostMapping("/admin/firstAudition")
     public Result<Object> firstAudition(@RequestBody Audition audition){
-        boolean judge = adminApiService.firstAudition(audition);
+        boolean judge = adminApiService.firstAuditionService(audition);
         if (!judge){
             return Return.error(Status.POSTFIRSTAUDITIONFAIL);
         }
@@ -108,7 +108,7 @@ public class AdminApiController extends BaseController{
     @AdminJwt
     @GetMapping("/admin/closeFirst")
     public Result<Object> closeFirst(){
-        Audition audition = adminApiService.closeFirst();
+        Audition audition = adminApiService.closeFirstService();
         return Return.success(audition);
     }
 

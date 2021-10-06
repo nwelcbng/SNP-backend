@@ -198,7 +198,7 @@ public class UserApiController  extends BaseController{
     @UserJwt
     @PostMapping("/user/webGiveUpFirstAudition")
     public Result<Object> webGiveUpFirst(@RequestHeader("Authorization") String jwt,@RequestParam("judge") boolean judge){
-        boolean newJudge = userApiService.giveUpFirst(jwt, judge, false);
+        boolean newJudge = userApiService.giveUpFirstService(jwt, judge, false);
         if (!newJudge){
             return Return.error(Status.CHECKFIRSTERROR);
         }
@@ -207,7 +207,7 @@ public class UserApiController  extends BaseController{
     @UserJwt
     @PostMapping("/user/appGiveUpFirstAudition")
     public Result<Object> appGiveUpFirst(@RequestHeader("Authorization") String jwt,@RequestParam("judge") boolean judge){
-        boolean newJudge = userApiService.giveUpFirst(jwt, judge, true);
+        boolean newJudge = userApiService.giveUpFirstService(jwt, judge, true);
         if (!newJudge){
             return Return.error(Status.CHECKFIRSTERROR);
         }
