@@ -20,22 +20,7 @@
         <result property="know" column="know"/>
         <result property="party" column="party"/>
     </resultMap>
-    <resultMap id="DSignMap" type="com.gdutelc.snp.dto.Dsign">
-        <result property="name" column="name"/>
-        <result property="grade" column="grade"/>
-        <result property="college" column="college"/>
-        <result property="major" column="major"/>
-        <result property="userclass" column="class"/>
-        <result property="dsp" column="dsp"/>
-        <result property="dno" column="dno"/>
-        <result property="secdno" column="secdno"/>
-        <result property="gender" column="gender"/>
-        <result property="sno" column="sno"/>
-        <result property="qq" column="qq"/>
-        <result property="domitory" column="domitory"/>
-        <result property="know" column="know"/>
-        <result property="party" column="party"/>
-    </resultMap>
+
     <insert id="insertSign" parameterType="com.gdutelc.snp.entity.Sign">
         INSERT INTO db_sign_up.t_sign (uid, `name`, grade, college, major, class, dsp, dno,secdno, gender, sno, qq, domitory, know, party)
         values (#{uid}, #{name}, #{grade}, #{college}, #{major}, #{userclass}, #{description}, #{dno}, #{secdno}, #{gender}, #{sno}, #{qq}, #{domitory}, #{know}, #{party})
@@ -46,26 +31,31 @@
         WHERE uid = #{uid}
         LIMIT 1
     </select>
-    <select id="getDsignByUid" resultMap="DSignMap" parameterType="java.lang.Integer">
+    <select id="getDsignByUid" resultMap="SignMap" parameterType="java.lang.Integer">
         SELECT `name`, grade, college, major, class, dsp, dno,secdno, gender, sno, qq, domitory, know, party
         FROM db_sign_up.t_sign
         WHERE uid = #{uid}
         LIMIT 1
     </select>
-    <select id="getDsignByGender" resultMap="DSignMap" parameterType="java.lang.Boolean">
+    <select id="getDsignByGender" resultMap="SignMap" parameterType="java.lang.Boolean">
         SELECT `name`, grade, college, major, class, dsp, dno,secdno, gender, sno, qq, domitory, know, party
         FROM db_sign_up.t_sign
         WHERE gender = #{gender}
     </select>
-    <select id="getDsignByCollege" resultMap="DSignMap" parameterType="java.lang.Integer">
+    <select id="getDsignByCollege" resultMap="SignMap" parameterType="java.lang.Integer">
         SELECT `name`, grade, college, major, class, dsp, dno,secdno, gender, sno, qq, domitory, know, party
         FROM db_sign_up.t_sign
         WHERE college = #{college}
     </select>
-    <select id="getDsignByDno" resultMap="DSignMap" parameterType="java.lang.Integer">
+    <select id="getDsignByDno" resultMap="SignMap"  parameterType="java.lang.Integer">
         SELECT `name`, grade, college, major, class, dsp, dno,secdno, gender, sno, qq, domitory, know, party
         FROM db_sign_up.t_sign
         WHERE dno = #{dno}
+    </select>
+    <select id="checkForm" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+        SELECT count(uid)
+        FROM db_sign_up.t_sign
+        WHERE uid = #{uid}
     </select>
     <update id="updateDsignInformByUid" >
         UPDATE db_sign_up.t_sign

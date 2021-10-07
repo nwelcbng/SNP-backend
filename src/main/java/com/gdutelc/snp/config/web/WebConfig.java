@@ -5,6 +5,7 @@ import com.gdutelc.snp.interceptor.UserJwtInterceptor;
 import com.gdutelc.snp.interceptor.UserWebJwtInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -40,5 +41,15 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addInterceptor(adminJwtInterceptor).addPathPatterns("/**");
         registry.addInterceptor(userWebJwtInterceptor).addPathPatterns("/**");
 
+    }
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOrigins("https://snp.gdutelc.com/")
+                .allowedMethods("GET", "HEAD", "POST", "PUT", "DELETE", "OPTIONS")
+                .allowCredentials(true)
+                .maxAge(3600)
+                .allowedHeaders("*");
     }
 }

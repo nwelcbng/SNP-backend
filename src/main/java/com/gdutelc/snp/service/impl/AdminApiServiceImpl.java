@@ -7,6 +7,7 @@ import com.gdutelc.snp.dto.Audition;
 import com.gdutelc.snp.dto.Dsign;
 import com.gdutelc.snp.entity.Admin;
 import com.gdutelc.snp.entity.Message;
+import com.gdutelc.snp.entity.Sign;
 import com.gdutelc.snp.exception.AdminServiceException;
 import com.gdutelc.snp.result.Enroll;
 import com.gdutelc.snp.result.Status;
@@ -73,8 +74,8 @@ public class AdminApiServiceImpl implements AdminApiService {
     }
 
     @Override
-    public List<Dsign> getDsignByGender(Boolean gender) {
-        List<Dsign> dsigns = signCache.getDsignByGender(gender);
+    public List<Sign> getDsignByGender(Boolean gender) {
+        List<Sign> dsigns = signCache.getDsignByGender(gender);
         try{
             Assert.notNull(dsigns,Status.GETFORMERROR.getMsg());
         }catch (Exception e){
@@ -84,8 +85,8 @@ public class AdminApiServiceImpl implements AdminApiService {
     }
 
     @Override
-    public List<Dsign> getDsignByCollege(Integer college) {
-        List<Dsign> dsigns = signCache.getDsignByCollege(college);
+    public List<Sign> getDsignByCollege(Integer college) {
+        List<Sign> dsigns = signCache.getDsignByCollege(college);
         try{
             Assert.notNull(dsigns,Status.GETFORMERROR.getMsg());
         }catch (Exception e){
@@ -95,8 +96,8 @@ public class AdminApiServiceImpl implements AdminApiService {
     }
 
     @Override
-    public List<Dsign> getDsignByDno(Integer dno) {
-        List<Dsign> dsigns = signCache.getDsignByDno(dno);
+    public List<Sign> getDsignByDno(Integer dno) {
+        List<Sign> dsigns = signCache.getDsignByDno(dno);
         try {
             Assert.notNull(dsigns, Status.GETFORMERROR.getMsg());
         }catch (Exception e){
@@ -113,7 +114,7 @@ public class AdminApiServiceImpl implements AdminApiService {
             String opneid = userCache.getOpenidByUid(uid);
 
             String session = (String) redisUtil.get("msg" + opneid);
-            Dsign dsign = signCache.getDsignByUid(uid);
+            Sign dsign = signCache.getDsignByUidCache(uid);
 
             Message message = new Message(dsign.getName(),admin.getAdno(),session,opneid);
             if (check){

@@ -2,6 +2,7 @@ package com.gdutelc.snp.cache;
 
 import com.gdutelc.snp.dao.ISignDao;
 import com.gdutelc.snp.dto.Dsign;
+import com.gdutelc.snp.entity.Sign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.*;
 import org.springframework.stereotype.Component;
@@ -21,18 +22,18 @@ public class SignCache implements IsignCache,Serializable{
 
     @Cacheable(key = "getMethodName()",unless = "#result == null" )
     @Override
-    public List<Dsign> getDsignByGender(Boolean gender) {
+    public List<Sign> getDsignByGender(Boolean gender) {
         return signDao.getDsignByGender(gender);
     }
 
     @Cacheable(key = "getMethodName()",unless = "#result == null" )
     @Override
-    public List<Dsign> getDsignByCollege(Integer college) {
+    public List<Sign> getDsignByCollege(Integer college) {
         return signDao.getDsignByCollege(college);
     }
     @Cacheable(key = "getMethodName()",unless = "#result == null" )
     @Override
-    public List<Dsign> getDsignByDno(Integer dno) {
+    public List<Sign> getDsignByDno(Integer dno) {
         return signDao.getDsignByDno(dno);
     }
 
@@ -44,9 +45,9 @@ public class SignCache implements IsignCache,Serializable{
         return signDao.updateDsignInformByUid(dsign, uid);
     }
 
-    @Cacheable(key = "#result.name",unless = "#result == null")
+    @Cacheable(key = "getMethodName()+#uid",unless = "#result == null")
     @Override
-    public Dsign getDsignByUid(Integer uid) {
+    public Sign getDsignByUidCache(Integer uid) {
         return  signDao.getDsignByUid(uid);
     }
 

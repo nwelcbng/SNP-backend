@@ -2,6 +2,9 @@ package com.gdutelc.snp.service;
 
 
 import com.gdutelc.snp.dto.Dsign;
+import com.gdutelc.snp.dto.NewUser;
+import com.gdutelc.snp.entity.Sign;
+import com.gdutelc.snp.entity.User;
 
 import java.util.Map;
 
@@ -30,7 +33,7 @@ public interface UserApiService {
      * @param   jwt  前端发送的jwt
      * @return  返回表单json数据
      */
-    String getWebFormService(String jwt);
+    Sign getWebFormService(String jwt);
 
 
     /**
@@ -109,6 +112,8 @@ public interface UserApiService {
 
 
     boolean signInService(String jwt,boolean first,int enroll);
+
+    NewUser getStatus(String jwt, boolean app);
 
 
 

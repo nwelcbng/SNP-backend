@@ -1,6 +1,7 @@
 package com.gdutelc.snp.interceptor;
 import com.gdutelc.snp.annotation.UserWebJwt;
 import com.gdutelc.snp.config.jwt.UserJwtConfig;
+import com.gdutelc.snp.config.jwt.UserWebJwtConfig;
 import com.gdutelc.snp.dao.IUserDao;
 import com.gdutelc.snp.exception.JwtErrorException;
 import com.gdutelc.snp.result.Status;
@@ -19,7 +20,7 @@ import java.lang.reflect.Method;
 @Component
 public class UserWebJwtInterceptor implements HandlerInterceptor {
     @Resource
-    private UserJwtConfig userJwtConfig;
+    private UserWebJwtConfig userWebJwtConfig;
     @Resource
     private IUserDao userDao;
     @Override
@@ -43,10 +44,12 @@ public class UserWebJwtInterceptor implements HandlerInterceptor {
         if(cookie == null || cookie.isBlank()){
             throw new JwtErrorException(Status.JWTMISSERROR);
         }
-        String uid = userJwtConfig.getPayload(cookie).get("uid");
+        String uid = userWebJwtConfig.getPayload(cookie).get("uid");
 
         String openid = userDao.getOpenidByUid(Integer.parseInt(uid));
-        boolean judge = userJwtConfig.checkJwt(cookie, openid);
+        System.out.println(openid);
+        boolean judge = userWebJwtConfig.checkJwt(cookie, openid);
+        System.out.println(judge);
         if(!judge){
             throw new JwtErrorException(Status.JWTCHANGE);
         }

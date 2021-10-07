@@ -30,7 +30,6 @@ public class LogAspect {
         RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = ((ServletRequestAttributes) requestAttributes).getRequest();
         logger.info(">>>>>>>>>>Ip: "+request.getRemoteAddr()+"访问了 "+ request.getRequestURL().toString()+ "调用了"+joinPoint.getSignature().getName()+"方法");
-
     }
 
 }

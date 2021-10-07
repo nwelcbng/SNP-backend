@@ -36,14 +36,14 @@ spring:
       #缓存过期时间（ms）
       time-to-live: 100000
   kafka:
-    bootstrap-servers: 104.160.18.224:9092
+    bootstrap-servers: 192.168.0.2:9092
     producer:
       retries: 0
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
     consumer:
-      bootstrap-servers: 104.160.18.224:9092
-      group-id: phone
+      bootstrap-servers: 192.168.0.2:9092
+      group-id: user
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
     template:
@@ -53,6 +53,8 @@ spring:
 mybatis:
   mapper-locations: classpath:com/gdutelc/snp/dao/*.xml:com.gdutelc.snp.entity
   type-aliases-package: com.gdutelc.snp.entity
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 config:
   aes:
@@ -88,6 +90,5 @@ logging:
         boot:
           autoconfigure:
             logging: info
-  config: classpath:logback-spring.xml
 
 

@@ -1,6 +1,7 @@
 package com.gdutelc.snp.cache;
 
 import com.gdutelc.snp.dto.Dsign;
+import com.gdutelc.snp.entity.Sign;
 
 import java.util.List;
 
@@ -13,23 +14,23 @@ public interface IsignCache {
      * @param   gender  性别
      * @return  用户报名信息
      */
-    List<Dsign> getDsignByGender(Boolean gender);
+    List<Sign> getDsignByGender(Boolean gender);
 
     /**
      * 通过学院获取用户信息
      * @param college 学院
      * @return 用户报名信息
      */
-    List<Dsign> getDsignByCollege(Integer college);
+    List<Sign> getDsignByCollege(Integer college);
     /**
      * 通过意向部门获取用户信息
      * @param   dno  意向部门
      * @return  用户报名信息
      */
-    List<Dsign> getDsignByDno(Integer dno);
+    List<Sign> getDsignByDno(Integer dno);
 
     Integer updateDsignInformByUid(Dsign dsign,Integer uid);
 
-    Dsign getDsignByUid(Integer uid);
+    Sign getDsignByUidCache(Integer uid);
 
 }

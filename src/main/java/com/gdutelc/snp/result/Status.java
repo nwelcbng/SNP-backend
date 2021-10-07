@@ -40,6 +40,8 @@ public enum Status {
     POSTFIRSTAUDITIONFAIL(-606,"上传一面时间地点失败"),
     CHECKFIRSTERROR(-607,"确认参加一面失败"),
     NOFIRSTDATELOCATION(-608,"暂无第一次面试的时间地点"),
+    USERNOSIGN(-609,"该用户暂无上传报名表"),
+    GETSATUSERROR(-610,"获取用户状态失败"),
     SUCCESS(1,"成功");
 
 

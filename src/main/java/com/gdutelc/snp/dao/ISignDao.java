@@ -34,7 +34,7 @@ public interface ISignDao {
      * @param uid   uid
      * @return  封装的用户报名信息
      */
-    Dsign getDsignByUid(Integer uid);
+    Sign getDsignByUid(Integer uid);
 
 
 
@@ -43,21 +43,21 @@ public interface ISignDao {
      * @param   gender  性别
      * @return  用户报名信息
      */
-    List<Dsign> getDsignByGender(Boolean gender);
+    List<Sign> getDsignByGender(Boolean gender);
 
     /**
      * 通过学院获取用户信息
      * @param college 学院
      * @return 用户报名信息
      */
-    List<Dsign> getDsignByCollege(Integer college);
+    List<Sign> getDsignByCollege(Integer college);
     
     /**
      * 通过意向部门获取用户信息
      * @param   dno  意向部门
      * @return  用户报名信息
      */
-    List<Dsign> getDsignByDno(Integer dno);
+    List<Sign> getDsignByDno(Integer dno);
 
 
     /**
@@ -67,6 +67,8 @@ public interface ISignDao {
      * @return  用户报名信息
      */
     Integer updateDsignInformByUid(@Param("dsign") Dsign dsign, @Param("uid") Integer uid);
+
+    Integer checkForm(Integer uid);
 
 
 

@@ -1,6 +1,7 @@
 package com.gdutelc.snp.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.gdutelc.snp.cache.IsignCache;
 import com.gdutelc.snp.cache.SignCache;
 import com.gdutelc.snp.cache.UserCache;
 import com.gdutelc.snp.config.jwt.UserJwtConfig;
@@ -8,6 +9,7 @@ import com.gdutelc.snp.config.jwt.UserWebJwtConfig;
 import com.gdutelc.snp.dao.ISignDao;
 import com.gdutelc.snp.dao.IUserDao;
 import com.gdutelc.snp.dto.Dsign;
+import com.gdutelc.snp.dto.NewUser;
 import com.gdutelc.snp.entity.Qrcode;
 import com.gdutelc.snp.entity.Sign;
 import com.gdutelc.snp.entity.User;
@@ -20,6 +22,8 @@ import com.gdutelc.snp.util.JwtUtil;
 import com.gdutelc.snp.util.QrCodeUtil;
 import com.gdutelc.snp.util.RedisUtil;
 import com.github.kevinsawicki.http.HttpRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
@@ -35,6 +39,7 @@ import java.util.Map;
 @Service
 @SuppressWarnings("unchecked")
 public class UserApiServiceImpl implements UserApiService {
+    protected final Logger log = LoggerFactory.getLogger(this.getClass());
     @Value("${config.register.appid}")
     private String appid;
     @Value("${config.register.secret}")
@@ -62,7 +67,7 @@ public class UserApiServiceImpl implements UserApiService {
     private UserCache userCache;
 
     @Resource
-    private SignCache signCache;
+    private IsignCache signCache;
 
 
     @Resource
@@ -143,7 +148,7 @@ public class UserApiServiceImpl implements UserApiService {
     public String getFormService(String jwt) {
         //从数据库查找用户信息
         String uid = userJwtConfig.getPayload(jwt).get("uid");
-        Dsign userinfo = signCache.getDsignByUid(Integer.parseInt(uid));
+        Sign userinfo = signCache.getDsignByUidCache(Integer.parseInt(uid));
         try{
             Assert.notNull(userinfo,Status.GETFORMERROR.getMsg());
         }catch (Exception e){
@@ -153,15 +158,21 @@ public class UserApiServiceImpl implements UserApiService {
     }
 
     @Override
-    public String getWebFormService(String jwt) {
+    public Sign getWebFormService(String jwt) {
         String uid = userWebJwtConfig.getPayload(jwt).get("uid");
-        Dsign userinfo = signCache.getDsignByUid(Integer.parseInt(uid));
+        Integer integer = iSignDao.checkForm(Integer.parseInt(uid));
+        if(integer.equals(0)){
+            throw new UserServiceException(Status.USERNOSIGN,Status.USERNOSIGN.getMsg());
+        }
+        Sign userinfo = signCache.getDsignByUidCache(Integer.parseInt(uid));
+
+
         try{
             Assert.notNull(userinfo,Status.GETFORMERROR.getMsg());
         }catch (Exception e){
             throw new UserServiceException(Status.GETFORMERROR,e.getMessage());
         }
-        return JSON.toJSONString(userinfo);
+        return userinfo;
     }
 
     @Override
@@ -196,22 +207,27 @@ public class UserApiServiceImpl implements UserApiService {
 
     @Override
     public String webLogin(String uuid) {
-        if (redisUtil.hasKey(aesUtil.decrypt(uuid))){
-            Qrcode qrcode = (Qrcode) redisUtil.get(aesUtil.decrypt(uuid));
-            Integer uid = qrcode.getUid();
-            boolean flag = false;
-            String phone = userDao.getPhoneByUid(uid);
-            String openid = userDao.getOpenidByUid(uid);
-            int code = qrcode.getCode();
-            if (!phone.equals(openid)){
-                flag = true;
-            }
-            if (code == 1){
-                redisUtil.del(uuid);
-                return jwtUtil.userWebJwtCreate(uid,flag,openid);
-            }
-        }
-        throw new UserServiceException(Status.QRUUIDERROR,Status.QRUUIDERROR.getMsg());
+       try {
+           if (redisUtil.hasKey(aesUtil.decrypt(uuid))){
+               Qrcode qrcode = (Qrcode) redisUtil.get(aesUtil.decrypt(uuid));
+               Integer uid = qrcode.getUid();
+               boolean flag = false;
+               String phone = userDao.getPhoneByUid(uid);
+               String openid = userDao.getOpenidByUid(uid);
+               int code = qrcode.getCode();
+               if (!phone.equals(openid)){
+                   flag = true;
+               }
+               if (code == 1){
+                   redisUtil.del(uuid);
+                   return jwtUtil.userWebJwtCreate(uid,flag,openid);
+               }
+           }
+       }catch (Exception e){
+           throw new UserServiceException(Status.QRUUIDERROR,e.getMessage());
+
+       }
+        return null;
 
     }
 
@@ -261,7 +277,9 @@ public class UserApiServiceImpl implements UserApiService {
             //修改用户状态
             userCache.updateEnrollByUid(Enroll.HAVESIGN.getCode(),Integer.parseInt(uid));
             //扔到kafka进行消息推送
-
+            kafkaTemplate.send("sign",dsign).addCallback(success->log.info("成功往kafka传入报名成功的user信息"),fail->{
+                throw new UserServiceException(Status.POSTAPPSIGNERROR,null);
+            });
 
             if (app){
                 return userJwtConfig.createJwt(claims, openid);
@@ -330,6 +348,23 @@ public class UserApiServiceImpl implements UserApiService {
     public boolean signInService(String jwt, boolean first, int enroll) {
         //TODO 扔进kafka
         return false;
+    }
+
+    @Override
+    public NewUser getStatus(String jwt, boolean app) {
+        try{
+            String uid;
+            if (app){
+                uid = userJwtConfig.getPayload(jwt).get("uid");
+            }else{
+                uid = userWebJwtConfig.getPayload(jwt).get("uid");
+            }
+            User user = userCache.getUserByUid(Integer.parseInt(uid));
+            NewUser data = new NewUser(user.getEnroll(),user.getCheck(),user.getResult());
+            return data;
+        }catch (Exception e){
+            throw new UserServiceException(Status.GETSATUSERROR,e.getMessage());
+        }
     }
 
 

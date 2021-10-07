@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.gdutelc.snp.annotation.AdminJwt;
 import com.gdutelc.snp.dto.Audition;
 import com.gdutelc.snp.dto.Dsign;
+import com.gdutelc.snp.entity.Sign;
 import com.gdutelc.snp.result.Result;
 import com.gdutelc.snp.result.Return;
 import com.gdutelc.snp.result.Status;
@@ -39,7 +40,7 @@ public class AdminApiController extends BaseController{
     public Result<Object> getDsignByGender(@RequestBody String gender){
         JSONObject jsonObject = JSON.parseObject(gender);
         Boolean newGender = jsonObject.getBoolean("gender");
-        List<Dsign> data = adminApiService.getDsignByGender(newGender);
+        List<Sign> data = adminApiService.getDsignByGender(newGender);
         if (data.isEmpty()){
             return Return.error(Status.GETFORMERROR);
         }
@@ -52,7 +53,7 @@ public class AdminApiController extends BaseController{
         JSONObject jsonObject = JSON.parseObject(college);
         Integer newCollege = jsonObject.getInteger("college");
         System.out.println(college);
-        List<Dsign> data = adminApiService.getDsignByCollege(newCollege);
+        List<Sign> data = adminApiService.getDsignByCollege(newCollege);
         if (data.isEmpty()){
             return Return.error(Status.GETFORMERROR);
         }
@@ -64,7 +65,7 @@ public class AdminApiController extends BaseController{
     public Result<Object> getDsignByDno(@RequestBody String dno){
         JSONObject jsonObject = JSON.parseObject(dno);
         Integer newDno = jsonObject.getInteger("dno");
-        List<Dsign> data = adminApiService.getDsignByDno(newDno);
+        List<Sign> data = adminApiService.getDsignByDno(newDno);
         if (data.isEmpty()){
             return Return.error(Status.GETFORMERROR);
         }
