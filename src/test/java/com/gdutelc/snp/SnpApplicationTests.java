@@ -20,7 +20,7 @@ class SnpApplicationTests {
     void contextLoads() {
         Map<String,Object> claims = new HashMap<>();
         claims.put("uid",2);
-        claims.put("phone",true);
+        claims.put("phone",false);
         String data = userWebJwtConfig.createJwt(claims, "oPndU5VebQBZu9V_z0eTSdI1xAkQ");
         System.out.println(data);
 
