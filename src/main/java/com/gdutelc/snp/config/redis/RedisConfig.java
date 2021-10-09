@@ -3,19 +3,26 @@ package com.gdutelc.snp.config.redis;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.cache.annotation.EnableCaching;
+import com.gdutelc.snp.Listener.PhoneListener;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.listener.PatternTopic;
+import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.integration.redis.util.RedisLockRegistry;
+
+import javax.annotation.Resource;
 
 /**
  * @author kid
  */
 @Configuration
 public class RedisConfig {
+    @Resource
+    private PhoneListener phoneListener;
 
     @Bean
     @SuppressWarnings("all")
@@ -39,4 +46,16 @@ public class RedisConfig {
         template.afterPropertiesSet();
         return template;
     }
+    @Bean
+    public RedisMessageListenerContainer container(RedisConnectionFactory factory){
+        RedisMessageListenerContainer container = new RedisMessageListenerContainer();
+        container.setConnectionFactory(factory);
+        container.addMessageListener(phoneListener,new PatternTopic("phone"));
+        return container;
+    }
+    @Bean
+    public RedisLockRegistry redisLockRegistry(RedisConnectionFactory factory){
+        return new RedisLockRegistry(factory,"phone-lock",130);
+    }
+
 }

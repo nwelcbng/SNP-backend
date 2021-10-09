@@ -48,6 +48,7 @@ public class UserWebJwtInterceptor implements HandlerInterceptor {
 
         String openid = userDao.getOpenidByUid(Integer.parseInt(uid));
         System.out.println(openid);
+        System.out.println(cookie);
         boolean judge = userWebJwtConfig.checkJwt(cookie, openid);
         System.out.println(judge);
         if(!judge){

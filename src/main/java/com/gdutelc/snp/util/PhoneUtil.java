@@ -1,4 +1,5 @@
 package com.gdutelc.snp.util;
+import com.gdutelc.snp.producer.PhoneProducer;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
@@ -13,14 +14,14 @@ import javax.annotation.Resource;
 public class PhoneUtil {
 
     @Resource
-    private  KafkaTemplate kafkaTemplate;
+    private PhoneProducer phoneProducer;
 
     @Resource
     private RedisUtil redisUtil;
 
 
     public  void sendMessage(String phone){
-        kafkaTemplate.send("phone",phone);
+        phoneProducer.publish(phone);
     }
 
     public boolean checkCode(String code, String phone){

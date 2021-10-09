@@ -182,7 +182,7 @@ public class UserApiController  extends BaseController{
         }
     }
 
-    @UserJwt
+    @UserWebJwt
     @PostMapping("/user/webCheckCode")
     public Result<Object> webCheckCode(@RequestHeader("Authorization") String jwt, @RequestParam("phone") String phone, @RequestParam("code") String code){
         //返回新的jwt

@@ -12,6 +12,7 @@ import com.gdutelc.snp.exception.AdminServiceException;
 import com.gdutelc.snp.result.Enroll;
 import com.gdutelc.snp.result.Status;
 import com.gdutelc.snp.service.AdminApiService;
+import com.gdutelc.snp.util.JwtUtil;
 import com.gdutelc.snp.util.RedisUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,30 +48,27 @@ public class AdminApiServiceImpl implements AdminApiService {
     @Resource
     private RedisUtil redisUtil;
 
+    @Resource
+    private JwtUtil jwtUtil;
+
 
 
 
 
     @Override
     public String adminLogin(String username, String password) {
-        String passowrdByUsername = adminCache.getPassowrdByUsername(username);
-        Integer aid = adminCache.getAdminByUsername(username).getAid();
         try{
-            Assert.notNull(passowrdByUsername, Status.GETPASSWORDERROR.getMsg());
+            String passowrdByUsername = adminCache.getPassowrdByUsername(username);
+            Integer aid = adminCache.getAdminByUsername(username).getAid();
+            if (!password.equals(passowrdByUsername)){
+                throw new AdminServiceException(Status.PASSWORDERROR,null);
+            }
+            return jwtUtil.adminJwtCreate(aid, username, passowrdByUsername);
         }catch (Exception e){
             throw new AdminServiceException(Status.GETPASSWORDERROR,e.getMessage());
         }
 
-        if (!password.equals(passowrdByUsername)){
-            throw new AdminServiceException(Status.PASSWORDERROR,null);
 
-        }
-        Map<String,Object> data = new HashMap<>(4);
-        data.put("username",username);
-
-        data.put("aid",aid);
-
-        return adminJwtConfig.createJwt(data, password);
     }
 
     @Override

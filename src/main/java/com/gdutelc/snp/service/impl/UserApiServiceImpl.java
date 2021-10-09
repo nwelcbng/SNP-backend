@@ -1,6 +1,7 @@
 package com.gdutelc.snp.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.gdutelc.snp.Listener.PhoneListener;
 import com.gdutelc.snp.cache.IsignCache;
 import com.gdutelc.snp.cache.SignCache;
 import com.gdutelc.snp.cache.UserCache;
@@ -14,13 +15,11 @@ import com.gdutelc.snp.entity.Qrcode;
 import com.gdutelc.snp.entity.Sign;
 import com.gdutelc.snp.entity.User;
 import com.gdutelc.snp.exception.*;
+import com.gdutelc.snp.producer.PhoneProducer;
 import com.gdutelc.snp.result.Enroll;
 import com.gdutelc.snp.result.Status;
 import com.gdutelc.snp.service.UserApiService;
-import com.gdutelc.snp.util.AesUtil;
-import com.gdutelc.snp.util.JwtUtil;
-import com.gdutelc.snp.util.QrCodeUtil;
-import com.gdutelc.snp.util.RedisUtil;
+import com.gdutelc.snp.util.*;
 import com.github.kevinsawicki.http.HttpRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -79,6 +78,12 @@ public class UserApiServiceImpl implements UserApiService {
 
     @Resource
     private AesUtil aesUtil;
+
+    @Resource
+    private PhoneProducer phoneProducer;
+
+    @Resource
+    private PhoneListener phoneListener;
 
 
 
@@ -277,9 +282,9 @@ public class UserApiServiceImpl implements UserApiService {
             //修改用户状态
             userCache.updateEnrollByUid(Enroll.HAVESIGN.getCode(),Integer.parseInt(uid));
             //扔到kafka进行消息推送
-            kafkaTemplate.send("sign",dsign).addCallback(success->log.info("成功往kafka传入报名成功的user信息"),fail->{
-                throw new UserServiceException(Status.POSTAPPSIGNERROR,null);
-            });
+//            kafkaTemplate.send("sign",dsign).addCallback(success->log.info("成功往kafka传入报名成功的user信息"),fail->{
+//                throw new UserServiceException(Status.POSTAPPSIGNERROR,null);
+//            });
 
             if (app){
                 return userJwtConfig.createJwt(claims, openid);
@@ -293,7 +298,8 @@ public class UserApiServiceImpl implements UserApiService {
     @Override
     public boolean getPhone(String jwt, String phone, boolean app) {
         try{
-            kafkaTemplate.send("phone",phone);
+            phoneProducer.publish(phone);
+
             return true;
         }catch (Exception e){
             return false;
@@ -309,7 +315,9 @@ public class UserApiServiceImpl implements UserApiService {
             uid = userWebJwtConfig.getPayload(jwt).get("uid");
         }
         String openid = userDao.getOpenidByUid(Integer.parseInt(uid));
+        System.out.println("phone=="+phone);
         boolean judge = redisUtil.hasKey(phone);
+        System.out.println("judge=="+judge);
         if (judge){
             String code = (String)redisUtil.get(phone);
             if (code.equals(checkCode)){
