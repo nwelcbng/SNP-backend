@@ -17,4 +17,8 @@ public interface IadminCache {
     String getPassowrdByUsername(String username);
 
     Admin getAdminByUsername(String username);
+
+    Integer updatePasswordCache(String password,Integer uid);
+
+    String getAdminName(Integer aid);
 }

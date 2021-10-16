@@ -4,6 +4,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * @author kid
  */
@@ -120,6 +122,13 @@ public interface IUserDao {
      * @return 被冻结的条数
      */
     Integer updateEnrollByItself(Integer oldEnroll,Integer newEnroll);
+
+    List<User> getAllUser();
+
+    Integer updateResultByUid(@Param("result") String result,@Param("uid") Integer uid);
+
+    Integer changeStatus(Integer oldEnroll);
+
 
 
 

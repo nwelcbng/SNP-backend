@@ -18,7 +18,7 @@ public enum Status {
     PHONECODEERROR(-408,"手机验证码发送失败"),
     JWTCHANGE(-409,"用户jwt不为空但openid已修改或者jwt超过过期时间"),
     GETOPENIDERROR(-501,"获取openid错误"),
-    GETFORMERROR(-502,"获取报名表单错误"),
+    GETFORMERROR(-502,"暂无报名表"),
     SETSTATUSERROR(-503,"设置状态失败"),
     JWTCREATEERROR(-504,"jwt生成错误"),
     CHECKQRCODEERROR(-505,"扫描二维码登录失败"),
@@ -42,6 +42,17 @@ public enum Status {
     NOFIRSTDATELOCATION(-608,"暂无第一次面试的时间地点"),
     USERNOSIGN(-609,"该用户暂无上传报名表"),
     GETSATUSERROR(-610,"获取用户状态失败"),
+    SAMEPHONENUMBER(-611,"该手机号已被注册"),
+    UPDATERESULTERROR(-612,"更新评价失败"),
+    GETRESULTERROR(-613,"获取评价失败"),
+    GETRESULTFAIL(-614,"暂无评价"),
+    UPDATEPASSWORDERROR(-615,"修改密码失败"),
+    GETADMINNAMEERROR(-616,"获取部长姓名失败"),
+    CLOSESIGN(-617,"报名已截至"),
+    CHANGSTATUSERROR(-618,"统一修改状态失败"),
+    GETSTATUSTIMEERROR(-619,"获取总状态失败"),
+    GETUSERSTATUSERROR(-620,"获取用户状态码失败"),
+    UPDATEUSERSTATUSERROR(-621,"修改用户状态失败"),
     SUCCESS(1,"成功");
 
 

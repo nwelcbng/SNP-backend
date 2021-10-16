@@ -7,6 +7,7 @@ import com.gdutelc.snp.util.CodeUtil;
 import com.gdutelc.snp.util.RedisUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.connection.Message;
 import org.springframework.data.redis.connection.MessageListener;
 import org.springframework.integration.redis.util.RedisLockRegistry;
@@ -25,15 +26,14 @@ public class PhoneListener implements MessageListener{
     @Resource
     private CodeUtil codeUtil;
 
-    @Resource
+    @Autowired
     private RedisLockRegistry redisLockRegistry;
-
-
 
     @Override
     public void onMessage(Message message, byte[] pattern) {
-        Lock lock = redisLockRegistry.obtain("lock");//获取分布式锁
+        Lock re=redisLockRegistry.obtain("lock");
         try {
+            re.lock();
             log.info("从消息通道={}监听到消息",new String(pattern));
             log.info("电话元消息={}",new String(message.getBody()));
             String phone = new String(message.getBody());
@@ -46,7 +46,7 @@ public class PhoneListener implements MessageListener{
         }catch (Exception e){
             throw new UserServiceException(Status.PHONECODEERROR,e.getMessage());
         }finally {
-            lock.unlock();  //解锁
+            re.unlock();
         }
     }
 }

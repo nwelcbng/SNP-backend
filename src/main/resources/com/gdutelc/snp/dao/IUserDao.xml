@@ -39,6 +39,9 @@
         WHERE  uid = #{uid}
             LIMIT 1
     </select>
+    <select id="getAllUser" resultMap="userMap">
+        SELECT uid,openid FROM   db_sign_up.t_user
+    </select>
     <update id="updatePhoneByOpenid">
         UPDATE db_sign_up.t_user
         SET phone = #{phone}
@@ -82,6 +85,19 @@
         SET enroll = #{newEnroll}
         WHERE enroll = #{oldEnroll}
     </update>
+    <update id="updateResultByUid">
+        UPDATE db_sign_up.t_user
+        SET `result` = #{result}
+        WHERE uid = #{uid}
+    </update>
+    <update id="changeStatus">
+        UPDATE db_sign_up.t_user
+        SET `check` = 1
+        WHERE enroll &lt;= #{oldEnroll}
+    </update>
+
+
+
 
 
 

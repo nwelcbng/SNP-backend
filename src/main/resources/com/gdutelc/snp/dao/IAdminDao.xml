@@ -69,6 +69,13 @@
         SET adno = #{adno}
         WHERE openid =#{openid}
     </update>
+    <update id="updatePasswordByAid">
+        UPDATE db_sign_up.t_admin
+        SET password = #{password}
+        WHERE aid =#{aid}
+    </update>
+
+
 
 
 </mapper>

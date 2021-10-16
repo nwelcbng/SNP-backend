@@ -3,6 +3,8 @@ package com.gdutelc.snp.cache;
 import com.gdutelc.snp.entity.User;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * @author kid
  */
@@ -57,6 +59,13 @@ public interface IuserCache {
     Integer updateEnroll(Integer enroll,Integer check);
 
     Integer updateEnrollByitself(Integer oldEnroll,Integer newEnroll);
+
+    List<User> getUserByEnroll(Integer enroll);
+
+    Integer updateResultByUidCache(String result,Integer uid);
+
+    Integer changeSatusCache(Integer oldEnroll);
+    Integer updatePhoneByUid(String phone,Integer uid);
 
 
 

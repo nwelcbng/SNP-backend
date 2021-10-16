@@ -24,6 +24,7 @@ public class RedisConfig {
     @Resource
     private PhoneListener phoneListener;
 
+
     @Bean
     @SuppressWarnings("all")
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
@@ -54,8 +55,9 @@ public class RedisConfig {
         return container;
     }
     @Bean
-    public RedisLockRegistry redisLockRegistry(RedisConnectionFactory factory){
-        return new RedisLockRegistry(factory,"phone-lock",130);
+    public RedisLockRegistry redisLockRegistry(RedisConnectionFactory factory) {
+        return new RedisLockRegistry(factory, "demo-lock",60);
     }
+
 
 }

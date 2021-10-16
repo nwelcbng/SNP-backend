@@ -33,7 +33,7 @@ public interface UserApiService {
      * @param   jwt  前端发送的jwt
      * @return  返回表单json数据
      */
-    Sign getWebFormService(String jwt);
+    Dsign getWebFormService(String jwt);
 
 
     /**
@@ -114,6 +114,8 @@ public interface UserApiService {
     boolean signInService(String jwt,boolean first,int enroll);
 
     NewUser getStatus(String jwt, boolean app);
+
+    String getResultService(String jwt, boolean app);
 
 
 

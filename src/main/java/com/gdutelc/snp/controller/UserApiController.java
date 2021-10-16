@@ -1,17 +1,14 @@
 package com.gdutelc.snp.controller;
-import com.alibaba.fastjson.JSON;
 import com.gdutelc.snp.annotation.UserJwt;
 import com.gdutelc.snp.annotation.UserWebJwt;
 import com.gdutelc.snp.dto.Dsign;
 import com.gdutelc.snp.dto.NewUser;
-import com.gdutelc.snp.entity.Sign;
 import com.gdutelc.snp.result.Result;
 import com.gdutelc.snp.result.Return;
 import com.gdutelc.snp.result.Status;
 import com.gdutelc.snp.service.UserApiService;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
-import java.util.Map;
 
 /**
  * @author kid
@@ -47,7 +44,7 @@ public class UserApiController  extends BaseController{
     @UserWebJwt
     @GetMapping("/user/getWebForm")
     public Result<Object> getWebForm(@RequestHeader("Authorization") String cookie){
-        Sign data = userApiService.getWebFormService(cookie);
+        Dsign data = userApiService.getWebFormService(cookie);
         if (data == null){
             return Return.error(Status.GETFORMERROR);
         }
@@ -64,7 +61,7 @@ public class UserApiController  extends BaseController{
         }
         return Return.success();
     }
-    @UserJwt
+    @UserWebJwt
     @PutMapping("/user/webSetStatus")
     public Result<Object> webSetStatus(@RequestHeader("Authorization") String cookie, @RequestBody String request){
         boolean judge = userApiService.setStatusService(cookie, request,false);
@@ -122,16 +119,24 @@ public class UserApiController  extends BaseController{
                                @RequestParam(value ="college", required = false) Integer college, @RequestParam(value ="major", required = false) String major,
                                @RequestParam(value ="class", required = false) String userclass, @RequestParam(value ="dsp", required = false) String dsp,
                                @RequestParam(value ="dno", required = false) Integer dno, @RequestParam(value ="secdno", required = false) Integer secdno,
-                               @RequestParam(value ="gender", required = false) Boolean gender, @RequestParam(value ="sno", required = false) String sno,
+                               @RequestParam(value ="gender", required = false) String gender, @RequestParam(value ="sno", required = false) String sno,
                                @RequestParam(value ="qq", required = false) String qq, @RequestParam(value ="domitory", required = false) String domitory,
                                @RequestParam(value ="know", required = false) String know, @RequestParam(value ="party", required = false) String party) {
-
-        Dsign dsign = new Dsign(name, grade, college, major, userclass, dsp, dno, secdno, gender, sno, qq, domitory, know, party);
+        char c = sno.charAt(1);
+        Boolean data;
+        if (c == '1'){
+            data = true;
+        }else{
+            data = false;
+        }
+        Dsign dsign = new Dsign(null,name, null,grade, college, major, userclass, dsp, dno, secdno, data, sno, qq, domitory, know, party);
         System.out.println(dsign);
         String newJwt = userApiService.sign(jwt,dsign,true);
         System.out.println("newJwt"+newJwt);
         if(newJwt == null){
             return Return.error(Status.POSTAPPSIGNERROR);
+        }else if(newJwt.equals("error")){
+            return Return.error(Status.CLOSESIGN);
         }else{
             return Return.success(newJwt);
         }
@@ -149,10 +154,13 @@ public class UserApiController  extends BaseController{
                                @RequestParam("qq") String qq, @RequestParam("domitory") String domitory,
                                @RequestParam("know") String know, @RequestParam("party") String party) {
 
-        Dsign dsign = new Dsign(name, grade, college, major, userclass, dsp, dno, secdno, gender, sno, qq, domitory, know, party);
+        Dsign dsign = new Dsign(null,name, null,grade, college, major, userclass, dsp, dno, secdno, gender, sno, qq, domitory, know, party);
         String newJwt = userApiService.sign(jwt,dsign,false);
+
         if(newJwt == null){
             return Return.error(Status.POSTAPPSIGNERROR);
+        }else if(newJwt.equals("error")){
+            return Return.error(Status.CLOSESIGN);
         }else{
             return Return.success(jwt);
         }
@@ -238,6 +246,25 @@ public class UserApiController  extends BaseController{
             return Return.error(Status.GETSATUSERROR);
         }
         return Return.success(status);
+    }
+
+    @UserJwt
+    @GetMapping("/user/getResult")
+    public Result<Object> appGetResult(@RequestHeader("Authorization") String jwt){
+        String result = userApiService.getResultService(jwt,true);
+        if (result == null){
+            return Return.error(Status.GETRESULTFAIL);
+        }
+        return  Return.success(result);
+    }
+    @UserWebJwt
+    @GetMapping("/user/webGetResult")
+    public Result<Object> webGetResult(@RequestHeader("Authorization") String jwt){
+        String result = userApiService.getResultService(jwt,false);
+        if (result == null){
+            return Return.error(Status.GETRESULTFAIL);
+        }
+        return  Return.success(result);
     }
 
 

@@ -36,6 +36,9 @@ public class BaseJwtConfig {
         Date date = new Date();
         //到期的时间
         Date expireDate =new Date(date.getTime() + expire*1000);
+        System.out.println(expire);
+        System.out.println(date);
+        System.out.println(expireDate);
         //加密的新盐
         Algorithm algorithm = Algorithm.HMAC256(salt+openid);
         //创建jwt

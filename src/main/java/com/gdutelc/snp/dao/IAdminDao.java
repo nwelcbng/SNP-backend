@@ -2,6 +2,7 @@ package com.gdutelc.snp.dao;
 
 
 import com.gdutelc.snp.entity.Admin;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
@@ -108,5 +109,7 @@ public interface IAdminDao {
      * @return  成功条数
      */
     Integer updateAdnoByOpenid(String openid,Integer dno);
+
+    Integer updatePasswordByAid(@Param("password") String password, @Param("aid") Integer aid);
 
 }

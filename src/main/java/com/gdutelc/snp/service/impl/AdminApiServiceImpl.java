@@ -3,11 +3,13 @@ import com.gdutelc.snp.cache.AdminCache;
 import com.gdutelc.snp.cache.SignCache;
 import com.gdutelc.snp.cache.UserCache;
 import com.gdutelc.snp.config.jwt.AdminJwtConfig;
+import com.gdutelc.snp.dao.IAdminDao;
+import com.gdutelc.snp.dao.ISignDao;
+import com.gdutelc.snp.dao.IUserDao;
 import com.gdutelc.snp.dto.Audition;
 import com.gdutelc.snp.dto.Dsign;
 import com.gdutelc.snp.entity.Admin;
 import com.gdutelc.snp.entity.Message;
-import com.gdutelc.snp.entity.Sign;
 import com.gdutelc.snp.exception.AdminServiceException;
 import com.gdutelc.snp.result.Enroll;
 import com.gdutelc.snp.result.Status;
@@ -18,11 +20,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.util.Assert;
 import javax.annotation.Resource;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author kid
@@ -51,6 +50,14 @@ public class AdminApiServiceImpl implements AdminApiService {
     @Resource
     private JwtUtil jwtUtil;
 
+    @Resource
+    private ISignDao signDao;
+    @Resource
+    private IUserDao userDao;
+
+    @Resource
+    private IAdminDao adminDao;
+
 
 
 
@@ -72,36 +79,33 @@ public class AdminApiServiceImpl implements AdminApiService {
     }
 
     @Override
-    public List<Sign> getDsignByGender(Boolean gender) {
-        List<Sign> dsigns = signCache.getDsignByGender(gender);
+    public List<Dsign> getDsignByGender(Boolean gender) {
         try{
-            Assert.notNull(dsigns,Status.GETFORMERROR.getMsg());
+            return signDao.getDsignByGender(gender);
         }catch (Exception e){
             throw new AdminServiceException(Status.GETFORMERROR,e.getMessage());
         }
-        return dsigns;
+
     }
 
     @Override
-    public List<Sign> getDsignByCollege(Integer college) {
-        List<Sign> dsigns = signCache.getDsignByCollege(college);
+    public List<Dsign> getDsignByCollege(Integer college) {
         try{
-            Assert.notNull(dsigns,Status.GETFORMERROR.getMsg());
+            return signDao.getDsignByCollege(college);
         }catch (Exception e){
             throw new AdminServiceException(Status.GETFORMERROR,e.getMessage());
         }
-        return dsigns;
+
     }
 
     @Override
-    public List<Sign> getDsignByDno(Integer dno) {
-        List<Sign> dsigns = signCache.getDsignByDno(dno);
+    public List<Dsign> getDsignByDno(Integer dno) {
         try {
-            Assert.notNull(dsigns, Status.GETFORMERROR.getMsg());
+            return signDao.getDsignByDno(dno);
         }catch (Exception e){
             throw new AdminServiceException(Status.GETFORMERROR,e.getMessage());
         }
-        return dsigns;
+
     }
 
     @Override
@@ -112,7 +116,7 @@ public class AdminApiServiceImpl implements AdminApiService {
             String opneid = userCache.getOpenidByUid(uid);
 
             String session = (String) redisUtil.get("msg" + opneid);
-            Sign dsign = signCache.getDsignByUidCache(uid);
+            Dsign dsign = signCache.getDsignByUidCache(uid);
 
             Message message = new Message(dsign.getName(),admin.getAdno(),session,opneid);
             if (check){
@@ -145,7 +149,7 @@ public class AdminApiServiceImpl implements AdminApiService {
         //数据库冻结check
         try{
             userCache.closeSign(Enroll.NOPUSHSIGN.getCode());
-            userCache.updateEnroll(Enroll.HAVESIGN.getCode(),0);
+            userCache.updateEnrollByitself(Enroll.HAVESIGN.getCode(),Enroll.CHECKING.getCode());
             return true;
         }catch (Exception e){
             throw new AdminServiceException(Status.CLOSESIGNERROR,Status.CLOSESIGNERROR.getMsg());
@@ -184,4 +188,90 @@ public class AdminApiServiceImpl implements AdminApiService {
             userCache.updateEnrollByitself(Enroll.FIRSTCHECKED.getCode(),Enroll.FIRSTNOSIGN.getCode());
             return firstAudition;
     }
+
+    @Override
+    public boolean updateResultService(Integer uid, String result) {
+        try{
+            userCache.updateResultByUidCache(result, uid);
+            return true;
+        }catch (Exception e){
+            throw new AdminServiceException(Status.UPDATERESULTERROR,e.getMessage());
+        }
+    }
+
+    @Override
+    public String getResultService(Integer uid) {
+        try{
+            return userDao.getUserByUid(uid).getResult();
+        }catch (Exception e){
+            throw new AdminServiceException(Status.GETRESULTERROR,e.getMessage());
+        }
+    }
+
+    @Override
+    public String updatePassword(String jwt, String password) {
+        try{
+            String aid = adminJwtConfig.getPayload(jwt).get("aid");
+            String username = adminDao.getAdminByAid(Integer.parseInt(aid)).getUsername();
+            adminCache.updatePasswordCache(password, Integer.parseInt(aid));
+            return jwtUtil.adminJwtCreate(Integer.parseInt(aid), username, password);
+        }catch (Exception e){
+            throw new AdminServiceException(Status.UPDATEPASSWORDERROR,e.getMessage());
+        }
+    }
+
+    @Override
+    public String getAdminNameService(String jwt) {
+        try {
+            String aid = adminJwtConfig.getPayload(jwt).get("aid");
+            return adminCache.getAdminName(Integer.parseInt(aid));
+        }catch (Exception e){
+            throw new AdminServiceException(Status.GETADMINNAMEERROR,e.getMessage());
+        }
+    }
+
+    @Override
+    public Boolean changeStatusService(Integer oldEnroll, Integer newEnroll) {
+        try{
+            int number = newEnroll / 100;
+            redisUtil.set("StatusTime",number);
+            userCache.updateEnrollByitself(oldEnroll, newEnroll);
+            userCache.changeSatusCache(oldEnroll);
+            return true;
+        }catch (Exception e){
+            throw new AdminServiceException(Status.CHANGSTATUSERROR,e.getMessage());
+        }
+    }
+
+    @Override
+    public Integer getStatusTimeService() {
+        boolean statusTime = redisUtil.hasKey("StatusTime");
+        if (!statusTime){
+            throw new AdminServiceException(Status.GETSTATUSTIMEERROR,null);
+        }
+        return (Integer) redisUtil.get("StatusTime");
+    }
+
+    @Override
+    public Integer getUserStatusService(Integer uid) {
+        try{
+            return  userCache.getUserByUid(uid).getEnroll();
+        }catch (Exception e){
+            throw new AdminServiceException(Status.GETUSERSTATUSERROR,e.getMessage());
+        }
+
+    }
+
+    @Override
+    public Boolean updateUserStatusService(Integer uid,Integer enroll) {
+        try {
+
+            Integer integer = userCache.updateEnrollByUid(enroll, uid);
+            return integer.equals(1);
+        }catch (Exception e){
+            throw new AdminServiceException(Status.UPDATEUSERSTATUSERROR,e.getMessage());
+        }
+
+    }
+
 }

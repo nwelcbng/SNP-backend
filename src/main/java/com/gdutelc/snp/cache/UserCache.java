@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.*;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * @author kid
  */
@@ -19,26 +21,26 @@ public class UserCache implements IuserCache{
         this.userDao = userDao;
     }
 
-    @Cacheable(key = "getMethodName()", unless = "#result == null"  )
+    @Cacheable(key = "getMethodName()+#openid", unless = "#result == null"  )
     @Override
     public User getUserByOpenid(String openid) {
         return userDao.getUserByOpenid(openid);
     }
 
-    @Cacheable(key = "getMethodName()", unless = "#result == null" )
+    @Cacheable(key = "getMethodName()+#uid", unless = "#result == null" )
     @Override
     public String getOpenidByUid(Integer uid) {
         return userDao.getOpenidByUid(uid);
     }
 
-    @Cacheable(key = "getMethodName()", unless = "#result == null" )
+    @Cacheable(key = "getMethodName()+#uid", unless = "#result == null" )
     @Override
     public User getUserByUid(Integer uid) {
         return userDao.getUserByUid(uid);
     }
 
 
-    @Cacheable(key = "getMethodName()", unless = "#result == null" )
+    @Cacheable(key = "getMethodName()+#uid", unless = "#result == null" )
     @Override
     public String getPhoneByUid(Integer uid) {
         return userDao.getPhoneByUid(uid);
@@ -72,5 +74,27 @@ public class UserCache implements IuserCache{
     @Override
     public Integer updateEnrollByitself(Integer oldEnroll, Integer newEnroll) {
         return userDao.updateEnrollByItself(oldEnroll, newEnroll);
+    }
+
+
+    @Override
+    public List<User> getUserByEnroll(Integer enroll) {
+        return null;
+    }
+    @CacheEvict(value = "users",allEntries = true)
+    @Override
+    public Integer updateResultByUidCache(String result, Integer uid) {
+        return userDao.updateResultByUid(result, uid);
+    }
+
+    @CacheEvict(value = "users",allEntries = true)
+    @Override
+    public Integer changeSatusCache(Integer oldEnroll) {
+        return userDao.changeStatus(oldEnroll);
+    }
+    @CacheEvict(value = "users",allEntries = true)
+    @Override
+    public Integer updatePhoneByUid(String phone, Integer uid) {
+        return userDao.updatePhoneByUid(phone, uid);
     }
 }

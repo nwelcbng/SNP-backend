@@ -24,21 +24,21 @@ public interface AdminApiService {
      * @param gender 性别
      * @return 符合条件的所有用户的信息
      */
-    List<Sign> getDsignByGender(Boolean gender);
+    List<Dsign> getDsignByGender(Boolean gender);
 
     /**
      * 通过学院获取用户信息
      * @param college 学院
      * @return 符合条件的所有用户的信息
      */
-    List<Sign> getDsignByCollege(Integer college);
+    List<Dsign> getDsignByCollege(Integer college);
 
     /**
      * 通过意向部门获取用户信息
      * @param dno 意向部门
      * @return 符合条件的所有用户的信息
      */
-    List<Sign> getDsignByDno(Integer dno);
+    List<Dsign> getDsignByDno(Integer dno);
 
     /**
      * 确认新生通过面试
@@ -69,4 +69,22 @@ public interface AdminApiService {
      * 冻结第一次面试并返回时间地点
      */
     Audition closeFirstService();
+
+    /**
+     * 更新评价
+     */
+    boolean updateResultService(Integer uid,String result);
+
+    String getResultService(Integer uid);
+
+    String updatePassword(String jwt,String password);
+
+    String getAdminNameService(String jwt);
+
+    Boolean changeStatusService(Integer oldEnroll,Integer newEnroll);
+
+    Integer getStatusTimeService();
+
+    Integer getUserStatusService(Integer uid);
+    Boolean updateUserStatusService(Integer uid,Integer enroll);
 }

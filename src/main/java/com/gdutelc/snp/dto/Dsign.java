@@ -11,12 +11,14 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Dsign implements Serializable {
+    private Integer uid;
     private String name;
+    private String phone;
     private Integer grade;
     private Integer college;
     private String major;
     private String userclass;
-    private String dsp;
+    private String description;
     private Integer dno;
     private Integer secdno;
     private Boolean gender;
@@ -25,7 +27,5 @@ public class Dsign implements Serializable {
     private String domitory;
     private String know;
     private String party;
-
-
 
 }

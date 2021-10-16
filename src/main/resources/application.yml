@@ -59,6 +59,8 @@ mybatis:
 config:
   aes:
     key: gdutelc2021aes
+  message:
+    template_id: qlbzE-dtcp6jyCNHYWXjPYE7vwileYXsveQ9LqjINWI
 
   register:
     appid: wx5b6dd7febf70b30b
@@ -84,11 +86,14 @@ config:
 server:
   port: 10080
 logging:
+  pattern:
+    console: "%d -%msg%n"
+  file:
+    name: springboot.log
+    path: ./
   level:
-    org:
-      springframework:
-        boot:
-          autoconfigure:
-            logging: info
+    com.qustdjx.product.respository.ProductInfoRepositoryTest: info
+
+
 
 
